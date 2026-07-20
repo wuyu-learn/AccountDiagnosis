@@ -5,245 +5,11 @@
 <meta data-page-node-id="xJStEIyndvUsWJBbICCzir" charset="UTF-8"><!--pnid:aFUI3UbdWA2v0eLMznreLD-->
 <meta data-page-node-id="imiO4x0uNlS4Vd1PnxBIms" name="viewport" content="width=device-width, initial-scale=1.0"><!--pnid:ivwOBiMiaOeEJuxhnsHCta-->
 <title data-page-node-id="S0XInCObsRLGf9zFi18TJu" data-pnid-children="Gy0nncIykjHnjTC6jZGixX">账户诊断 卡片组件 v1 — 跟我投问AI</title><!--pnid:NTEixkSDQEAChOflASfAyd-->
-<style data-page-node-id="biPbBWsOPSnvFL3Js7HRhp" data-pnid-children="cStI5y1D4UMsyg7oRRzSqy">
-/* ============================================================
-   Design Tokens — 与《问基金卡片组件 v1》同源（投顾小程序设计规范 v0.14）
-   账户诊断 Agent 卡片库复用同一套 token，保证 5 Agent 视觉统一
-   ============================================================ */
-:root {
-  --color-brand-red:         #FB5C5F;
-  --color-brand-red-pressed: #E54549;
-  --color-brand-red-light:   rgba(251, 92, 95, 0.10);
-  --color-brand-red-lighter: #FDEDED;
-  --color-brand-blue:        #E7F1FE;
-  --color-brand-blue-light:  #F3F8FF;
-  --gradient-cta:        linear-gradient(90deg, #FF5264 0%, #F03024 100%);
-  --gradient-header-bg:  linear-gradient(180deg, #E7F1FE 0%, #F3F4F6 100%);
-  --gradient-card-blue:  linear-gradient(180deg, #F3F8FF 0%, #FFFFFF 100%);
-  /* 涨跌色（仅服务行情/收益正负） */
-  --color-up:      #F4333C;
-  --color-up-bg:   #FFE5E6;
-  --color-down:    #22A875;
-  --color-down-bg: #E0F5EC;
-  --color-flat:    #999999;
-  /* 风险红系刻度（账户诊断特有，仪表盘/刻度条共用） */
-  --risk-1: #F7C5C0;
-  --risk-2: #F0958C;
-  --risk-3: #E76456;
-  --risk-4: #E0392B;
-  --risk-undone: #E0E4EA;
-  /* 琥珀（适配提示，非警报） */
-  --amber-bg:    #FCF6EC;
-  --amber-title: #8A5A12;
-  --amber-text:  #A87B3A;
-  --color-blue:      #0080FF;
-  --color-blue-bg:   #EBF5FF;
-  --color-warning:   #F5A623;
-  --color-gold:      #C8923A;
-  --color-purple:    #7A4FD0;
-  --color-purple-bg: #F1ECFB;
-  /* 资产分类色（避开涨跌红绿） */
-  --asset-fund:    #0080FF;
-  --asset-advisor: #5DA8FF;
-  --asset-sep:     #FFB02E;
-  --asset-money:   #C7CDD6;
-  --color-text-primary:   #333333;
-  --color-text-secondary: #666666;
-  --color-text-tertiary:  #999999;
-  --color-text-disabled:  #CCCCCC;
-  --color-text-inverse:   #FFFFFF;
-  --color-text-link:      #FB5C5F;
-  --bg-page:        #F3F4F6;
-  --bg-card:        #FFFFFF;
-  --bg-tag-default: #F2F3F5;
-  --divider:        #EEEEEE;
-  --divider-strong: #E5E5E5;
-  --font-family:        -apple-system, BlinkMacSystemFont, "PingFang SC", "Helvetica Neue", sans-serif;
-  --font-family-number: "DIN Alternate", "Helvetica Neue", -apple-system, sans-serif;
-  --fs-display: 24px;
-  --fs-h1:      16px;
-  --fs-h2:      14px;
-  --fs-h3:      15px;
-  --fs-body:    13px;
-  --fs-caption: 12px;
-  --fs-mini:    11px;
-  --space-xxs: 2px;
-  --space-xs:  4px;
-  --space-sm:  8px;
-  --space-md:  10px;
-  --space-lg:  16px;
-  --card-padding-y: 15px;
-  --card-padding-x: 12px;
-  --radius-sm:   2px;
-  --radius-md:   4px;
-  --radius-lg:   8px;
-  --radius-xl:   12px;
-  --radius-pill: 999px;
-  --shadow-card:   0 2px 12px rgba(0, 0, 0, 0.04);
-  --shadow-bottom: 0 -2px 12px rgba(0, 0, 0, 0.06);
-}
-
-*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-
-body {
-  font-family: var(--font-family);
-  background: #DDDFE3;
-  min-height: 100vh;
-  padding: 28px 24px;
-  color: var(--color-text-primary);
-}
-
-/* ─── Sidebar ─── */
-.sidebar {
-  width: 230px; min-width: 230px; height: 100vh;
-  position: fixed; top: 0; left: 0; z-index: 100;
-  background: var(--bg-card); overflow-y: auto;
-  padding: 24px 16px; box-shadow: 2px 0 12px rgba(0,0,0,.04);
-  display: flex; flex-direction: column; gap: 2px;
-}
-.sidebar::-webkit-scrollbar { width: 4px; }
-.sidebar::-webkit-scrollbar-thumb { background: #D0D0D0; border-radius: 2px; }
-.sb-title    { font-size: 15px; font-weight: 700; color: var(--color-text-primary); margin-bottom: 6px; }
-.sb-meta     { font-size: 10px; color: var(--color-text-tertiary); margin-bottom: 16px; line-height: 1.5; }
-.sb-divider  { width: 100%; height: 1px; background: var(--divider); margin: 8px 0; }
-.sb-label    { font-size: 10px; font-weight: 600; color: var(--color-text-tertiary); padding: 6px 0 2px; text-transform: uppercase; letter-spacing: 0.5px; }
-
-.anchor-chip {
-  display: block; padding: 6px 12px; border-radius: 6px;
-  background: transparent; color: var(--color-text-secondary);
-  font-size: 12px; font-weight: 500; text-decoration: none;
-  transition: all .15s; white-space: nowrap;
-}
-.anchor-chip:hover, .anchor-chip:target {
-  background: var(--color-brand-red-light); color: var(--color-brand-red);
-}
-
-/* ─── Main content ─── */
-.main-content { margin-left: 254px; }
-
-/* ─── Page header ─── */
-.page-header {
-  max-width: 1480px; margin: 0 auto 24px;
-  background: var(--bg-card); border-radius: 12px;
-  padding: 20px 24px; box-shadow: var(--shadow-card);
-}
-.page-title   { font-size: 18px; font-weight: 700; color: var(--color-text-primary); margin-bottom: 4px; }
-.page-meta    { font-size: 12px; color: var(--color-text-tertiary); margin-bottom: 14px; }
-.doc-note { font-size: 12px; color: var(--color-text-secondary); line-height: 1.85; }
-.doc-note strong { color: var(--color-text-primary); }
-.doc-note code { background:rgba(251,92,95,0.08); padding:1px 4px; border-radius:3px; font-size:10.5px; font-family:"SF Mono","Fira Code",monospace; color:var(--color-brand-red); }
-
-/* ─── Section wrapper ─── */
-.section {
-  max-width: 1480px; margin: 0 auto 20px;
-  background: var(--bg-card); border-radius: 12px;
-  padding: 24px; box-shadow: var(--shadow-card);
-  scroll-margin-top: 20px;
-}
-.section-header { margin-bottom: 20px; padding-bottom: 14px; border-bottom: 1px solid var(--divider); }
-.section-id    { font-size: 11px; font-weight: 700; color: var(--color-text-tertiary); letter-spacing: 1px; margin-bottom: 4px; }
-.section-title { font-size: 17px; font-weight: 700; color: var(--color-text-primary); margin-bottom: 8px; }
-.section-tags  { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 8px; }
-.section-desc  { font-size: 13px; color: var(--color-text-secondary); line-height: 1.75; }
-.section-desc code { background:rgba(251,92,95,0.08); padding:1px 3px; border-radius:3px; font-size:10.5px; font-family:"SF Mono","Fira Code",monospace; color:var(--color-brand-red); }
-
-/* ─── Tags ─── */
-.tag { font-size: 10px; font-weight: 700; padding: 2px 8px; border-radius: var(--radius-md); letter-spacing: .3px; }
-.tag-p0  { background: var(--color-brand-red-lighter); color: var(--color-brand-red); }
-.tag-p1  { background: #FFF3D8; color: #9A6B12; }
-.tag-p2  { background: #EDEFF2; color: #5F6672; }
-.tag-sl  { background: var(--color-blue-bg); color: var(--color-blue); }
-.tag-new { background: var(--color-down-bg); color: var(--color-down); }
-.tag-cap { background: #F1ECFB; color: #7A4FD0; }
-
-/* ─── States grid ─── */
-.states-grid { display: flex; flex-wrap: wrap; gap: 20px; align-items: flex-start; }
-.state-box { flex: 0 0 auto; }
-.state-label { font-size: 12px; font-weight: 600; color: var(--color-text-primary); margin-bottom: 4px; display: flex; align-items: center; gap: 6px; }
-.state-desc { font-size: 11px; color: var(--color-text-tertiary); line-height: 1.5; margin-bottom: 10px; max-width: 320px; }
-.badge { font-size: 9px; font-weight: 700; padding: 1px 6px; border-radius: var(--radius-sm); }
-.badge-ok   { background: var(--color-down-bg); color: var(--color-down); }
-.badge-var  { background: #FFF3D8; color: #9A6B12; }
-.badge-skip { background: var(--bg-tag-default); color: var(--color-text-tertiary); }
-.badge-cap  { background: #FCEFEC; color: #B8492C; }
-
-.preview-box {
-  background: var(--bg-page); border-radius: var(--radius-xl);
-  padding: 14px; display: flex; justify-content: center;
-}
-.card-preview { width: 300px; }
-
-/* ─── 卡片骨架（账户诊断对话卡，375 设计宽 → 300px 预览） ─── */
-.card {
-  background: var(--bg-card); border-radius: 14px;
-  padding: var(--card-padding-y) var(--card-padding-x);
-  box-shadow: 0 2px 12px rgba(0,0,0,0.04);
-}
-.card-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px; }
-.card-h-title { font-size: var(--fs-h3); font-weight: 600; color: var(--color-text-primary); }
-.sys-tag { font-size: 11px; color: var(--color-text-tertiary); display: flex; align-items: center; gap: 4px; }
-.est-tag { font-size: 10px; font-weight: 600; color: #B57A1A; background: #FCF3E2; border-radius: var(--radius-md); padding: 1px 6px; }
-.num { font-family: var(--font-family-number); font-variant-numeric: tabular-nums; }
-.up   { color: var(--color-up); }
-.down { color: var(--color-down); }
-.flat { color: var(--color-flat); }
-
-/* 对话气泡（演示卡片在对话流中的样子） */
-.bubble-user { align-self: flex-end; max-width: 80%; background: var(--gradient-cta); color:#fff; font-size: 13px; padding: 9px 13px; border-radius: 12px 4px 12px 12px; box-shadow: 0 4px 12px rgba(251,92,95,0.3); }
-.bubble-ai   { align-self: flex-start; max-width: 90%; background:#fff; font-size: 13px; color: var(--color-text-primary); padding: 10px 13px; border-radius: 12px; border: 0.5px solid #EEE; line-height: 1.55; box-shadow: 0 2px 8px rgba(30,15,80,0.05); }
-.chat-flow { background: var(--bg-page); border-radius: var(--radius-xl); padding: 14px 12px; display: flex; flex-direction: column; gap: 10px; }
-
-/* 追问 chips */
-.chips { display:flex; gap:7px; flex-wrap:wrap; }
-.chip { font-size:12px; color:var(--color-brand-red); background:#fff; border:1px solid var(--color-brand-red-lighter); border-radius:14px; padding:6px 12px; }
-.chip-hi { color:#fff; background:var(--gradient-cta); border-color:transparent; }
-
-/* disclaimer */
-.disc { font-size: 10px; color: #BBB; line-height: 1.55; margin-top: 11px; padding-top: 9px; border-top: 1px solid var(--divider); }
-
-/* ─── Annotation block ─── */
-.annot { margin-top: 20px; padding: 16px; background: var(--bg-page); border-radius: var(--radius-lg); }
-.annot-title { font-size: 13px; font-weight: 700; color: var(--color-text-primary); margin-bottom: 8px; }
-.annot ul { margin: 0 0 4px; padding-left: 18px; }
-.annot li { font-size: 12px; color: var(--color-text-secondary); line-height: 1.85; margin-bottom: 3px; }
-.annot li strong { color: var(--color-text-primary); }
-.annot code { background:rgba(0,128,255,0.08); color:#0060CC; padding:1px 4px; border-radius:3px; font-size:10.5px; font-family:"SF Mono","Fira Code",monospace; }
-
-.param-table { width: 100%; border-collapse: collapse; margin-top: 6px; background:#fff; border-radius: var(--radius-md); overflow:hidden; }
-.param-table th { background: #F0F1F3; font-size: 11px; font-weight: 700; color: var(--color-text-secondary); text-align: left; padding: 7px 10px; }
-.param-table td { font-size: 11px; color: var(--color-text-secondary); padding: 7px 10px; border-top: 1px solid var(--divider); line-height: 1.5; vertical-align: top; }
-.param-table td:first-child { font-family:"SF Mono","Fira Code",monospace; color: var(--color-text-primary); white-space: nowrap; }
-
-.redline-box { margin-top:12px; padding:10px 12px; border-radius:var(--radius-md); background:#FFF6F6; border-left:3px solid var(--color-brand-red); font-size:11.5px; color:#8A3034; line-height:1.7; }
-.redline-box strong { color:#C0392B; }
-
-/* ─── 取值方式目录（815 上线版新增） ─── */
-.cat-h { font-size:14px; font-weight:700; color:var(--color-text-primary); margin:24px 0 10px; padding-left:9px; border-left:3px solid var(--color-brand-red); line-height:1.4; }
-.cat-block { font-size:12px; color:var(--color-text-secondary); line-height:1.7; }
-.cat-block p { margin:0 0 8px; }
-.cat-block code { background:rgba(0,128,255,0.08); color:#0060CC; padding:1px 4px; border-radius:3px; font-size:10.5px; font-family:"SF Mono","Fira Code",monospace; }
-.mode-inline { display:inline-block; font-size:10.5px; font-weight:700; color:#1A7A3C; background:#E6F6EC; border:1px solid #BFE6CC; border-radius:5px; padding:1px 7px; }
-.mode-deferred { display:inline-block; font-size:10.5px; font-weight:700; color:#9A5B00; background:#FCF3E3; border:1px solid #F0D9A8; border-radius:5px; padding:1px 7px; }
-.drill-tree { background:#0F1722; border-radius:var(--radius-md); padding:14px 16px; font-family:"SF Mono","Fira Code",monospace; font-size:11.5px; line-height:1.95; color:#CBD5E1; }
-.drill-root { color:#FBBF24; font-weight:700; margin-bottom:4px; }
-.drill-item { color:#CBD5E1; }
-.drill-item b { color:#7DD3FC; }
-.drill-tag, .drill-end { display:inline-block; font-size:9.5px; border-radius:4px; padding:0 5px; margin-left:3px; }
-.drill-tag { color:#0F1722; background:#FBBF24; }
-.drill-end { color:#0F1722; background:#86EFAC; }
-.drill-grey { color:#94A3B8; }
-.drill-note { color:#94A3B8; margin-top:6px; }
-.recall-table td:nth-child(3), .recall-table td:nth-child(4), .recall-table td:nth-child(5) { text-align:center; }
-
-/* 市场区域分析口径提示 */
-.region-tooltip { display:inline-flex; align-items:center; justify-content:center; width:13px; height:13px; border-radius:50%; background:#AAB; color:#fff; font-size:9px; font-weight:700; line-height:1; cursor:pointer; margin-left:4px; position:relative; }
-.region-tooltip .region-tooltip-text { visibility:hidden; opacity:0; position:absolute; left:50%; bottom:140%; transform:translateX(-50%); width:300px; padding:10px 12px; background:#fff; border:0.5px solid #E0E0E0; border-radius:8px; box-shadow:0 4px 12px rgba(0,0,0,0.12); font-size:11px; color:#555; line-height:1.6; z-index:100; transition:opacity 0.2s; text-align:left; font-weight:normal; }
-.region-tooltip:hover .region-tooltip-text { visibility:visible; opacity:1; }
-</style><!--pnid:fszGpAsVwJFEFTe9jqj9u5-->
+<link rel="stylesheet" href="assets/css/account-diagnosis.css">
 </head><!--pnid:8qAh1p0j1aAYxuj68O68NL-->
 <body data-page-node-id="VtKMDi4KiRADVQ2JXCr8ls"><!--pnid:7VBNGeteyeCQjVOQ2kvl34-->
 
-<!--pnid:2Y27A4VjsWgmjnxza9GSQV--><!-- ========= Sidebar ========= --><!--pnid:i0vUYT4921D3dqwj5FqoS0-->
+<!-- ========= Sidebar ========= -->
 <nav data-page-node-id="gICvbPeH8fF5meTUDFre0V" class="sidebar">
   <div class="sb-title">账户诊断 卡片组件 v1（815 上线版）</div>
   <div class="sb-meta">跟我投问AI · 账户诊断 Agent<br>815 上线精选 18 张 · 2026-06-10 示例账户</div>
@@ -273,9 +39,8 @@ body {
   <a href="#acc18" class="anchor-chip">ACC-18 自选基金估值卡</a>
 </nav><!--pnid:RTT8b187msZ4umzjUv6SFs-->
 
-<!--pnid:rA0IIkIQrwfpD0QE0sgmAq--><!-- ========= Main Content ========= --><!--pnid:9FoVioZJpoBQNHdNohXv2b-->
+<!-- ========= Main Content ========= -->
 <div data-page-node-id="7ztbNNMaCnHhi1clK6BsX6" class="main-content"><!--pnid:PgBmu4tvKO1uBNm3XYZS6G-->
-
   <div data-page-node-id="rDmysOL1URRf7XBvdtvP52" class="page-header"><!--pnid:W8mIGDdecl92NmHw8AYKH2-->
     <div data-page-node-id="IG4v8lFWdYZYA0SmRhAu57" class="page-title"><!--pnid:sfpYiA9RK3a8dl6jv6lR2m-->账户诊断 卡片组件 v1（815 上线版）— 跟我投问AI</div><!--pnid:tItBF74QrxQegsr5jDFFMf-->
     <div data-page-node-id="fuzuKANKyMFgJlcG0hN7ad" class="page-meta"><!--pnid:8TAmD5E3awk5n8ODGeBo18-->基于《投顾小程序设计规范 v0.14》· 与《问基金卡片组件 v1》同源设计语言 · 375px 微信小程序 · 2026-06-10</div><!--pnid:doD11JNdhp5R5FAJzBUT2i-->
@@ -290,7 +55,6 @@ body {
     </div><!--pnid:F2sdJoWe42kEKujgKuOaNt-->
   </div><!--pnid:QMuhyh7Nwb67V3LdOvQcM1-->
 
-  <!--pnid:CatDirSec--><!-- ========= 卡片取值方式目录 ========= --><!--pnid:CatDirSecEnd-->
   <section id="catalog" class="section">
     <div class="section-header">
       <div class="section-id">目录 · 卡片取值方式</div>
@@ -371,6 +135,7 @@ body {
   </section>
 
   <!--pnid:NnrZjnHtqDy6bwEHDwxT2o--><!-- 卡片 sections --><!--pnid:Pf1y46ikSPJnVN7yiGAQG9-->
+
 <section id="acc01" data-page-node-id="CfeWNBgNK2ZFRu9DZoYe2q" class="section"><!--pnid:BTj0DpxbSQOcPLzjW64c99-->
   <div data-page-node-id="5vRHztn32siPGk3LPogtd6" class="section-header"><!--pnid:zfzmubf2hEf7Z46wQD4sNu-->
     <div data-page-node-id="fFfcuCW15GaclGu7EuCZhb" class="section-id"><!--pnid:JxUz1HBGZHrjvRDftEupOg-->ACC-01 · account_total_asset_card</div><!--pnid:FRjbN89IXwmOL0zTy7x3fd-->
@@ -383,13 +148,6 @@ body {
       触发：用户问"我有多少钱 / 账户总资产 / 我的钱构成 / 某个账户怎么样"。账户诊断的<strong data-page-node-id="FPRQ9gYDahTk3j65eWlPAf"><!--pnid:WNP33sAnQwpPRRtSoQB1eC-->顶层入口卡</strong><!--pnid:3meSzM5szRGqAWtDAVsojp-->——回答总额 + 收益 + 按账户类型的构成，并作为五类账户详情的下钻入口。<br data-page-node-id="HqpAqVr69lYH4s1mhW1hjq"><!--pnid:VUXzCJWHeDlCGULR8r6pK0-->
       形态：头部总市值（估值状态）+ 收益三栏（今日预估/持仓/累计）+ 资产构成五格（货币基金/基金/投顾/组合/专户，<strong data-page-node-id="xeqi8B0yHSAWfhgBD2vm9E"><!--pnid:RGBqKVvSAAwEwrYo1k4jHK-->每格可点击进对应账户详情</strong><!--pnid:7ZXMO47cgNFJwJu4Nbf00Q-->）+ 资产来源（折叠）。数据源 <code data-page-node-id="F922IRJDI1mOGzIGPNsZ4R"><!--pnid:TiCNDWSt9GOoAzu5n5M6k6-->get_account_asset_summary</code><!--pnid:wdGtjaLyCFZIgi7l7JV5mM--> + <code data-page-node-id="ip3y7qYitJbxggvtk7JPRV"><!--pnid:FgxXdXB6KUUdE6tf66wDWe-->get_asset_structure</code><!--pnid:T4czCsZnIkhXdjIgVWAWrH-->。
     </div><!--pnid:XK2RKCnxgkdHBwpPbsSASV-->
-
-    <div data-page-node-id="NEW_STD_CHANGE_BOX" class="annot"><!--pnid:NEW_STD_CHANGE_PUID_001-->
-      <div data-page-node-id="NEW_STD_CHANGE_TITLE" class="annot-title"><!--pnid:NEW_STD_CHANGE_PUID_002-->变动记录</div><!--pnid:NEW_STD_CHANGE_PUID_003-->
-      <ul data-page-node-id="NEW_STD_CHANGE_LIST"><!--pnid:NEW_STD_CHANGE_PUID_004-->
-        <li data-page-node-id="NEW_STD_CHANGE_ITEM_4"><strong data-page-node-id="NEW_STD_CHANGE_LABEL_4"><!--pnid:NEW_STD_CHANGE_PUID_016-->（0720）标准变动：</strong><!--pnid:NEW_STD_CHANGE_PUID_017-->删掉累计收益值。</li><!--pnid:NEW_STD_CHANGE_PUID_018-->
-      </ul><!--pnid:NEW_STD_CHANGE_PUID_014-->
-    </div><!--pnid:NEW_STD_CHANGE_PUID_015-->
   </div><!--pnid:cEBysjSC5Ow9gTG40RxBAk-->
 
   <div data-page-node-id="ZDdLtbQC0ePz5XjA7h13w4" class="states-grid"><!--pnid:U6lJK0Bp2lMskDMbY14m2N-->
@@ -399,14 +157,16 @@ body {
       <div data-page-node-id="Fu19zzpAFQSQCsWhN0PO14" class="state-desc"><!--pnid:XQpvLfK1O88ZFI5zsCsqGa-->9:30–18:30，主数字用实时预估，标"预估"灰标签，盘中涨跌为预估</div><!--pnid:nTT8uEUYHxwmeJPF9zHP9K-->
       <div data-page-node-id="edPOr0AED7tEy2sRz3A56A" class="preview-box"><div data-page-node-id="MD7dbuFTHecMxMiO81k70a" class="card-preview"><!--pnid:0npphWbqvrySeA5ZKsYflr-->
         <div data-page-node-id="fwA3d5oOAnFbpNzBDmcdNB" class="card"><!--pnid:nU3dfsbdBRKU4MdQfqdvRH-->
+          <div data-page-node-id="dP6vRqIB2Epn2ooUARqzYy" style="display:flex; align-items:center; justify-content:flex-end; margin-bottom:2px"><span data-page-node-id="FULo5oAQLy4DwR08nob5qE" style="font-weight:500; padding:3px 9px; display:inline-flex; gap:4px; color:#C8742A; background:#FCEFDD; border-radius:999px; align-items:center; font-size:10.5px"><span data-page-node-id="ergcVQpeeQqXS7Vjb2lSCY" style="height:5px; border-radius:50%; background:#EF9F27; width:5px"></span><!--pnid:fUfRhyDqiQJfdum8TCDQrt-->盘中预估 · 14:25</span></div><!--pnid:aJ74Kjl4ZcPgH9tP7Rsv4h-->
           <div data-page-node-id="RKB9pWQ7DFbpFHsfcoEi5M" style="padding:2px 0 0; text-align:center"><!--pnid:1ssHeodsjFiGrsqcxwnOb9-->
             <div data-page-node-id="LmOwNkWq7S1G19AbxTMgv1" style="font-size:12px; color:#888"><!--pnid:Byzk5Umnk5wizYwfsgfXbP-->总资产（元）</div><!--pnid:XFwEQMFSKeWfZRufJkBb5o-->
             <div data-page-node-id="FFOEbDPGBBAFpMhSikivN1" class="num" style="font-size:29px; font-weight:600; color:#1A1D21; letter-spacing:-0.5px; line-height:1.15; margin-top:3px"><!--pnid:1H2hHvscXr7BPbAR1GbHxm-->1,432,420.58</div><!--pnid:SzQiQ3tJoqW3wktG8wgAGy-->
+            <div data-page-node-id="PLAs6NLGdNxxDowJSkZm30" style="font-size:10.5px; color:#AAB; margin-top:5px"><!--pnid:iU7CBGA9DX8nEnqCZ5I9tG-->实时预估，最终以当日披露净值为准</div><!--pnid:57ApkRjJpDeDQnVFe9HyLg-->
           </div><!--pnid:lI8Ks7o2sIWmLxC7e5J32t-->
           <div data-page-node-id="ei15R3BkJGimMKsAl1yaQA" style="display:flex; margin-top:12px; padding:12px 0; border-top:1px dashed #ECECEC; border-bottom:1px dashed #ECECEC"><!--pnid:0K3tPSDeIKsw43iMYPCjGM-->
-            <div data-page-node-id="JoOEbRxT8vCUP2Xo8KU4gc" style="flex:1; text-align:center"><div data-page-node-id="5n7D4zdwrD5f38BVPWyevk" style="font-size:10.5px; color:#999; display:inline-flex; align-items:center; justify-content:center; gap:4px"><!--pnid:zpmYqpziNXEqnDGv0JChfO-->今日收益<span data-page-node-id="NEW_EST_TAG" style="font-size:9px; color:#999; background:#F2F3F5; border-radius:3px; padding:1px 4px; line-height:1">预估</span></div><div data-page-node-id="8CHgc5S5gDNubtpohrapTP" class="num up" style="font-size:15px; font-weight:600; margin-top:3px"><!--pnid:8fzAC5vVlsxlsDBfnb6Z6V-->+3,520.12</div><div data-page-node-id="QgjYvqHyBGLf9czdegt2qE" class="num up" style="font-size:10px; margin-top:1px"><!--pnid:VEOzmWKRkRsRXW3xtoGnIW-->+0.25%</div></div><!--pnid:IBrNffUC26p6XKbnFA8RTU-->
-            <div data-page-node-id="18tfyV8nb42i1UKEXTdwbi" style="border-left:0.5px solid #EEE; border-right:0.5px solid #EEE; flex:1; text-align:center"><div data-page-node-id="WYQjDllDhk0S1ZiOrLzNdh" style="font-size:10.5px; color:#999; display:inline-flex; align-items:center; justify-content:center; gap:4px"><!--pnid:e4RVgRT0m9rj1FBV1frFCr-->持仓收益</div><div data-page-node-id="c46Ck1Nq8jictRfJmsrylo" class="num up" style="font-size:15px; font-weight:600; margin-top:3px"><!--pnid:CJZVZvJMn7hCiSqaNFsg7g-->+145,876.45</div><div data-page-node-id="QTzahDWYq1Is02GRPjMDxv" class="num up" style="font-size:10px; margin-top:1px"><!--pnid:igB6s0SDuTBseqBZ6QhOAo-->+11.34%</div></div><!--pnid:aMmkHUYYYZGVDkZ3yIHo5y-->
-            <div data-page-node-id="r6PgFV7zZADyaIkLHLqwKk" style="text-align:center; flex:1"><div data-page-node-id="QRn0JvhBCoGsbZZ6hweGUd" style="color:#999; font-size:10.5px; display:inline-flex; align-items:center; justify-content:center; gap:4px"><!--pnid:H4yu0CPyKmofGTRdGf6fow-->累计收益</div></div><!--pnid:T3Bq2UnuEBP33rjJNg3h8P-->
+            <div data-page-node-id="JoOEbRxT8vCUP2Xo8KU4gc" style="flex:1; text-align:center"><div data-page-node-id="5n7D4zdwrD5f38BVPWyevk" style="font-size:10.5px; color:#999"><!--pnid:zpmYqpziNXEqnDGv0JChfO-->今日预估收益</div><div data-page-node-id="8CHgc5S5gDNubtpohrapTP" class="num up" style="font-size:15px; font-weight:600; margin-top:3px"><!--pnid:8fzAC5vVlsxlsDBfnb6Z6V-->+3,520.12</div><div data-page-node-id="QgjYvqHyBGLf9czdegt2qE" class="num up" style="font-size:10px; margin-top:1px"><!--pnid:VEOzmWKRkRsRXW3xtoGnIW-->+0.25%</div></div><!--pnid:IBrNffUC26p6XKbnFA8RTU-->
+            <div data-page-node-id="18tfyV8nb42i1UKEXTdwbi" style="border-left:0.5px solid #EEE; border-right:0.5px solid #EEE; flex:1; text-align:center"><div data-page-node-id="WYQjDllDhk0S1ZiOrLzNdh" style="font-size:10.5px; color:#999"><!--pnid:e4RVgRT0m9rj1FBV1frFCr-->持仓收益</div><div data-page-node-id="c46Ck1Nq8jictRfJmsrylo" class="num up" style="font-size:15px; font-weight:600; margin-top:3px"><!--pnid:CJZVZvJMn7hCiSqaNFsg7g-->+145,876.45</div><div data-page-node-id="QTzahDWYq1Is02GRPjMDxv" class="num up" style="font-size:10px; margin-top:1px"><!--pnid:igB6s0SDuTBseqBZ6QhOAo-->+11.34%</div></div><!--pnid:aMmkHUYYYZGVDkZ3yIHo5y-->
+            <div data-page-node-id="r6PgFV7zZADyaIkLHLqwKk" style="text-align:center; flex:1"><div data-page-node-id="QRn0JvhBCoGsbZZ6hweGUd" style="color:#999; font-size:10.5px"><!--pnid:H4yu0CPyKmofGTRdGf6fow-->累计收益</div><div data-page-node-id="jxB4cFJb6uRdu71HkZdhiV" class="num up" style="font-size:15px; font-weight:600; margin-top:3px"><!--pnid:1gT2wRcC8cVPyg8NmQjkCB-->+254,707.75</div><div data-page-node-id="AgA3xaTF5ohdp6gfgoQJC0" class="num up" style="margin-top:1px; font-size:10px"><!--pnid:dtHqohHekm0LQpB6W7fW5B-->+21.63%</div></div><!--pnid:T3Bq2UnuEBP33rjJNg3h8P-->
           </div><!--pnid:bmpGubFAFcmdJ7IA2U2tqA-->
 
           <div data-page-node-id="d2fHl470ututpfFVlhEp4R" style="margin-top:16px"><!--pnid:5F9ER2y9T5vK5kHM86YKy6-->
@@ -417,6 +177,7 @@ body {
                 <div data-page-node-id="rBpD4rovmNNAhcTE2JY00Y" style="display:flex; align-items:center; justify-content:center; gap:5px; position:relative"><span data-page-node-id="k02hZSQQuyBdOXxuDdqcQc" style="width:6px; height:6px; border-radius:50%; background:#3B82F6"></span><span data-page-node-id="Y3NiZ7Bo29mlcrZ7ffJP7u" style="font-weight:500; font-size:12px; color:#444"><!--pnid:AkjIt5gzuMIGcamZveVG51-->货币基金</span><span data-page-node-id="w3uXfRPycUSbuHxwd4yvX4" style="font-size:11px; color:#C4C9D0; position:absolute; right:0"><!--pnid:vb8LITpEkEjVANpu39LTm5-->›</span></div><!--pnid:qXafbMZuS2OSiGXaVB61ij-->
                 <div data-page-node-id="5fh3mSa53MDy1qJFkuouAi" class="num" style="text-align:center; margin:7px 0 1px; font-size:17px; font-weight:600; color:#1A1D21"><!--pnid:y3pTb4q8GGWcibvMdSu9t0-->75,240.58</div><!--pnid:FbsmLR0sf3R86PfmyhDlbI-->
                 <div data-page-node-id="gwOrl0p4BHwAJBrb3nbix2" style="text-align:center; font-size:9.5px; color:#B0B6BE; margin-bottom:7px"><!--pnid:4W2vlPteg4ue1dtq7o1qhg-->占比 5.3%</div><!--pnid:CKJAtEHekJC2Y5iFFrZkC2-->
+                <div data-page-node-id="CY5TW2b3Xh0zCHhyh09CUE" style="text-align:center; padding-top:7px; border-top:0.5px solid #EEF0F2"><span data-page-node-id="UE0Sp0n8QB0OpqZfidgCag" style="font-size:9.5px; color:#AAB"><!--pnid:BYy1ufzIVCfrVEKQyLziUX-->今日预估 </span><span data-page-node-id="SVEImlH5rTvw3jHlSxO07P" class="num up" style="font-size:12px; font-weight:600"><!--pnid:55ecsmnxdQBR7mUX0VwkcZ-->+14.85</span></div><!--pnid:OxLRNjbN9MqXy1dhbRSMnP-->
               </div><!--pnid:0wnvAQ4XctwgB2gSgsXVYO-->
 
               <div data-page-node-id="ghJyA23QcxCMvEkYruBNlw" style="background:#FAFBFC; border:0.5px solid #ECEEF1; border-radius:12px; padding:11px 12px 9px"><!--pnid:W0KARyR4HDA0zCMfdAQiqF-->
@@ -430,18 +191,21 @@ body {
                 <div data-page-node-id="NlHbC7QijAMJDJrABLQrew" style="position:relative; display:flex; align-items:center; justify-content:center; gap:5px"><span data-page-node-id="VCnZmO4FO2Ioet3LkR8uD6" style="height:6px; border-radius:50%; background:#5DA8FF; width:6px"></span><span data-page-node-id="RQY2J2cNAFKImR4EPpUZdA" style="color:#444; font-weight:500; font-size:12px"><!--pnid:hp14HfEKTpNzuyLsbvsTfN-->投顾</span><span data-page-node-id="eDUzD6lisvWIq78ULgwpsp" style="position:absolute; right:0; font-size:11px; color:#C4C9D0"><!--pnid:CnT6wwLFhdl20PLr8g4QmY-->›</span></div><!--pnid:0sIOpJbXxECEhGQCN8kcjg-->
                 <div data-page-node-id="7KpWNNFAvYE2UE0VoYHy8X" class="num" style="margin:7px 0 1px; font-size:17px; font-weight:600; color:#1A1D21; text-align:center"><!--pnid:EODuYrz6xyXlsJ1A1RCKo3-->312,000.00</div><!--pnid:aVWInsVU8wGmEbH0IEf3yt-->
                 <div data-page-node-id="zz45qVoK2XDsE7ipeNRFvl" style="text-align:center; font-size:9.5px; color:#B0B6BE; margin-bottom:7px"><!--pnid:kbedrd6wPka4UgSVZrGMZs-->占比 21.8%</div><!--pnid:qxNd7KaPF9bqEv9gSAjDpq-->
+                <div data-page-node-id="GgQu8m6UHX9hHsKYyAT5WN" style="text-align:center; padding-top:7px; border-top:0.5px solid #EEF0F2"><span data-page-node-id="dEBCZVWRaFBXLn4J8x0wXQ" style="font-size:9.5px; color:#AAB"><!--pnid:xnxkohHucUNaR8SxUw8sWF-->今日预估 </span><span data-page-node-id="AAboSL8VeUEA94GRZWkX0M" class="num up" style="font-size:12px; font-weight:600"><!--pnid:zLzBQkaoi0kER6R2PxjEbB-->+1,240</span></div><!--pnid:lL6St7QlU5cbj10vWYskVN-->
               </div><!--pnid:RM4lAvQwlah0WYfyP4CFNR-->
 
               <div data-page-node-id="1QTniBH6beWU4XBLJ9xP29" style="padding:11px 12px 9px; background:#FAFBFC; border:0.5px solid #ECEEF1; border-radius:12px"><!--pnid:f8JDuEJvQC5fa5vUg1veVC-->
                 <div data-page-node-id="NIKbV3TXIVaje1mzZMP24V" style="position:relative; display:flex; align-items:center; justify-content:center; gap:5px"><span data-page-node-id="UDUBjiftbxlwgyMkYi3McS" style="height:6px; border-radius:50%; background:#8B7FE8; width:6px"></span><span data-page-node-id="pdJOiiWE3n3ujQh3FLEaO5" style="font-size:12px; color:#444; font-weight:500"><!--pnid:oXfDELtu98mYW9bAFiUKK3-->组合</span><span data-page-node-id="CX9fNj0FvwcGRSbYiSCdlp" style="position:absolute; right:0; font-size:11px; color:#C4C9D0"><!--pnid:cFjxYo4GUksaRS0GfUE8qQ-->›</span></div><!--pnid:6pCVr9FnDuPY608oT297W8-->
                 <div data-page-node-id="JIXkJfK87msAlNJBhnFTuo" class="num" style="font-size:17px; font-weight:600; color:#1A1D21; text-align:center; margin:7px 0 1px"><!--pnid:D0v8tOWRrosp15PCzc2ltp-->145,000.00</div><!--pnid:koFIGBYyIUNNqMLxRu7TXS-->
                 <div data-page-node-id="iOCQEAQI8boF2iiNoBJoZ2" style="text-align:center; font-size:9.5px; color:#B0B6BE; margin-bottom:7px"><!--pnid:NLGmkJl1gGdeCprXZjTQyo-->占比 10.1%</div><!--pnid:kfGrzyskCiILOZjp3h7Hwl-->
+                <div data-page-node-id="5l1PrJIzLOo9UJmJqSFXBj" style="border-top:0.5px solid #EEF0F2; text-align:center; padding-top:7px"><span data-page-node-id="QU2XAUexcEiNDlkDsCTr77" style="font-size:9.5px; color:#AAB"><!--pnid:DGvfbkOBJ44Vtp6xBrZiYK-->今日预估 </span><span data-page-node-id="rprUFEy2NrvDHazaPIaR59" class="num up" style="font-size:12px; font-weight:600"><!--pnid:WZc9Wfn8Teq4eVXSFIqgT1-->+680</span></div><!--pnid:DOfTzWPoBvlEiSBRHHcNTg-->
               </div><!--pnid:2RDYTvQqir0V7mACCF6933-->
 
               <div data-page-node-id="YgAkBrcSJMoHs2V3sKETsU" style="background:#FAFBFC; border:0.5px solid #ECEEF1; border-radius:12px; padding:11px 12px 9px"><!--pnid:JFbGUensrAeByHJxirbcKY-->
                 <div data-page-node-id="zWflxQQ3Ne6wXmZpSC1BGE" style="display:flex; align-items:center; justify-content:center; gap:5px; position:relative"><span data-page-node-id="dUVCTvCwtj2l8McCPwJcnd" style="width:6px; height:6px; border-radius:50%; background:#FFB02E"></span><span data-page-node-id="BARAa09MEoxLRNMcCWHAWD" style="color:#444; font-weight:500; font-size:12px"><!--pnid:7LvxR5bIrRPXA7mn1E3wA4-->专户</span><span data-page-node-id="gntI315QYTGZ9ICGEDZHFT" style="color:#C4C9D0; position:absolute; right:0; font-size:11px"><!--pnid:XjVrPYK28OrfEktRDoObHx-->›</span></div><!--pnid:jlDEI654nrU45woNepDoS7-->
                 <div data-page-node-id="DPRh0btOZEUOReIStYeObe" class="num" style="font-size:17px; font-weight:600; color:#1A1D21; text-align:center; margin:7px 0 1px"><!--pnid:a4GmdAoLFLq0ZbcmHmELfi-->158,000.00</div><!--pnid:1XJqaODEruWPSjHH6ttSTn-->
                 <div data-page-node-id="K1R3ZLgEhNpwjOFXGrq4e7" style="text-align:center; font-size:9.5px; color:#B0B6BE; margin-bottom:7px"><!--pnid:gZ2877C4bxUYGAefFZ8uI2-->占比 11.0%</div><!--pnid:h3L8s7BXHYAkttraAfats4-->
+                <div data-page-node-id="lFXCJZApwU5tksNrZiXsCH" style="border-top:0.5px solid #EEF0F2; text-align:center; padding-top:7px"><span data-page-node-id="DAcHzixiFil8mn3CZej0jw" style="font-size:9.5px; color:#AAB"><!--pnid:uDIvJf8duboQa29CDGR6Ax-->今日预估 </span><span data-page-node-id="6Kv62vYon9bO3t3DBSulv0" class="num up" style="font-size:12px; font-weight:600"><!--pnid:Xat1lFKZC4mdvCVBJJj2b6-->+86</span></div><!--pnid:B4qHA3hN3u9Ap41eEkqDPz-->
               </div><!--pnid:CQUlnThcKAgwY558QT2pZy-->
 
             </div><!--pnid:s754BjfnQcHMqKvNDnbUAE-->
@@ -455,69 +219,6 @@ body {
         </div><!--pnid:V5R7lOVsIAZJMc378SYtS9-->
       </div></div><!--pnid:PKaFVK6btqVBovFUlHP67F-->
     </div><!--pnid:CzmQWhD0XBultzZqz2mEYc-->
-
-    <!--pnid:yd2mEQu3UTBCWMP2YG2CvK--><!-- 收益更新态 --><!--pnid:3ZbVYu8LeIOSaMdH2YWhUc-->
-    <div data-page-node-id="COPY_PROFIT_UPDATE_BOX" class="state-box"><!--pnid:COPY_PUID_001-->
-      <div data-page-node-id="COPY_PROFIT_UPDATE_LABEL" class="state-label"><!--pnid:COPY_PUID_002-->收益更新 <span data-page-node-id="COPY_PROFIT_UPDATE_BADGE" class="badge badge-ok"><!--pnid:COPY_PUID_003-->正常态</span></div><!--pnid:COPY_PUID_004-->
-      <div data-page-node-id="COPY_PROFIT_UPDATE_DESC" class="state-desc"><!--pnid:COPY_PUID_005-->9:30–18:30，主数字用实时预估，标"预估"灰标签，盘中涨跌为预估</div><!--pnid:COPY_PUID_006-->
-      <div data-page-node-id="COPY_PROFIT_UPDATE_PREVIEW" class="preview-box"><div data-page-node-id="COPY_PROFIT_UPDATE_CARDPRE" class="card-preview"><!--pnid:COPY_PUID_007-->
-        <div data-page-node-id="COPY_PROFIT_UPDATE_CARD" class="card"><!--pnid:COPY_PUID_008-->
-          <div data-page-node-id="COPY_PROFIT_UPDATE_HEADER" style="padding:2px 0 0; text-align:center"><!--pnid:COPY_PUID_009-->
-            <div data-page-node-id="COPY_PROFIT_UPDATE_SUBTITLE" style="font-size:12px; color:#888"><!--pnid:COPY_PUID_010-->总资产（元）</div><!--pnid:COPY_PUID_011-->
-            <div data-page-node-id="COPY_PROFIT_UPDATE_AMOUNT" class="num" style="font-size:29px; font-weight:600; color:#1A1D21; letter-spacing:-0.5px; line-height:1.15; margin-top:3px"><!--pnid:COPY_PUID_012-->1,432,420.58</div><!--pnid:COPY_PUID_013-->
-          </div><!--pnid:COPY_PUID_014-->
-          <div data-page-node-id="COPY_PROFIT_UPDATE_PROFIT" style="display:flex; margin-top:12px; padding:12px 0; border-top:1px dashed #ECECEC; border-bottom:1px dashed #ECECEC"><!--pnid:COPY_PUID_015-->
-            <div data-page-node-id="COPY_TODAY_PROFIT" style="flex:1; text-align:center"><div data-page-node-id="COPY_TODAY_PROFIT_LABEL" style="font-size:10.5px; color:#999; display:inline-flex; align-items:center; justify-content:center; gap:4px"><!--pnid:COPY_PUID_016-->今日收益<span data-page-node-id="COPY_TODAY_EST_TAG" style="font-size:9px; color:#999; background:#F2F3F5; border-radius:3px; padding:1px 4px; line-height:1">更新中</span></div><div data-page-node-id="COPY_TODAY_PROFIT_VALUE" class="num up" style="font-size:15px; font-weight:600; margin-top:3px"><!--pnid:COPY_PUID_017-->+3,520.12</div><div data-page-node-id="COPY_TODAY_PROFIT_RATIO" class="num up" style="font-size:10px; margin-top:1px"><!--pnid:COPY_PUID_018-->+0.25%</div></div><!--pnid:COPY_PUID_019-->
-            <div data-page-node-id="COPY_HOLD_PROFIT" style="border-left:0.5px solid #EEE; border-right:0.5px solid #EEE; flex:1; text-align:center"><div data-page-node-id="COPY_HOLD_PROFIT_LABEL" style="font-size:10.5px; color:#999; display:inline-flex; align-items:center; justify-content:center; gap:4px"><!--pnid:COPY_PUID_020-->持仓收益</div><div data-page-node-id="COPY_HOLD_PROFIT_VALUE" class="num up" style="font-size:15px; font-weight:600; margin-top:3px"><!--pnid:COPY_PUID_021-->+145,876.45</div><div data-page-node-id="COPY_HOLD_PROFIT_RATIO" class="num up" style="font-size:10px; margin-top:1px"><!--pnid:COPY_PUID_022-->+11.34%</div></div><!--pnid:COPY_PUID_023-->
-            <div data-page-node-id="COPY_TOTAL_PROFIT" style="text-align:center; flex:1"><div data-page-node-id="COPY_TOTAL_PROFIT_LABEL" style="color:#999; font-size:10.5px; display:inline-flex; align-items:center; justify-content:center; gap:4px"><!--pnid:COPY_PUID_024-->累计收益</div></div><!--pnid:COPY_PUID_027-->
-          </div><!--pnid:COPY_PUID_028-->
-
-          <div data-page-node-id="COPY_ASSET_STRUCTURE" style="margin-top:16px"><!--pnid:COPY_PUID_029-->
-            <div data-page-node-id="COPY_ASSET_STRUCTURE_TITLE" style="display:flex; align-items:baseline; justify-content:space-between; margin-bottom:11px"><span data-page-node-id="COPY_ASSET_STRUCTURE_NAME" style="font-weight:600; font-size:14px; color:#1A1D21"><!--pnid:COPY_PUID_030-->资产构成</span><span data-page-node-id="COPY_ASSET_STRUCTURE_TIP" style="font-size:10.5px; color:#AAB"><!--pnid:COPY_PUID_031-->按账户类型 · 点击进入账户</span></div><!--pnid:COPY_PUID_032-->
-            <div data-page-node-id="COPY_ASSET_STRUCTURE_GRID" style="gap:9px; display:grid; grid-template-columns:1fr 1fr"><!--pnid:COPY_PUID_033-->
-
-              <div data-page-node-id="COPY_MONEY_FUND" style="background:#FAFBFC; border:0.5px solid #ECEEF1; border-radius:12px; padding:11px 12px 9px"><!--pnid:COPY_PUID_034-->
-                <div data-page-node-id="COPY_MONEY_FUND_HEADER" style="display:flex; align-items:center; justify-content:center; gap:5px; position:relative"><span data-page-node-id="COPY_MONEY_FUND_DOT" style="width:6px; height:6px; border-radius:50%; background:#3B82F6"></span><span data-page-node-id="COPY_MONEY_FUND_NAME" style="font-weight:500; font-size:12px; color:#444"><!--pnid:COPY_PUID_035-->货币基金</span><span data-page-node-id="COPY_MONEY_FUND_ARROW" style="font-size:11px; color:#C4C9D0; position:absolute; right:0"><!--pnid:COPY_PUID_036-->›</span></div><!--pnid:COPY_PUID_037-->
-                <div data-page-node-id="COPY_MONEY_FUND_VALUE" class="num" style="text-align:center; margin:7px 0 1px; font-size:17px; font-weight:600; color:#1A1D21"><!--pnid:COPY_PUID_038-->75,240.58</div><!--pnid:COPY_PUID_039-->
-                <div data-page-node-id="COPY_MONEY_FUND_RATIO" style="text-align:center; font-size:9.5px; color:#B0B6BE; margin-bottom:7px"><!--pnid:COPY_PUID_040-->占比 5.3%</div><!--pnid:COPY_PUID_041-->
-              </div><!--pnid:COPY_PUID_042-->
-
-              <div data-page-node-id="COPY_FUND" style="background:#FAFBFC; border:0.5px solid #ECEEF1; border-radius:12px; padding:11px 12px 9px"><!--pnid:COPY_PUID_043-->
-                <div data-page-node-id="COPY_FUND_HEADER" style="gap:5px; position:relative; display:flex; align-items:center; justify-content:center"><span data-page-node-id="COPY_FUND_DOT" style="background:#0080FF; width:6px; height:6px; border-radius:50%"></span><span data-page-node-id="COPY_FUND_NAME" style="font-weight:500; font-size:12px; color:#444"><!--pnid:COPY_PUID_044-->基金</span><span data-page-node-id="COPY_FUND_ARROW" style="position:absolute; right:0; font-size:11px; color:#C4C9D0"><!--pnid:COPY_PUID_045-->›</span></div><!--pnid:COPY_PUID_046-->
-                <div data-page-node-id="COPY_FUND_VALUE" class="num" style="color:#1A1D21; text-align:center; margin:7px 0 1px; font-size:17px; font-weight:600"><!--pnid:COPY_PUID_047-->742,180.00</div><!--pnid:COPY_PUID_048-->
-                <div data-page-node-id="COPY_FUND_RATIO" style="color:#B0B6BE; margin-bottom:7px; text-align:center; font-size:9.5px"><!--pnid:COPY_PUID_049-->占比 51.8%</div><!--pnid:COPY_PUID_050-->
-                <div data-page-node-id="COPY_FUND_TODAY" style="text-align:center; padding-top:7px; border-top:0.5px solid #EEF0F2"><span data-page-node-id="COPY_FUND_TODAY_LABEL" style="color:#AAB; font-size:9.5px"><!--pnid:COPY_PUID_051-->今日预估 </span><span data-page-node-id="COPY_FUND_TODAY_VALUE" class="num down" style="font-size:12px; font-weight:600"><!--pnid:COPY_PUID_052-->−7,444</span></div><!--pnid:COPY_PUID_053-->
-              </div><!--pnid:COPY_PUID_054-->
-
-              <div data-page-node-id="COPY_ADVISOR" style="background:#FAFBFC; border:0.5px solid #ECEEF1; border-radius:12px; padding:11px 12px 9px"><!--pnid:COPY_PUID_055-->
-                <div data-page-node-id="COPY_ADVISOR_HEADER" style="position:relative; display:flex; align-items:center; justify-content:center; gap:5px"><span data-page-node-id="COPY_ADVISOR_DOT" style="height:6px; border-radius:50%; background:#5DA8FF; width:6px"></span><span data-page-node-id="COPY_ADVISOR_NAME" style="color:#444; font-weight:500; font-size:12px"><!--pnid:COPY_PUID_056-->投顾</span><span data-page-node-id="COPY_ADVISOR_ARROW" style="position:absolute; right:0; font-size:11px; color:#C4C9D0"><!--pnid:COPY_PUID_057-->›</span></div><!--pnid:COPY_PUID_058-->
-                <div data-page-node-id="COPY_ADVISOR_VALUE" class="num" style="margin:7px 0 1px; font-size:17px; font-weight:600; color:#1A1D21; text-align:center"><!--pnid:COPY_PUID_059-->312,000.00</div><!--pnid:COPY_PUID_060-->
-                <div data-page-node-id="COPY_ADVISOR_RATIO" style="text-align:center; font-size:9.5px; color:#B0B6BE; margin-bottom:7px"><!--pnid:COPY_PUID_061-->占比 21.8%</div><!--pnid:COPY_PUID_062-->
-              </div><!--pnid:COPY_PUID_063-->
-
-              <div data-page-node-id="COPY_PORTFOLIO" style="padding:11px 12px 9px; background:#FAFBFC; border:0.5px solid #ECEEF1; border-radius:12px"><!--pnid:COPY_PUID_064-->
-                <div data-page-node-id="COPY_PORTFOLIO_HEADER" style="position:relative; display:flex; align-items:center; justify-content:center; gap:5px"><span data-page-node-id="COPY_PORTFOLIO_DOT" style="height:6px; border-radius:50%; background:#8B7FE8; width:6px"></span><span data-page-node-id="COPY_PORTFOLIO_NAME" style="font-size:12px; color:#444; font-weight:500"><!--pnid:COPY_PUID_065-->组合</span><span data-page-node-id="COPY_PORTFOLIO_ARROW" style="position:absolute; right:0; font-size:11px; color:#C4C9D0"><!--pnid:COPY_PUID_066-->›</span></div><!--pnid:COPY_PUID_067-->
-                <div data-page-node-id="COPY_PORTFOLIO_VALUE" class="num" style="font-size:17px; font-weight:600; color:#1A1D21; text-align:center; margin:7px 0 1px"><!--pnid:COPY_PUID_068-->145,000.00</div><!--pnid:COPY_PUID_069-->
-                <div data-page-node-id="COPY_PORTFOLIO_RATIO" style="text-align:center; font-size:9.5px; color:#B0B6BE; margin-bottom:7px"><!--pnid:COPY_PUID_070-->占比 10.1%</div><!--pnid:COPY_PUID_071-->
-              </div><!--pnid:COPY_PUID_072-->
-
-              <div data-page-node-id="COPY_SPECIAL" style="background:#FAFBFC; border:0.5px solid #ECEEF1; border-radius:12px; padding:11px 12px 9px"><!--pnid:COPY_PUID_073-->
-                <div data-page-node-id="COPY_SPECIAL_HEADER" style="display:flex; align-items:center; justify-content:center; gap:5px; position:relative"><span data-page-node-id="COPY_SPECIAL_DOT" style="width:6px; height:6px; border-radius:50%; background:#FFB02E"></span><span data-page-node-id="COPY_SPECIAL_NAME" style="color:#444; font-weight:500; font-size:12px"><!--pnid:COPY_PUID_074-->专户</span><span data-page-node-id="COPY_SPECIAL_ARROW" style="color:#C4C9D0; position:absolute; right:0; font-size:11px"><!--pnid:COPY_PUID_075-->›</span></div><!--pnid:COPY_PUID_076-->
-                <div data-page-node-id="COPY_SPECIAL_VALUE" class="num" style="font-size:17px; font-weight:600; color:#1A1D21; text-align:center; margin:7px 0 1px"><!--pnid:COPY_PUID_077-->158,000.00</div><!--pnid:COPY_PUID_078-->
-                <div data-page-node-id="COPY_SPECIAL_RATIO" style="text-align:center; font-size:9.5px; color:#B0B6BE; margin-bottom:7px"><!--pnid:COPY_PUID_079-->占比 11.0%</div><!--pnid:COPY_PUID_080-->
-              </div><!--pnid:COPY_PUID_081-->
-
-            </div><!--pnid:COPY_PUID_082-->
-          </div><!--pnid:COPY_PUID_083-->
-
-          <div data-page-node-id="COPY_ASSET_SOURCE" style="margin-top:16px; padding-top:13px; display:flex; justify-content:space-between; align-items:center; border-top:0.5px solid #EEE"><!--pnid:COPY_PUID_084-->
-            <span data-page-node-id="COPY_ASSET_SOURCE_LABEL" style="font-weight:500; font-size:13px; color:#333"><!--pnid:COPY_PUID_085-->资产来源</span><!--pnid:COPY_PUID_086-->
-            <span data-page-node-id="COPY_ASSET_SOURCE_EXPAND" style="font-size:12px; color:#FB5C5F"><!--pnid:COPY_PUID_087-->展开 ›</span><!--pnid:COPY_PUID_088-->
-          </div><!--pnid:COPY_PUID_089-->
-          <div data-page-node-id="COPY_DISCLAIMER" class="disc" style="border-top:none; padding-top:8px"><!--pnid:COPY_PUID_090-->点击各资产类型进入对应账户详情。今日预估收益盘后以确认净值更新为"最新收益(披露日)"；数据来源：账户系统。</div><!--pnid:COPY_PUID_091-->
-        </div><!--pnid:COPY_PUID_092-->
-      </div></div><!--pnid:COPY_PUID_093-->
-    </div><!--pnid:COPY_PUID_094-->
 
     <!--pnid:yd2mEQu3UTBCWMP2YG2CvK--><!-- 数据不可用态 --><!--pnid:3ZbVYu8LeIOSaMdH2YWhUc-->
     <div data-page-node-id="ROMGtdTEYHkn4YT398xKil" class="state-box"><!--pnid:lvGIfl8HQBRpbeoUv1j7YL-->
@@ -556,6 +257,7 @@ body {
     </table><!--pnid:DsrejxFD5dJtLBEKS81frc-->
   </div><!--pnid:Mq4BF1Uq64ZirfhDvKdKpl-->
 </section>
+
 <section id="acc02" data-page-node-id="ve36aNB1CIs3ACn1oao7zS" class="section"><!--pnid:NM3u5jaMkUlNxls5cCetPl-->
   <div data-page-node-id="xMpinb5fjgF4Uh6GNxfg2y" class="section-header"><!--pnid:IwD5sUIIj6L0I1Ug9EGKCE-->
     <div data-page-node-id="s5HgT11YkQNvxDeYprh28G" class="section-id"><!--pnid:F8sOXYxZ7DwzcMlmD7G3QS-->ACC-02 · fund_account_card</div><!--pnid:ht1ugfPS2RSjqgcaLjQjPc-->
@@ -662,6 +364,7 @@ body {
     </table><!--pnid:M8uEvm6hev1j6CDxPYXEzU-->
   </div><!--pnid:7BCwsQUk45D1QSSszzpOiC-->
 </section>
+
 <section id="acc03" data-page-node-id="ETF2FmrdK3fCt4nHd6Czlz" class="section"><!--pnid:tgMGQgZkEyycOqT3e7vKAA-->
   <div data-page-node-id="qu2ORElEawY9HlkMvR0f1I" class="section-header"><!--pnid:GXlqkEs2IeNalOP9AwQxjw-->
     <div data-page-node-id="Fg0EwuI6y969DiquwpvdBa" class="section-id"><!--pnid:7y7F3p5J3hTuVydWRmWFJZ-->ACC-03 · fund_holding_detail_card</div><!--pnid:08XiqpwvvanSEx4aw6HEWg-->
@@ -827,6 +530,7 @@ body {
     </ul><!--pnid:LCBdyLIyQtuetVchzYRLdf-->
   </div><!--pnid:hzcGwAgYrTZ72YscYMknwV-->
 </section>
+
 <section id="acc04" data-page-node-id="WLaMzUEwmjAJI2DdzqWFbB" class="section"><!--pnid:xsGhYF9uSXX92WSrzcWlrF-->
   <div data-page-node-id="ZXmVvzENrfoxADDzmZPGLj" class="section-header"><!--pnid:QWTTHE5BB24knERqtkNsEd-->
     <div data-page-node-id="MB9AN0nw2dAV1EugUMNztJ" class="section-id"><!--pnid:4q7GbHDvHgD1fefwiu941v-->ACC-04 · advisor_account_card</div><!--pnid:7ldDDwRNJsZjCGYCByLAH9-->
@@ -903,6 +607,7 @@ body {
     </table><!--pnid:08cnO1igOTq2QGTUjuicuf-->
   </div><!--pnid:MgTD0i3aqnFn58LVgAD5yD-->
 </section>
+
 <section id="acc05" data-page-node-id="hMHlQDBxsMZUdnS0H1UDVH" class="section"><!--pnid:2Q56gy8yFegKqGcGFC7HXD-->
   <div data-page-node-id="sen0NZ2kTtD62RzG0ECbTR" class="section-header"><!--pnid:fNS2GQsqnB97TM6EDSZdfT-->
     <div data-page-node-id="pIE4rKbvOP8bRW1po9pNA2" class="section-id"><!--pnid:VNcTes4wC5U6zZPLGHv4BI-->ACC-05 · advisor_combo_card</div><!--pnid:nX252QW6afWD9dJ5ETJKDa-->
@@ -1153,6 +858,7 @@ body {
     </table><!--pnid:tz709Dv3CrTlECHtRiJwFo-->
   </div><!--pnid:1afh9pCyTBRscSvTBeO7bF-->
 </section>
+
 <section id="acc06" data-page-node-id="I6GkeS97ZoZmPzUJ5D0m4B" class="section"><!--pnid:MEnL9ug3XKfhOCPVqwapth-->
   <div data-page-node-id="OFbJatU1DGLWlGbo4KJmzb" class="section-header"><!--pnid:Pit4fewzuBke8lgD10egMI-->
     <div data-page-node-id="IUDyvjVKthbBLNP25R5uL1" class="section-id"><!--pnid:uhh2qlj6cGNAgLSLxtInF3-->ACC-06 · advisor_rebalance_card</div><!--pnid:pV92kdE9ITenMFWY6MY7CE-->
@@ -1237,6 +943,7 @@ body {
     </table><!--pnid:mL4otDK41xkLikzljlVVot-->
   </div><!--pnid:9giSYyNdjYwNSo5FmTX9O8-->
 </section>
+
 <section id="acc07" data-page-node-id="q9oPNBDooBGNjfmj36wjsx" class="section"><!--pnid:mwcTWMkzfrxmu1VlioxwHa-->
   <div data-page-node-id="QwDp1VJOtl3kZwqDJtQsYe" class="section-header"><!--pnid:rFRZ7WCT4cWxSSHoUjYrU7-->
     <div data-page-node-id="JLDABST8ABaExE1D9MMLqf" class="section-id"><!--pnid:aefLlirIIcZ6KlKxJhI2TI-->ACC-07 · money_account_card</div><!--pnid:AoKGVKWcBHBUU4a8Rud9Xz-->
@@ -1294,6 +1001,7 @@ body {
     </ul><!--pnid:tfSqctG2oYaA4zXIOGHLe1-->
   </div><!--pnid:up2i67FWxB5nX7lgZQoo9H-->
 </section>
+
 <section id="acc08" data-page-node-id="U9ca09kdmkXnp5MJuEO13g" class="section"><!--pnid:eCYHbR1H6AldKiQ7gSG46Y-->
   <div data-page-node-id="TFa7FAvx0jYVadW7h9WGVi" class="section-header"><!--pnid:5bj7ruVy4mi1ASid6Wwgrx-->
     <div data-page-node-id="AonRQBVrdNkDWNpFlfciul" class="section-id"><!--pnid:J7EyLgd4qwRgehxfYjH9A6-->ACC-08 · money_holding_detail_card</div><!--pnid:vlN15Va1MnVlJ088bpTwu0-->
@@ -1337,6 +1045,7 @@ body {
     </ul><!--pnid:0YPXvABa53yd6VKvCLKf3d-->
   </div><!--pnid:JHCFNmGpws4bg9otGbaJ7D-->
 </section>
+
 <section id="acc09" data-page-node-id="Xg8qwpG9DdUg39H1Kh6IHs" class="section"><!--pnid:78ie1HPR2t0IOfBfCBGAhZ-->
   <div data-page-node-id="4UT5k1JydbDgx0z65H0puK" class="section-header"><!--pnid:TSusms43Oeb6tqlarZ4SXW-->
     <div data-page-node-id="hYJm3TsykXdG8qC8UNJ9s0" class="section-id"><!--pnid:QqIIbckO8ckXDCjPwHj5XV-->ACC-09 · separate_account_card</div><!--pnid:Dpk7A2EMsnKmDqD2Z7AIzt-->
@@ -1387,6 +1096,7 @@ body {
     </ul><!--pnid:aYY9RFGYBHbqqwDRynpd6x-->
   </div><!--pnid:XDoz1A2NCHJ6SQkkXX8RgR-->
 </section>
+
 <section id="acc10" data-page-node-id="PyOCKKR4cxdD9IY0H2SUlD" class="section"><!--pnid:kNNxxI6FQBSA1N0K55VjQQ-->
   <div data-page-node-id="ICS9i113PWoyrffwIRHJqA" class="section-header"><!--pnid:e1ussSXcUk1ZkeEG2qTWxA-->
     <div data-page-node-id="kWEjesgriEArooSeBcMx0f" class="section-id"><!--pnid:p13wVWToPjQjWtOLudEti4-->ACC-10 · separate_holding_detail_card</div><!--pnid:DpchP3rX1JMS3C6LWpsGk8-->
@@ -1433,6 +1143,7 @@ body {
     </ul><!--pnid:OuBSTBUptbPPlNFKkHB1mw-->
   </div><!--pnid:aAMhUj0OLE58Jm41FbwzpK-->
 </section>
+
 <section id="acc11" data-page-node-id="ZEgoQaDlsKrFBnolRHoheL" class="section"><!--pnid:WJjSf3jp9bMhmuL9Dcc4w1-->
   <div data-page-node-id="zmHRAPTfGL95huIs1WS7ZB" class="section-header"><!--pnid:1A70sCACEL14u2a5iYgPDF-->
     <div data-page-node-id="tVirh7SlaPOBKkXjrjaJsw" class="section-id"><!--pnid:Ma0AEp3TXEQ0KlwphCoUPF-->ACC-11 · holding_list_card</div><!--pnid:YX2UXB8Yr9KS8fZx1kOVAZ-->
@@ -1632,6 +1343,7 @@ body {
     </table><!--pnid:OZ8tNZlMtzPHA5p7b2MDQF-->
   </div><!--pnid:yLASX7uGJahogXZDQSqiXF-->
 </section>
+
 <section id="acc12" data-page-node-id="X4BLa4Da6dPwM7Xot7cODc" class="section"><!--pnid:ZMZY3SWPIarxP6pk4b1UcO-->
   <div data-page-node-id="R5B2QdxZR7NJVzBKJ23CEN" class="section-header"><!--pnid:Y3hgpHCO7GQXGIETLiTcOC-->
     <div data-page-node-id="A7TG8n7YlymghavGSYhB8u" class="section-id"><!--pnid:1Hw5gkxsqnEz6sKcdUOOBo-->ACC-12 · structure_chart_card</div><!--pnid:IzeTW0JUVDdMXIl1q3mZ2t-->
@@ -1642,24 +1354,8 @@ body {
     </div><!--pnid:pfMbQYioGua3F3rrKgXHw5-->
     <div data-page-node-id="nAQ0trkRMI9qFoX4y38EKO" class="section-desc"><!--pnid:MunWRrKZpcE8mfTPnlCV9e-->
       触发：用户问"我的钱怎么分布 / 在各维度怎么分 / 是否集中"。提供多维度+穿透的专业结构分析。<br data-page-node-id="CjfgLp5u0QqKY0uxYHqJd3"><!--pnid:uYOAtfNcOGPpNO6KhYCuWI-->
-      形态：一张卡 + 四维度切换（资产类型/基金类型/行业主题/市场区域）+ 水平占比条 + 图例明细。<strong data-page-node-id="O13MrWcqVjuBtewH6bMXlq"><!--pnid:ZcqaPtDWbMoYezyAkUsfg7-->只陈述分布、不判断高低</strong><!--pnid:8PRafu0lIzw5E3QF8hS4PE-->（判断归风险评估）。数据源 <code data-page-node-id="BlJ7kNdum55avCvuRA3So5"><!--pnid:8fOVOifJC3DDDxTbN1iSyw-->get_asset_structure</code><!--pnid:87SEczVVMZsSp0ElTWqXEW-->。
+      形态：一张卡 + 五维度切换（资产类型/行业主题/市场区域/产品类型/投资方式）+ 水平占比条 + 图例明细。<strong data-page-node-id="O13MrWcqVjuBtewH6bMXlq"><!--pnid:ZcqaPtDWbMoYezyAkUsfg7-->只陈述分布、不判断高低</strong><!--pnid:8PRafu0lIzw5E3QF8hS4PE-->（判断归风险评估）。数据源 <code data-page-node-id="BlJ7kNdum55avCvuRA3So5"><!--pnid:8fOVOifJC3DDDxTbN1iSyw-->get_asset_structure</code><!--pnid:87SEczVVMZsSp0ElTWqXEW-->。
     </div><!--pnid:MhP5WhIlNx55isdjiGQO9o-->
-
-    <div data-page-node-id="ACC12_CHANGE_BOX" class="annot"><!--pnid:ACC12_CHANGE_PUID_001-->
-      <div data-page-node-id="ACC12_CHANGE_TITLE" class="annot-title"><!--pnid:ACC12_CHANGE_PUID_002-->变动记录</div><!--pnid:ACC12_CHANGE_PUID_003-->
-      <ul data-page-node-id="ACC12_CHANGE_LIST"><!--pnid:ACC12_CHANGE_PUID_004-->
-        <li data-page-node-id="ACC12_CHANGE_ITEM_1"><strong data-page-node-id="ACC12_CHANGE_LABEL_1"><!--pnid:ACC12_CHANGE_PUID_005-->（0720）标准变动：</strong><!--pnid:ACC12_CHANGE_PUID_006-->
-          <ul data-page-node-id="ACC12_CHANGE_SUB_LIST" style="margin-top:4px; padding-left:16px"><!--pnid:ACC12_CHANGE_SUB_LIST_PUID_001-->
-            <li data-page-node-id="ACC12_CHANGE_SUB_ITEM_1"><!--pnid:ACC12_CHANGE_SUB_PUID_001-->资产类型子类型由"权益类/固收类/另类/其他/货币现金"调整为"股票/债券/基金/货币/其他"。</li><!--pnid:ACC12_CHANGE_SUB_PUID_002-->
-            <li data-page-node-id="ACC12_CHANGE_SUB_ITEM_2"><!--pnid:ACC12_CHANGE_SUB_PUID_003-->市场区域口径由"境内（A股/债券）/港股/海外（美股/全球）/货币现金"调整为"A股/港股/美股/其他"。</li><!--pnid:ACC12_CHANGE_SUB_PUID_004-->
-            <li data-page-node-id="ACC12_CHANGE_SUB_ITEM_3"><!--pnid:ACC12_CHANGE_SUB_PUID_005-->市场区域图形上方新增分析口径覆盖提示：市场区域分析资产占账户 55.31%，并带"!"悬浮说明计算口径与免责。</li><!--pnid:ACC12_CHANGE_SUB_PUID_006-->
-            <li data-page-node-id="ACC12_CHANGE_SUB_ITEM_4"><!--pnid:ACC12_CHANGE_SUB_PUID_007-->卡片内所有预览态取消"预估 14:25"标签；市场区域底部提示更新为"根据基金定期报告分析基金所持有的底层资产，对FOF基金暂未做二次穿透，不包含专户产品。"。</li><!--pnid:ACC12_CHANGE_SUB_PUID_008-->
-            <li data-page-node-id="ACC12_CHANGE_SUB_ITEM_5"><!--pnid:ACC12_CHANGE_SUB_PUID_009-->行业主题移除"分类标准"下拉切换，固定为申万行业分类；默认展示 Top5 行业+其他。</li><!--pnid:ACC12_CHANGE_SUB_PUID_010-->
-            <li data-page-node-id="ACC12_CHANGE_SUB_ITEM_6"><!--pnid:ACC12_CHANGE_SUB_PUID_011-->子 tab 调整为 4 个：资产类型/基金类型/行业主题/市场区域，各预览态 tab 栏同步显示该顺序；市场区域预览态 tab 栏增加横向滑动至市场区域的视觉效果。</li><!--pnid:ACC12_CHANGE_SUB_PUID_012-->
-          </ul><!--pnid:ACC12_CHANGE_SUB_LIST_PUID_007-->
-        </li><!--pnid:ACC12_CHANGE_PUID_007-->
-      </ul><!--pnid:ACC12_CHANGE_PUID_008-->
-    </div><!--pnid:ACC12_CHANGE_PUID_009-->
   </div><!--pnid:tXc3AIj3mfGmXCIEW4ldTG-->
 
   <div data-page-node-id="qBkoWrPJUBloB7dPVmvcZj" class="states-grid"><!--pnid:XB9JjtRrYFJsyOmIIXlBTT-->
@@ -1668,76 +1364,40 @@ body {
       <div data-page-node-id="HJylF6JrHDeS14prMxSe4J" class="state-desc"><!--pnid:bfcdLOxgRlLGWFcSgfQO15-->默认维度，占比条 + 明细，分类色避开涨跌红绿</div><!--pnid:eE3OtK1lGixiAbvwtB1rYO-->
       <div data-page-node-id="K3ZoQTnA9hPLwVxphH87dH" class="preview-box"><div data-page-node-id="Moz3js7g9sAUBQGn04gghJ" class="card-preview"><!--pnid:eHyi8fkbo80f41ZLDqZABy-->
         <div data-page-node-id="1EUiBBU2z8vrMzUakqyvUP" class="card"><!--pnid:0hINFHdoDNRB3eG2JexXgG-->
-          <div data-page-node-id="fKlKAtxuYJL8TkeXX9UzNx" style="align-items:center; justify-content:space-between; margin-bottom:12px; display:flex"><span data-page-node-id="zBZG06Y3ew7PkWnnAjyO75" style="font-size:15px; font-weight:600"><!--pnid:Vd412AoL5gGQ9gkM0rPI8n-->资产结构</span></div><!--pnid:NYNcIFl44pbytV0fdSp5Wy-->
+          <div data-page-node-id="fKlKAtxuYJL8TkeXX9UzNx" style="align-items:center; justify-content:space-between; margin-bottom:12px; display:flex"><span data-page-node-id="zBZG06Y3ew7PkWnnAjyO75" style="font-size:15px; font-weight:600"><!--pnid:Vd412AoL5gGQ9gkM0rPI8n-->资产结构</span><span data-page-node-id="gu5tT7av8iL9PHaXHvScgH" style="padding:1px 6px; font-size:11px; font-weight:500; color:#666; background:#F2F3F5; border-radius:2px"><!--pnid:9idLIWKRzDiZrT5jxVGGwR-->预估 14:25</span></div><!--pnid:NYNcIFl44pbytV0fdSp5Wy-->
           <div data-page-node-id="oFTw42tbIB37LMWIrILTgw" style="margin-bottom:14px; display:flex; gap:7px; overflow:hidden"><!--pnid:yw4cNzARJVMSKgc9Syhc1i-->
             <span data-page-node-id="8fnpwQqZg3TEJkKIkiGE84" style="border-radius:999px; padding:5px 12px; flex-shrink:0; font-size:12px; font-weight:500; color:#fff; background:#FB5C5F"><!--pnid:P7l2yTevT15j1nuNNVjStb-->资产类型</span><!--pnid:lBuwVX9kkchcLFD05unFmu-->
-            <span data-page-node-id="ACC12_TAB_FUND_TYPE" style="background:#F2F3F5; border-radius:999px; padding:5px 12px; flex-shrink:0; font-size:12px; color:#666"><!--pnid:ACC12_TAB_FUND_TYPE_PUID-->基金类型</span><!--pnid:ACC12_TAB_FUND_TYPE_END-->
             <span data-page-node-id="cWBdCS6pFSGokXz8e1FVPH" style="background:#F2F3F5; border-radius:999px; padding:5px 12px; flex-shrink:0; font-size:12px; color:#666"><!--pnid:54xpEY7v5jHPOqCmeMv1DE-->行业主题</span><!--pnid:gLCSw3FpzhdWafwqHnyYOI-->
             <span data-page-node-id="xh6PDiN2EUBmhrluiD50V3" style="color:#666; background:#F2F3F5; border-radius:999px; padding:5px 12px; flex-shrink:0; font-size:12px"><!--pnid:6tgREEIoKlzAFIVKeHuvCF-->市场区域</span><!--pnid:NcFpiKI3fojkyDC37DI2x2-->
           </div><!--pnid:K9z8lwfoNMc7QllimAc9Vg-->
-          <div data-page-node-id="pwF9SXcGbA22OoJmHSOhwc" style="overflow:hidden; margin-bottom:16px; display:flex; height:16px; border-radius:4px"><div data-page-node-id="xNDBguQhJo5Wivfg5mtE04" style="width:35%; background:#0080FF"></div><div data-page-node-id="mBv6LwL1fHDliy3LfCz5JP" style="width:30%; background:#1D9E75"></div><div data-page-node-id="ACC12_TYPE_FUND_BAR" style="width:20%; background:#5DA8FF"></div><div data-page-node-id="KAkOkNx2enhJLpVRerb6LV" style="background:#FFB02E; width:5%"></div><div data-page-node-id="gPHqsfW1A4j3KzOGfJ1kaE" style="width:10%; background:#C7CDD6"></div></div><!--pnid:ajjl2jriNhN6reJj8c9jVA-->
+          <div data-page-node-id="pwF9SXcGbA22OoJmHSOhwc" style="overflow:hidden; margin-bottom:16px; display:flex; height:16px; border-radius:4px"><div data-page-node-id="xNDBguQhJo5Wivfg5mtE04" style="width:58.4%; background:#0080FF"></div><div data-page-node-id="mBv6LwL1fHDliy3LfCz5JP" style="width:29.2%; background:#1D9E75"></div><div data-page-node-id="KAkOkNx2enhJLpVRerb6LV" style="background:#FFB02E; width:8.5%"></div><div data-page-node-id="gPHqsfW1A4j3KzOGfJ1kaE" style="width:3.9%; background:#C7CDD6"></div></div><!--pnid:ajjl2jriNhN6reJj8c9jVA-->
           <div data-page-node-id="jYY5ukVjA0BNdhAMsphyip" style="flex-direction:column; gap:13px; display:flex"><!--pnid:Ann1Or7sEmnC6FyRMu2YUF-->
-            <div data-page-node-id="ACC12_TYPE_STOCK" style="display:flex; align-items:center; justify-content:space-between"><span data-page-node-id="ACC12_TYPE_STOCK_LABEL" style="display:flex; align-items:center; gap:7px; font-size:13px; color:#333"><span data-page-node-id="ACC12_TYPE_STOCK_DOT" style="width:9px; height:9px; border-radius:2px; background:#0080FF"></span><!--pnid:ACC12_TYPE_STOCK_NAME-->股票</span><span data-page-node-id="ACC12_TYPE_STOCK_VALUE" style="font-size:13px"><b data-page-node-id="ACC12_TYPE_STOCK_NUM" class="num"><!--pnid:ACC12_TYPE_STOCK_AMOUNT-->450,772.20</b><!--pnid:ACC12_TYPE_STOCK_UNIT--> <span data-page-node-id="ACC12_TYPE_STOCK_RATIO" style="color:#999; font-size:12px; margin-left:8px"><!--pnid:ACC12_TYPE_STOCK_PCT-->35.0%</span></span></div><!--pnid:ACC12_TYPE_STOCK_END-->
-            <div data-page-node-id="ACC12_TYPE_BOND" style="display:flex; align-items:center; justify-content:space-between"><span data-page-node-id="ACC12_TYPE_BOND_LABEL" style="display:flex; align-items:center; gap:7px; font-size:13px; color:#333"><span data-page-node-id="ACC12_TYPE_BOND_DOT" style="width:9px; height:9px; border-radius:2px; background:#1D9E75"></span><!--pnid:ACC12_TYPE_BOND_NAME-->债券</span><span data-page-node-id="ACC12_TYPE_BOND_VALUE" style="font-size:13px"><b data-page-node-id="ACC12_TYPE_BOND_NUM" class="num"><!--pnid:ACC12_TYPE_BOND_AMOUNT-->386,376.17</b><!--pnid:ACC12_TYPE_BOND_UNIT--> <span data-page-node-id="ACC12_TYPE_BOND_RATIO" style="color:#999; font-size:12px; margin-left:8px"><!--pnid:ACC12_TYPE_BOND_PCT-->30.0%</span></span></div><!--pnid:ACC12_TYPE_BOND_END-->
-            <div data-page-node-id="ACC12_TYPE_FUND" style="display:flex; align-items:center; justify-content:space-between"><span data-page-node-id="ACC12_TYPE_FUND_LABEL" style="display:flex; align-items:center; gap:7px; font-size:13px; color:#333"><span data-page-node-id="ACC12_TYPE_FUND_DOT" style="width:9px; height:9px; border-radius:2px; background:#5DA8FF"></span><!--pnid:ACC12_TYPE_FUND_NAME-->基金</span><span data-page-node-id="ACC12_TYPE_FUND_VALUE" style="font-size:13px"><b data-page-node-id="ACC12_TYPE_FUND_NUM" class="num"><!--pnid:ACC12_TYPE_FUND_AMOUNT-->257,584.12</b><!--pnid:ACC12_TYPE_FUND_UNIT--> <span data-page-node-id="ACC12_TYPE_FUND_RATIO" style="color:#999; font-size:12px; margin-left:8px"><!--pnid:ACC12_TYPE_FUND_PCT-->20.0%</span></span></div><!--pnid:ACC12_TYPE_FUND_END-->
-            <div data-page-node-id="ACC12_TYPE_CASH" style="display:flex; align-items:center; justify-content:space-between"><span data-page-node-id="ACC12_TYPE_CASH_LABEL" style="gap:7px; font-size:13px; color:#333; display:flex; align-items:center"><span data-page-node-id="ACC12_TYPE_CASH_DOT" style="border-radius:2px; background:#FFB02E; width:9px; height:9px"></span><!--pnid:ACC12_TYPE_CASH_NAME-->货币</span><span data-page-node-id="ACC12_TYPE_CASH_VALUE" style="font-size:13px"><b data-page-node-id="ACC12_TYPE_CASH_NUM" class="num"><!--pnid:ACC12_TYPE_CASH_AMOUNT-->64,396.03</b><!--pnid:ACC12_TYPE_CASH_UNIT--> <span data-page-node-id="ACC12_TYPE_CASH_RATIO" style="color:#999; font-size:12px; margin-left:8px"><!--pnid:ACC12_TYPE_CASH_PCT-->5.0%</span></span></div><!--pnid:ACC12_TYPE_CASH_END-->
-            <div data-page-node-id="ACC12_TYPE_OTHER" style="display:flex; align-items:center; justify-content:space-between"><span data-page-node-id="ACC12_TYPE_OTHER_LABEL" style="align-items:center; gap:7px; font-size:13px; color:#333; display:flex"><span data-page-node-id="ACC12_TYPE_OTHER_DOT" style="height:9px; border-radius:2px; background:#C7CDD6; width:9px"></span><!--pnid:ACC12_TYPE_OTHER_NAME-->其他</span><span data-page-node-id="ACC12_TYPE_OTHER_VALUE" style="font-size:13px"><b data-page-node-id="ACC12_TYPE_OTHER_NUM" class="num"><!--pnid:ACC12_TYPE_OTHER_AMOUNT-->128,792.06</b><!--pnid:ACC12_TYPE_OTHER_UNIT--> <span data-page-node-id="ACC12_TYPE_OTHER_RATIO" style="margin-left:8px; color:#999; font-size:12px"><!--pnid:ACC12_TYPE_OTHER_PCT-->10.0%</span></span></div><!--pnid:ACC12_TYPE_OTHER_END-->
+            <div data-page-node-id="x90ZsO9EfWdTw8khXvmzbN" style="display:flex; align-items:center; justify-content:space-between"><span data-page-node-id="B78ypkSskvWGgOmPNMHt4J" style="display:flex; align-items:center; gap:7px; font-size:13px; color:#333"><span data-page-node-id="IsmLOOV5LCDinrH8oqPsag" style="width:9px; height:9px; border-radius:2px; background:#0080FF"></span><!--pnid:XXC331yTOxEEoZ8G3FZEvt-->权益类</span><span data-page-node-id="akRb1Pde6CqdoyGdjgfB6B" style="font-size:13px"><b data-page-node-id="vMHPVaX1iotevA0EOtcrn7" class="num"><!--pnid:A26cPpsGqKv4EksNyPJzQa-->752,180.00</b><!--pnid:nkbCIXC9zviDaqmUfsKpyD--> <span data-page-node-id="xmBCsxDgFj05n8JPdaTlxS" style="color:#999; font-size:12px; margin-left:8px"><!--pnid:OQYswpa8hL3chRJyCikUuP-->58.4%</span></span></div><!--pnid:JtVaKNkILPpOjIWdhqMVTN-->
+            <div data-page-node-id="IIJA1DVVcaAnBCQJKciVCb" style="display:flex; align-items:center; justify-content:space-between"><span data-page-node-id="AK4dYzhRO9ZsH4D58hDjVb" style="display:flex; align-items:center; gap:7px; font-size:13px; color:#333"><span data-page-node-id="ziIDQN86Xr7kij9pJDQdbD" style="width:9px; height:9px; border-radius:2px; background:#1D9E75"></span><!--pnid:yBu942DxiKdH8TIkAmkIev-->固收类</span><span data-page-node-id="uE0YUIhkl2oB84R5On8Dqc" style="font-size:13px"><b data-page-node-id="8Lr4ucV3ebUJIFIV4G3PAB" class="num"><!--pnid:0lWgVfYFvuSak9QfcrCqP9-->376,090.00</b><!--pnid:yFpomagFUH2lNYyAisQEqr--> <span data-page-node-id="A8DDppnmOiHuhVSdIBuzPP" style="color:#999; font-size:12px; margin-left:8px"><!--pnid:qUkoFm5tZaYYJjVUDGGNAu-->29.2%</span></span></div><!--pnid:0B9H3UtOCFGmSuxlPAvh5Z-->
+            <div data-page-node-id="4fgfrWltpYtIZi0Jpv16kJ" style="display:flex; align-items:center; justify-content:space-between"><span data-page-node-id="d6aASD3gRrJTTF3oKjSTbS" style="align-items:center; gap:7px; font-size:13px; color:#333; display:flex"><span data-page-node-id="s3A8xNi7h0HryPf4iXWfRK" style="height:9px; border-radius:2px; background:#FFB02E; width:9px"></span><!--pnid:NGSo7yKBpwvQvQu9B47dZI-->另类/其他</span><span data-page-node-id="E8yRprZCEUBEtgz4FMJLlf" style="font-size:13px"><b data-page-node-id="nfepiSDMzNrdIKSIATed0j" class="num"><!--pnid:R5bxOZxQGPS9iZ7eEKLsJv-->109,470.00</b><!--pnid:gqbyVPBpCIhiWKvOEH4AED--> <span data-page-node-id="65YinOK1H2CHk4NgVbYZXs" style="margin-left:8px; color:#999; font-size:12px"><!--pnid:6gpyQQsTB8NYGGGM7i1MXs-->8.5%</span></span></div><!--pnid:NDPBfEGKB9AEJmcsMH55Wp-->
+            <div data-page-node-id="De17WdAQZmXREiy1snF8s3" style="display:flex; align-items:center; justify-content:space-between"><span data-page-node-id="11f5mPl5gXPQYuNE1DtJ8x" style="gap:7px; font-size:13px; color:#333; display:flex; align-items:center"><span data-page-node-id="p488QQIP6HGtW5FiWxZcud" style="border-radius:2px; background:#C7CDD6; width:9px; height:9px"></span><!--pnid:qAFbk2r2oZlCmNpq3JoFos-->货币现金</span><span data-page-node-id="YSDSRHVxudiq319oBhjke5" style="font-size:13px"><b data-page-node-id="VfB3H8MH9CKUYxAHNZcvUi" class="num"><!--pnid:b1N2mhwUBz7vf0roadm0pY-->50,180.58</b><!--pnid:ppaSs7RbTtGbrcGAAClQuh--> <span data-page-node-id="1g9NwmFiGdNKqFCpPkrc2y" style="color:#999; font-size:12px; margin-left:8px"><!--pnid:ZxoSgPYTbXrgiQGCmNU3wL-->3.9%</span></span></div><!--pnid:ol4DnhTsY5ehdSFjZ6PCfm-->
           </div><!--pnid:6opFkUIw2EYuzDEBLzJ1ig-->
-          <div data-page-node-id="Gs2W9D2TyWSzN2hx1aucBh" class="disc" style="text-align:center"><!--pnid:DwEDIMrlJWIVvAEFxmyEPj-->按底层资产类型归集为股票、债券、基金、货币、其他；仅展示分布情况</div><!--pnid:UcirKAtWu0aQaGkhh4NzaQ-->
+          <div data-page-node-id="Gs2W9D2TyWSzN2hx1aucBh" class="disc" style="text-align:center"><!--pnid:DwEDIMrlJWIVvAEFxmyEPj-->按底层资产穿透计算 · 仅展示分布情况，市值含盘中预估</div><!--pnid:UcirKAtWu0aQaGkhh4NzaQ-->
         </div><!--pnid:EClCLaSjS1dczlyaDIA4Zd-->
       </div></div><!--pnid:xOHPgYFQQrCR6GBBHyTQfh-->
     </div><!--pnid:HLY4JodwGTRNm7mCDGa5gb-->
 
-    <div data-page-node-id="ACC12_FUND_TYPE_BOX" class="state-box"><!--pnid:ACC12_FUND_TYPE_BOX_PUID-->
-      <div data-page-node-id="ACC12_FUND_TYPE_LABEL" class="state-label"><!--pnid:ACC12_FUND_TYPE_LABEL_PUID-->基金分类 <span data-page-node-id="ACC12_FUND_TYPE_BADGE" class="badge badge-ok"><!--pnid:ACC12_FUND_TYPE_BADGE_PUID-->正常态·默认</span></div><!--pnid:ACC12_FUND_TYPE_LABEL_END-->
-      <div data-page-node-id="ACC12_FUND_TYPE_DESC" class="state-desc"><!--pnid:ACC12_FUND_TYPE_DESC_PUID-->按基金类型归集；仅展示分布情况</div><!--pnid:ACC12_FUND_TYPE_DESC_END-->
-      <div data-page-node-id="ACC12_FUND_TYPE_PREVIEW" class="preview-box"><div data-page-node-id="ACC12_FUND_TYPE_CARDPRE" class="card-preview"><!--pnid:ACC12_FUND_TYPE_CARDPRE_PUID-->
-        <div data-page-node-id="ACC12_FUND_TYPE_CARD" class="card"><!--pnid:ACC12_FUND_TYPE_CARD_PUID-->
-          <div data-page-node-id="ACC12_FUND_TYPE_HEADER" style="align-items:center; justify-content:space-between; margin-bottom:12px; display:flex"><span data-page-node-id="ACC12_FUND_TYPE_TITLE" style="font-size:15px; font-weight:600"><!--pnid:ACC12_FUND_TYPE_TITLE_PUID-->资产结构</span></div><!--pnid:ACC12_FUND_TYPE_HEADER_END-->
-          <div data-page-node-id="ACC12_FUND_TYPE_TABS" style="margin-bottom:14px; display:flex; gap:7px; overflow:hidden"><!--pnid:ACC12_FUND_TYPE_TABS_PUID-->
-            <span data-page-node-id="ACC12_FUND_TAB_ASSET" style="background:#F2F3F5; border-radius:999px; padding:5px 12px; flex-shrink:0; font-size:12px; color:#666"><!--pnid:ACC12_FUND_TAB_ASSET_PUID-->资产类型</span><!--pnid:ACC12_FUND_TAB_ASSET_END-->
-            <span data-page-node-id="ACC12_FUND_TAB_FUND" style="border-radius:999px; padding:5px 12px; flex-shrink:0; font-size:12px; font-weight:500; color:#fff; background:#FB5C5F"><!--pnid:ACC12_FUND_TAB_FUND_PUID-->基金类型</span><!--pnid:ACC12_FUND_TAB_FUND_END-->
-            <span data-page-node-id="ACC12_FUND_TAB_INDUSTRY" style="background:#F2F3F5; border-radius:999px; padding:5px 12px; flex-shrink:0; font-size:12px; color:#666"><!--pnid:ACC12_FUND_TAB_INDUSTRY_PUID-->行业主题</span><!--pnid:ACC12_FUND_TAB_INDUSTRY_END-->
-            <span data-page-node-id="ACC12_FUND_TAB_REGION" style="color:#666; background:#F2F3F5; border-radius:999px; padding:5px 12px; flex-shrink:0; font-size:12px"><!--pnid:ACC12_FUND_TAB_REGION_PUID-->市场区域</span><!--pnid:ACC12_FUND_TAB_REGION_END-->
-          </div><!--pnid:ACC12_FUND_TYPE_TABS_END-->
-          <div data-page-node-id="ACC12_FUND_TYPE_BAR" style="overflow:hidden; margin-bottom:16px; display:flex; height:16px; border-radius:4px"><div data-page-node-id="ACC12_FUND_BAR_1" style="width:15%; background:#0080FF"></div><div data-page-node-id="ACC12_FUND_BAR_2" style="width:22%; background:#1D9E75"></div><div data-page-node-id="ACC12_FUND_BAR_3" style="width:12%; background:#5DA8FF"></div><div data-page-node-id="ACC12_FUND_BAR_4" style="width:18%; background:#FFB02E"></div><div data-page-node-id="ACC12_FUND_BAR_5" style="width:20%; background:#8B7FE8"></div><div data-page-node-id="ACC12_FUND_BAR_6" style="width:5%; background:#43B88C"></div><div data-page-node-id="ACC12_FUND_BAR_7" style="width:3%; background:#3D9BE8"></div><div data-page-node-id="ACC12_FUND_BAR_8" style="width:1.5%; background:#9CC9FF"></div><div data-page-node-id="ACC12_FUND_BAR_9" style="width:1%; background:#C7CDD6"></div><div data-page-node-id="ACC12_FUND_BAR_10" style="width:2.5%; background:#FB5C5F"></div></div><!--pnid:ACC12_FUND_TYPE_BAR_END-->
-          <div data-page-node-id="ACC12_FUND_TYPE_LIST" style="flex-direction:column; gap:10px; display:flex"><!--pnid:ACC12_FUND_TYPE_LIST_PUID-->
-            <div data-page-node-id="ACC12_FUND_ITEM_2" style="display:flex; align-items:center; justify-content:space-between"><span data-page-node-id="ACC12_FUND_LABEL_2" style="display:flex; align-items:center; gap:7px; font-size:13px; color:#333"><span data-page-node-id="ACC12_FUND_DOT_2" style="width:8px; height:8px; border-radius:2px; background:#1D9E75"></span><!--pnid:ACC12_FUND_NAME_2_PUID-->股票型</span><span data-page-node-id="ACC12_FUND_VALUE_2" style="font-size:13px"><b data-page-node-id="ACC12_FUND_NUM_2" class="num"><!--pnid:ACC12_FUND_AMOUNT_2_PUID-->283,343</b><!--pnid:ACC12_FUND_UNIT_2_PUID--> <span data-page-node-id="ACC12_FUND_RATIO_2" style="color:#999; font-size:12px; margin-left:8px"><!--pnid:ACC12_FUND_PCT_2_PUID-->22.0%</span></span></div><!--pnid:ACC12_FUND_ITEM_2_END-->
-            <div data-page-node-id="ACC12_FUND_ITEM_5" style="display:flex; align-items:center; justify-content:space-between"><span data-page-node-id="ACC12_FUND_LABEL_5" style="display:flex; align-items:center; gap:7px; font-size:13px; color:#333"><span data-page-node-id="ACC12_FUND_DOT_5" style="width:8px; height:8px; border-radius:2px; background:#8B7FE8"></span><!--pnid:ACC12_FUND_NAME_5_PUID-->混合型</span><span data-page-node-id="ACC12_FUND_VALUE_5" style="font-size:13px"><b data-page-node-id="ACC12_FUND_NUM_5" class="num"><!--pnid:ACC12_FUND_AMOUNT_5_PUID-->257,584</b><!--pnid:ACC12_FUND_UNIT_5_PUID--> <span data-page-node-id="ACC12_FUND_RATIO_5" style="color:#999; font-size:12px; margin-left:8px"><!--pnid:ACC12_FUND_PCT_5_PUID-->20.0%</span></span></div><!--pnid:ACC12_FUND_ITEM_5_END-->
-            <div data-page-node-id="ACC12_FUND_ITEM_4" style="display:flex; align-items:center; justify-content:space-between"><span data-page-node-id="ACC12_FUND_LABEL_4" style="display:flex; align-items:center; gap:7px; font-size:13px; color:#333"><span data-page-node-id="ACC12_FUND_DOT_4" style="width:8px; height:8px; border-radius:2px; background:#FFB02E"></span><!--pnid:ACC12_FUND_NAME_4_PUID-->债券型</span><span data-page-node-id="ACC12_FUND_VALUE_4" style="font-size:13px"><b data-page-node-id="ACC12_FUND_NUM_4" class="num"><!--pnid:ACC12_FUND_AMOUNT_4_PUID-->231,826</b><!--pnid:ACC12_FUND_UNIT_4_PUID--> <span data-page-node-id="ACC12_FUND_RATIO_4" style="color:#999; font-size:12px; margin-left:8px"><!--pnid:ACC12_FUND_PCT_4_PUID-->18.0%</span></span></div><!--pnid:ACC12_FUND_ITEM_4_END-->
-            <div data-page-node-id="ACC12_FUND_ITEM_1" style="display:flex; align-items:center; justify-content:space-between"><span data-page-node-id="ACC12_FUND_LABEL_1" style="display:flex; align-items:center; gap:7px; font-size:13px; color:#333"><span data-page-node-id="ACC12_FUND_DOT_1" style="width:8px; height:8px; border-radius:2px; background:#0080FF"></span><!--pnid:ACC12_FUND_NAME_1_PUID-->货币型</span><span data-page-node-id="ACC12_FUND_VALUE_1" style="font-size:13px"><b data-page-node-id="ACC12_FUND_NUM_1" class="num"><!--pnid:ACC12_FUND_AMOUNT_1_PUID-->193,188</b><!--pnid:ACC12_FUND_UNIT_1_PUID--> <span data-page-node-id="ACC12_FUND_RATIO_1" style="color:#999; font-size:12px; margin-left:8px"><!--pnid:ACC12_FUND_PCT_1_PUID-->15.0%</span></span></div><!--pnid:ACC12_FUND_ITEM_1_END-->
-            <div data-page-node-id="ACC12_FUND_ITEM_3" style="display:flex; align-items:center; justify-content:space-between"><span data-page-node-id="ACC12_FUND_LABEL_3" style="display:flex; align-items:center; gap:7px; font-size:13px; color:#333"><span data-page-node-id="ACC12_FUND_DOT_3" style="width:8px; height:8px; border-radius:2px; background:#5DA8FF"></span><!--pnid:ACC12_FUND_NAME_3_PUID-->指数型</span><span data-page-node-id="ACC12_FUND_VALUE_3" style="font-size:13px"><b data-page-node-id="ACC12_FUND_NUM_3" class="num"><!--pnid:ACC12_FUND_AMOUNT_3_PUID-->154,550</b><!--pnid:ACC12_FUND_UNIT_3_PUID--> <span data-page-node-id="ACC12_FUND_RATIO_3" style="color:#999; font-size:12px; margin-left:8px"><!--pnid:ACC12_FUND_PCT_3_PUID-->12.0%</span></span></div><!--pnid:ACC12_FUND_ITEM_3_END-->
-            <div data-page-node-id="ACC12_FUND_ITEM_6" style="display:flex; align-items:center; justify-content:space-between"><span data-page-node-id="ACC12_FUND_LABEL_6" style="display:flex; align-items:center; gap:7px; font-size:13px; color:#333"><span data-page-node-id="ACC12_FUND_DOT_6" style="width:8px; height:8px; border-radius:2px; background:#43B88C"></span><!--pnid:ACC12_FUND_NAME_6_PUID-->QDII</span><span data-page-node-id="ACC12_FUND_VALUE_6" style="font-size:13px"><b data-page-node-id="ACC12_FUND_NUM_6" class="num"><!--pnid:ACC12_FUND_AMOUNT_6_PUID-->64,396</b><!--pnid:ACC12_FUND_UNIT_6_PUID--> <span data-page-node-id="ACC12_FUND_RATIO_6" style="color:#999; font-size:12px; margin-left:8px"><!--pnid:ACC12_FUND_PCT_6_PUID-->5.0%</span></span></div><!--pnid:ACC12_FUND_ITEM_6_END-->
-            <div data-page-node-id="ACC12_FUND_ITEM_7" style="display:flex; align-items:center; justify-content:space-between"><span data-page-node-id="ACC12_FUND_LABEL_7" style="display:flex; align-items:center; gap:7px; font-size:13px; color:#333"><span data-page-node-id="ACC12_FUND_DOT_7" style="width:8px; height:8px; border-radius:2px; background:#3D9BE8"></span><!--pnid:ACC12_FUND_NAME_7_PUID-->FOF</span><span data-page-node-id="ACC12_FUND_VALUE_7" style="font-size:13px"><b data-page-node-id="ACC12_FUND_NUM_7" class="num"><!--pnid:ACC12_FUND_AMOUNT_7_PUID-->38,638</b><!--pnid:ACC12_FUND_UNIT_7_PUID--> <span data-page-node-id="ACC12_FUND_RATIO_7" style="color:#999; font-size:12px; margin-left:8px"><!--pnid:ACC12_FUND_PCT_7_PUID-->3.0%</span></span></div><!--pnid:ACC12_FUND_ITEM_7_END-->
-            <div data-page-node-id="ACC12_FUND_ITEM_10" style="display:flex; align-items:center; justify-content:space-between"><span data-page-node-id="ACC12_FUND_LABEL_10" style="display:flex; align-items:center; gap:7px; font-size:13px; color:#333"><span data-page-node-id="ACC12_FUND_DOT_10" style="width:8px; height:8px; border-radius:2px; background:#FB5C5F"></span><!--pnid:ACC12_FUND_NAME_10_PUID-->类REITs</span><span data-page-node-id="ACC12_FUND_VALUE_10" style="font-size:13px"><b data-page-node-id="ACC12_FUND_NUM_10" class="num"><!--pnid:ACC12_FUND_AMOUNT_10_PUID-->32,197</b><!--pnid:ACC12_FUND_UNIT_10_PUID--> <span data-page-node-id="ACC12_FUND_RATIO_10" style="color:#999; font-size:12px; margin-left:8px"><!--pnid:ACC12_FUND_PCT_10_PUID-->2.5%</span></span></div><!--pnid:ACC12_FUND_ITEM_10_END-->
-            <div data-page-node-id="ACC12_FUND_ITEM_8" style="display:flex; align-items:center; justify-content:space-between"><span data-page-node-id="ACC12_FUND_LABEL_8" style="display:flex; align-items:center; gap:7px; font-size:13px; color:#333"><span data-page-node-id="ACC12_FUND_DOT_8" style="width:8px; height:8px; border-radius:2px; background:#9CC9FF"></span><!--pnid:ACC12_FUND_NAME_8_PUID-->REITs</span><span data-page-node-id="ACC12_FUND_VALUE_8" style="font-size:13px"><b data-page-node-id="ACC12_FUND_NUM_8" class="num"><!--pnid:ACC12_FUND_AMOUNT_8_PUID-->19,319</b><!--pnid:ACC12_FUND_UNIT_8_PUID--> <span data-page-node-id="ACC12_FUND_RATIO_8" style="color:#999; font-size:12px; margin-left:8px"><!--pnid:ACC12_FUND_PCT_8_PUID-->1.5%</span></span></div><!--pnid:ACC12_FUND_ITEM_8_END-->
-            <div data-page-node-id="ACC12_FUND_ITEM_9" style="display:flex; align-items:center; justify-content:space-between"><span data-page-node-id="ACC12_FUND_LABEL_9" style="display:flex; align-items:center; gap:7px; font-size:13px; color:#333"><span data-page-node-id="ACC12_FUND_DOT_9" style="width:8px; height:8px; border-radius:2px; background:#C7CDD6"></span><!--pnid:ACC12_FUND_NAME_9_PUID-->股票多空</span><span data-page-node-id="ACC12_FUND_VALUE_9" style="font-size:13px"><b data-page-node-id="ACC12_FUND_NUM_9" class="num"><!--pnid:ACC12_FUND_AMOUNT_9_PUID-->12,879</b><!--pnid:ACC12_FUND_UNIT_9_PUID--> <span data-page-node-id="ACC12_FUND_RATIO_9" style="color:#999; font-size:12px; margin-left:8px"><!--pnid:ACC12_FUND_PCT_9_PUID-->1.0%</span></span></div><!--pnid:ACC12_FUND_ITEM_9_END-->
-          </div><!--pnid:ACC12_FUND_TYPE_LIST_END-->
-          <div data-page-node-id="ACC12_FUND_TYPE_DISC" class="disc" style="text-align:center"><!--pnid:ACC12_FUND_TYPE_DISC_PUID-->按基金类型归集；仅展示分布情况</div><!--pnid:ACC12_FUND_TYPE_DISC_END-->
-        </div><!--pnid:ACC12_FUND_TYPE_CARD_END-->
-      </div></div><!--pnid:ACC12_FUND_TYPE_CARDPRE_END-->
-    </div><!--pnid:ACC12_FUND_TYPE_BOX_END-->
-
     <div data-page-node-id="JsSVhmO4qib5VntYJUggsx" class="state-box"><!--pnid:oBCAxI1ckoP87aKrve4yfc-->
       <div data-page-node-id="7hMc80Rd76ZHYLlQFI4QeT" class="state-label"><!--pnid:HBnMznOoAZHjGPnQEXp2ab-->行业主题 <span data-page-node-id="RBC2plfnVAk4T1muIi17vA" class="badge badge-var"><!--pnid:nqsfS7UuePKtFtrz2QndKy-->穿透变种</span></div><!--pnid:ScCdCVHH67RypNDch5Ldql-->
-      <div data-page-node-id="aQIoddUQm5jvFoyKmWr2u1" class="state-desc"><!--pnid:PtJWvqhSHWaEF7nFk5S23o-->Top7+其他合并；穿透不纳入外部资产</div><!--pnid:fyHfimXTKO5oLkFM8QOacz-->
+      <div data-page-node-id="aQIoddUQm5jvFoyKmWr2u1" class="state-desc"><!--pnid:PtJWvqhSHWaEF7nFk5S23o-->分类标准下拉（申万/中信/Wind）+ Top7+其他合并；穿透不纳入外部资产</div><!--pnid:fyHfimXTKO5oLkFM8QOacz-->
       <div data-page-node-id="0PjmZ5sNXrPpiZFFrT3QHX" class="preview-box"><div data-page-node-id="733ZUykFSfK4sFWBJfw9sy" class="card-preview"><!--pnid:9Bq2XCUkESaq2l77aHv0SD-->
         <div data-page-node-id="ENPmiEhFQzJfiG5PytGsaE" class="card"><!--pnid:ybSdzrnI5PHO7JQCdGSbGT-->
-          <div data-page-node-id="mQ6fYc2qrcyUOEPyQpLuvj" style="display:flex; align-items:center; justify-content:space-between; margin-bottom:12px"><span data-page-node-id="aw3AtXZbu1fiAuiTSXaxTv" style="font-size:15px; font-weight:600"><!--pnid:M4wmLXWntpM1KduwUUEBGI-->资产结构</span></div><!--pnid:aNDTsZgHb12ZJfVRRwAQKt-->
+          <div data-page-node-id="mQ6fYc2qrcyUOEPyQpLuvj" style="display:flex; align-items:center; justify-content:space-between; margin-bottom:12px"><span data-page-node-id="aw3AtXZbu1fiAuiTSXaxTv" style="font-size:15px; font-weight:600"><!--pnid:M4wmLXWntpM1KduwUUEBGI-->资产结构</span><span data-page-node-id="ZbMFsXD40gFS9SG8TQjWEJ" style="font-weight:500; color:#666; background:#F2F3F5; border-radius:2px; padding:1px 6px; font-size:11px"><!--pnid:YYerAVJD8MejhYj6x3pzww-->预估 14:25</span></div><!--pnid:aNDTsZgHb12ZJfVRRwAQKt-->
           <div data-page-node-id="X87KEyNuzHA9eOmfgaSFw1" style="display:flex; gap:7px; overflow:hidden; margin-bottom:14px"><!--pnid:duQZvxWQvWNLoLrLQi1gQj-->
             <span data-page-node-id="BC5beyKExLtGCEvVVH6qz0" style="font-size:12px; color:#666; background:#F2F3F5; border-radius:999px; padding:5px 12px; flex-shrink:0"><!--pnid:GjUHM6H0rbNdCOlqUw0lC7-->资产类型</span><!--pnid:2H9kg2CbUEfBIz4fla649Z-->
-            <span data-page-node-id="ACC12_INDUSTRY_TAB_FUND" style="font-size:12px; color:#666; background:#F2F3F5; border-radius:999px; padding:5px 12px; flex-shrink:0"><!--pnid:ACC12_INDUSTRY_TAB_FUND_PUID-->基金类型</span><!--pnid:ACC12_INDUSTRY_TAB_FUND_END-->
             <span data-page-node-id="VY3p192l4xdHSZx4lLhEvp" style="flex-shrink:0; font-size:12px; font-weight:500; color:#fff; background:#FB5C5F; border-radius:999px; padding:5px 12px"><!--pnid:IbyB3ptCTqcAyXXGY8mx7W-->行业主题</span><!--pnid:u7LxubIgNZ9Hp3RaTK7zA3-->
-            <span data-page-node-id="ACC12_INDUSTRY_TAB_REGION" style="font-size:12px; color:#666; background:#F2F3F5; border-radius:999px; padding:5px 12px; flex-shrink:0"><!--pnid:ACC12_INDUSTRY_TAB_REGION_PUID-->市场区域</span><!--pnid:ACC12_INDUSTRY_TAB_REGION_END-->
           </div><!--pnid:i5yFTSY46zirLDVuLUmcVt-->
+          <div data-page-node-id="FUmKnHWsnWlBgRUTP5AjsQ" style="border-radius:8px; display:flex; align-items:center; justify-content:space-between; margin-bottom:14px; padding:8px 11px; background:#F8FAFD; border:0.5px solid #E8EFF7"><span data-page-node-id="NQ8ZKrH3spJhekJKexl15G" style="font-size:12px; color:#888"><!--pnid:XrRGeoI4nU8bA6LyKg3Plo-->分类标准</span><span data-page-node-id="HJOfpjtAczuy2CyKdhyH0C" style="font-size:13px; font-weight:500; color:#0080FF"><!--pnid:lb7EndIsKSBhc8nEM47EpF-->申万行业 ⌄</span></div><!--pnid:JW28FhmjwKf2BXLAyNtNxq-->
           <div data-page-node-id="ABVII7fbq2dgzEOTsyS2wj" style="border-radius:4px; overflow:hidden; margin-bottom:16px; display:flex; height:16px"><div data-page-node-id="B2tCgbuRngqZyfcatdB4Fd" style="width:22.4%; background:#0080FF"></div><div data-page-node-id="9btmJlr5cLTnZpznj8lGPN" style="width:18.1%; background:#3D9BE8"></div><div data-page-node-id="vtd9kdlWGIO6kXmE9HNCGw" style="width:14.6%; background:#5DA8FF"></div><div data-page-node-id="XLfIyb0JCDVF8liMqtdBhl" style="width:11.2%; background:#1D9E75"></div><div data-page-node-id="3iJbAHQLVhMHaoG3LfNEdA" style="width:9.3%; background:#43B88C"></div><div data-page-node-id="xPg7iC4jEZryzJZPkslGZT" style="width:24.4%; background:#C7CDD6"></div></div><!--pnid:sHBvT6d7uRfXWO0VozqSAa-->
           <div data-page-node-id="RHm22EiSHB1sBrfmFznklp" style="display:flex; flex-direction:column; gap:11px"><!--pnid:FZvE0yfD6xJJUlFCwUT3yO-->
-            <div data-page-node-id="ngRgHtppYYX5HiFh8TPcEz" style="display:flex; justify-content:space-between; font-size:13px"><span data-page-node-id="65mXEb3yCMyei5AnWL400a" style="display:flex; align-items:center; gap:7px; color:#333"><span data-page-node-id="kW0ZCuDyLoDqvWOs9q3eKd" style="width:9px; height:9px; border-radius:2px; background:#0080FF"></span><!--pnid:MhgzYdetn8OcJmHYBX3EYn-->医药生物</span><span data-page-node-id="mJwRjF4HfJJiCgeZMcBzDT"><b data-page-node-id="lTHl3uoqGhrDD9IX2X8t41" class="num"><!--pnid:Y3JSy6pO6KD3dl8zqxFEhv-->168,448</b><!--pnid:FhS94zEfEwtHL1R0coQJJI--> <span data-page-node-id="GUWuANKK5zNtiDCY05weS0" style="color:#999; font-size:12px; margin-left:8px"><!--pnid:oBvWw5u5deGZuhhqs1ub8F-->22.4%</span></span></div><!--pnid:N75OH2RoRtrXbSYtmhmyWp-->
-            <div data-page-node-id="C3WILEfebz3BfBMiqmrljZ" style="font-size:13px; display:flex; justify-content:space-between"><span data-page-node-id="Zn1dTzI2B9vLeGrjlTHUuI" style="display:flex; align-items:center; gap:7px; color:#333"><span data-page-node-id="ViVXoEw4DE7xntKmYnIQcg" style="height:9px; border-radius:2px; background:#3D9BE8; width:9px"></span><!--pnid:JUQ3vXpYrcDKk8E1UkkBHT-->电子</span><span data-page-node-id="PwPYCo3Cu6sReObcARQBFw"><b data-page-node-id="xYrVMXubtRv6PZHSExBm4E" class="num"><!--pnid:8EB1vdzho0zw0JnBktqVnG-->136,112</b><!--pnid:P4cgPXweFbroQekUMvVjfG--> <span data-page-node-id="ntlDEecgdao34cyvTlSe8o" style="color:#999; font-size:12px; margin-left:8px"><!--pnid:aoDC0UsKFLFtFabnkFB1J0-->18.1%</span></span></div><!--pnid:6cUC77C2sxYBxw0TBpRSK3-->
-            <div data-page-node-id="ACC12_INDUSTRY_3" style="display:flex; justify-content:space-between; font-size:13px"><span data-page-node-id="ACC12_INDUSTRY_3_LABEL" style="display:flex; align-items:center; gap:7px; color:#333"><span data-page-node-id="ACC12_INDUSTRY_3_DOT" style="width:9px; height:9px; border-radius:2px; background:#5DA8FF"></span><!--pnid:ACC12_INDUSTRY_3_NAME-->电力设备</span><span data-page-node-id="ACC12_INDUSTRY_3_VALUE"><b data-page-node-id="ACC12_INDUSTRY_3_NUM" class="num"><!--pnid:ACC12_INDUSTRY_3_AMOUNT-->109,792</b><!--pnid:ACC12_INDUSTRY_3_UNIT--> <span data-page-node-id="ACC12_INDUSTRY_3_RATIO" style="color:#999; font-size:12px; margin-left:8px"><!--pnid:ACC12_INDUSTRY_3_PCT-->14.6%</span></span></div><!--pnid:ACC12_INDUSTRY_3_END-->
-            <div data-page-node-id="ACC12_INDUSTRY_4" style="display:flex; justify-content:space-between; font-size:13px"><span data-page-node-id="ACC12_INDUSTRY_4_LABEL" style="display:flex; align-items:center; gap:7px; color:#333"><span data-page-node-id="ACC12_INDUSTRY_4_DOT" style="width:9px; height:9px; border-radius:2px; background:#1D9E75"></span><!--pnid:ACC12_INDUSTRY_4_NAME-->食品饮料</span><span data-page-node-id="ACC12_INDUSTRY_4_VALUE"><b data-page-node-id="ACC12_INDUSTRY_4_NUM" class="num"><!--pnid:ACC12_INDUSTRY_4_AMOUNT-->84,224</b><!--pnid:ACC12_INDUSTRY_4_UNIT--> <span data-page-node-id="ACC12_INDUSTRY_4_RATIO" style="color:#999; font-size:12px; margin-left:8px"><!--pnid:ACC12_INDUSTRY_4_PCT-->11.2%</span></span></div><!--pnid:ACC12_INDUSTRY_4_END-->
-            <div data-page-node-id="ACC12_INDUSTRY_5" style="display:flex; justify-content:space-between; font-size:13px"><span data-page-node-id="ACC12_INDUSTRY_5_LABEL" style="display:flex; align-items:center; gap:7px; color:#333"><span data-page-node-id="ACC12_INDUSTRY_5_DOT" style="width:9px; height:9px; border-radius:2px; background:#43B88C"></span><!--pnid:ACC12_INDUSTRY_5_NAME-->计算机</span><span data-page-node-id="ACC12_INDUSTRY_5_VALUE"><b data-page-node-id="ACC12_INDUSTRY_5_NUM" class="num"><!--pnid:ACC12_INDUSTRY_5_AMOUNT-->69,936</b><!--pnid:ACC12_INDUSTRY_5_UNIT--> <span data-page-node-id="ACC12_INDUSTRY_5_RATIO" style="color:#999; font-size:12px; margin-left:8px"><!--pnid:ACC12_INDUSTRY_5_PCT-->9.3%</span></span></div><!--pnid:ACC12_INDUSTRY_5_END-->
-            <div data-page-node-id="0epVtaZjLWBYNnXtagg5dX" style="display:flex; justify-content:space-between; font-size:13px"><span data-page-node-id="HRE2Iq6hAOeT29ovSsN2VK" style="align-items:center; gap:7px; color:#888; display:flex"><span data-page-node-id="SgrCp5G4kAmXQdEx5E3M57" style="border-radius:2px; background:#C7CDD6; width:9px; height:9px"></span><!--pnid:5wChTfLlBimEsbF5Kg10VD-->其他 6 个行业</span><span data-page-node-id="tQijCPcGOiHu7lij3Vg6Yx"><b data-page-node-id="RgJ6yPQesGVLEaIIiTaE9w" class="num"><!--pnid:iRHxbd6axGmGo9Vw4QkSQX-->183,488</b><!--pnid:wzkjCUCEgktfCZ9auzYCgG--> <span data-page-node-id="YhhNLeH1NW3Bzju47jvBxt" style="font-size:12px; margin-left:8px; color:#999"><!--pnid:LaGqIzejPZdNJpvVbdO0w3-->24.4%</span></span></div><!--pnid:Lo11l12iEOi8eMVX7NB0Ke-->
+            <div data-page-node-id="ngRgHtppYYX5HiFh8TPcEz" style="display:flex; justify-content:space-between; font-size:13px"><span data-page-node-id="65mXEb3yCMyei5AnWL400a" style="display:flex; align-items:center; gap:7px; color:#333"><span data-page-node-id="kW0ZCuDyLoDqvWOs9q3eKd" style="width:9px; height:9px; border-radius:2px; background:#0080FF"></span><!--pnid:MhgzYdetn8OcJmHYBX3EYn-->医药生物</span><span data-page-node-id="mJwRjF4HfJJiCgeZMcBzDT"><b data-page-node-id="lTHl3uoqGhrDD9IX2X8t41" class="num"><!--pnid:Y3JSy6pO6KD3dl8zqxFEhv-->168,420</b><!--pnid:FhS94zEfEwtHL1R0coQJJI--> <span data-page-node-id="GUWuANKK5zNtiDCY05weS0" style="color:#999; font-size:12px; margin-left:8px"><!--pnid:oBvWw5u5deGZuhhqs1ub8F-->22.4%</span></span></div><!--pnid:N75OH2RoRtrXbSYtmhmyWp-->
+            <div data-page-node-id="C3WILEfebz3BfBMiqmrljZ" style="font-size:13px; display:flex; justify-content:space-between"><span data-page-node-id="Zn1dTzI2B9vLeGrjlTHUuI" style="display:flex; align-items:center; gap:7px; color:#333"><span data-page-node-id="ViVXoEw4DE7xntKmYnIQcg" style="height:9px; border-radius:2px; background:#3D9BE8; width:9px"></span><!--pnid:JUQ3vXpYrcDKk8E1UkkBHT-->电子</span><span data-page-node-id="PwPYCo3Cu6sReObcARQBFw"><b data-page-node-id="xYrVMXubtRv6PZHSExBm4E" class="num"><!--pnid:8EB1vdzho0zw0JnBktqVnG-->136,100</b><!--pnid:P4cgPXweFbroQekUMvVjfG--> <span data-page-node-id="ntlDEecgdao34cyvTlSe8o" style="color:#999; font-size:12px; margin-left:8px"><!--pnid:aoDC0UsKFLFtFabnkFB1J0-->18.1%</span></span></div><!--pnid:6cUC77C2sxYBxw0TBpRSK3-->
+            <div data-page-node-id="0epVtaZjLWBYNnXtagg5dX" style="display:flex; justify-content:space-between; font-size:13px"><span data-page-node-id="HRE2Iq6hAOeT29ovSsN2VK" style="align-items:center; gap:7px; color:#888; display:flex"><span data-page-node-id="SgrCp5G4kAmXQdEx5E3M57" style="border-radius:2px; background:#C7CDD6; width:9px; height:9px"></span><!--pnid:5wChTfLlBimEsbF5Kg10VD-->其他 11 个行业</span><span data-page-node-id="tQijCPcGOiHu7lij3Vg6Yx"><b data-page-node-id="RgJ6yPQesGVLEaIIiTaE9w" class="num"><!--pnid:iRHxbd6axGmGo9Vw4QkSQX-->81,260</b><!--pnid:wzkjCUCEgktfCZ9auzYCgG--> <span data-page-node-id="YhhNLeH1NW3Bzju47jvBxt" style="font-size:12px; margin-left:8px; color:#999"><!--pnid:LaGqIzejPZdNJpvVbdO0w3-->10.8%</span></span></div><!--pnid:Lo11l12iEOi8eMVX7NB0Ke-->
           </div><!--pnid:uiflWpwrMiOg5kzwoDIMpD-->
           <div data-page-node-id="0kJqeGaTGXpFjl1ph7TDWC" style="color:#FB5C5F; text-align:center; margin-top:12px; padding-top:10px; border-top:0.5px solid #EEE; font-size:12px"><!--pnid:YpBtRws3C1Kzf4N0ts6lni-->展开全部行业 ⌄</div><!--pnid:DaRu9yHc0x1Ys4VPS5ugkA-->
           <div data-page-node-id="6nCGiEjEMLBc4BGXY2FI2Y" class="disc" style="text-align:center"><!--pnid:CrxqFjCSPeizBK24heSgWK-->按申万行业穿透底层基金持仓计算 · 外部导入资产未纳入穿透 · 仅展示分布</div><!--pnid:STlHUYKSObQrQfTX0weJ3T-->
@@ -1747,27 +1407,23 @@ body {
 
     <div data-page-node-id="zBMGpeG4s2RvaEN6Z9WNGn" class="state-box"><!--pnid:EdCu1NNyI9H3G9dHMOQvLq-->
       <div data-page-node-id="1uVVfJZdjF6Ew0KWSyrHxY" class="state-label"><!--pnid:NIuLRSjEbeFqHUm4CeOsgL-->市场区域 <span data-page-node-id="kRxW6uhuZiHn3fjnFgdWAx" class="badge badge-var"><!--pnid:9k71XSSEd3XPFphi4mEgWI-->穿透变种</span></div><!--pnid:PCes7IzCGGH2HxFWCnZaFW-->
-      <div data-page-node-id="DRSeyNNAFALjc8ZUv7o5RF" class="state-desc"><!--pnid:FMfOleSNymb9B97soihLl8-->A股/港股/美股/其他按底层投向归集；合计=总资产</div><!--pnid:mBOZZ9k9zpwkfPJadD2FS1-->
+      <div data-page-node-id="DRSeyNNAFALjc8ZUv7o5RF" class="state-desc"><!--pnid:FMfOleSNymb9B97soihLl8-->境内/港股/海外按底层投向归集；QDII 按投向区域计；合计=总资产</div><!--pnid:mBOZZ9k9zpwkfPJadD2FS1-->
       <div data-page-node-id="Mxr1DPjJtx4I2I88pkSicy" class="preview-box"><div data-page-node-id="hhJPoByIJcW6DZor8y2xlk" class="card-preview"><!--pnid:kY0eaXEorjCzmHTupED7MP-->
         <div data-page-node-id="tYYohgI9PpmBvfoGDTBOl3" class="card"><!--pnid:ddUosSU4ygfxB9E5DFGPAn-->
-          <div data-page-node-id="QA2semWg06HfFyR6sCVn6z" class="card-header"><span data-page-node-id="yw8eE7ygqVoISjG91XktiL" class="card-h-title"><!--pnid:AlFq2CpJfu5qQ6A02H06m7-->资产结构</span></div><!--pnid:v5RxSopxFkeGTESzHU6rwo-->
-          <div data-page-node-id="8ROvU1Y9VemYySD2uq3DZw" style="position:relative; margin-bottom:13px; overflow:hidden"><!--pnid:ONgVdqCAqLhDT9BEcW6eMd-->
-            <div data-page-node-id="ACC12_REGION_TAB_INNER" style="display:flex; gap:6px; transform:translateX(-30px)"><!--pnid:ACC12_REGION_TAB_INNER_PUID-->
-              <span data-page-node-id="GP0baXIQCzKSywfET7vo3L" style="border-radius:999px; padding:4px 11px; font-size:11px; color:#666; background:#F2F3F5; white-space:nowrap"><!--pnid:o3HmoJfmOHrSgpfhHtqO9A-->资产类型</span><!--pnid:qLjbBnNsEkVmCM5X3tZswx-->
-              <span data-page-node-id="ACC12_REGION_TAB_FUND" style="font-size:11px; color:#666; background:#F2F3F5; border-radius:999px; padding:4px 11px; white-space:nowrap"><!--pnid:ACC12_REGION_TAB_FUND_PUID-->基金类型</span><!--pnid:ACC12_REGION_TAB_FUND_END-->
-              <span data-page-node-id="2ybROClimIWrFbMLOCnLPy" style="font-size:11px; color:#666; background:#F2F3F5; border-radius:999px; padding:4px 11px; white-space:nowrap"><!--pnid:fdpljrN8wZc5c90rNOVleC-->行业主题</span><!--pnid:vWAmE1i9qRB1IQasmQYDpX-->
-              <span data-page-node-id="cSkdJPQDOtdUMH0uDbgVEt" style="border-radius:999px; padding:4px 11px; font-size:11px; font-weight:500; color:#fff; background:#FB5C5F; white-space:nowrap"><!--pnid:dQMHazQf1lolURL3KWB2Uq-->市场区域</span><!--pnid:qo7aUHY0NwtLqSzVsIv13D-->
-            </div><!--pnid:ACC12_REGION_TAB_INNER_END-->
+          <div data-page-node-id="QA2semWg06HfFyR6sCVn6z" class="card-header"><span data-page-node-id="yw8eE7ygqVoISjG91XktiL" class="card-h-title"><!--pnid:AlFq2CpJfu5qQ6A02H06m7-->资产结构</span><span data-page-node-id="DSiJfffHxDmLJO1cQEDJFO" class="est-tag"><!--pnid:tTSoxxSkQHZmSQQHEdZOZ3-->预估 14:25</span></div><!--pnid:v5RxSopxFkeGTESzHU6rwo-->
+          <div data-page-node-id="8ROvU1Y9VemYySD2uq3DZw" style="display:flex; gap:6px; margin-bottom:13px"><!--pnid:ONgVdqCAqLhDT9BEcW6eMd-->
+            <span data-page-node-id="GP0baXIQCzKSywfET7vo3L" style="border-radius:999px; padding:4px 11px; font-size:11px; color:#666; background:#F2F3F5"><!--pnid:o3HmoJfmOHrSgpfhHtqO9A-->资产类型</span><!--pnid:qLjbBnNsEkVmCM5X3tZswx-->
+            <span data-page-node-id="2ybROClimIWrFbMLOCnLPy" style="font-size:11px; color:#666; background:#F2F3F5; border-radius:999px; padding:4px 11px"><!--pnid:fdpljrN8wZc5c90rNOVleC-->行业主题</span><!--pnid:vWAmE1i9qRB1IQasmQYDpX-->
+            <span data-page-node-id="cSkdJPQDOtdUMH0uDbgVEt" style="border-radius:999px; padding:4px 11px; font-size:11px; font-weight:500; color:#fff; background:#FB5C5F"><!--pnid:dQMHazQf1lolURL3KWB2Uq-->市场区域</span><!--pnid:qo7aUHY0NwtLqSzVsIv13D-->
           </div><!--pnid:QOJaDBZ2FmwmLUGOWx9wNo-->
-          <div data-page-node-id="ACC12_REGION_COVERAGE" style="margin-bottom:11px; padding:7px 10px; background:#F8FAFD; border-radius:6px; font-size:11px; color:#666"><!--pnid:ACC12_REGION_COVERAGE_PUID_001-->市场区域分析资产占账户 55.31%<span data-page-node-id="ACC12_REGION_TOOLTIP" class="region-tooltip"><!--pnid:ACC12_REGION_TOOLTIP_PUID_001-->!<span data-page-node-id="ACC12_REGION_TOOLTIP_TEXT" class="region-tooltip-text"><!--pnid:ACC12_REGION_TOOLTIP_PUID_002-->资产结构基于基金定期报告（2026年二季度）披露数据计算，市场区域分析基于穿透后的基金权益投资区域进行统计。QDII基金根据定期报告披露的各国家（地区）证券市场权益投资分布计算，非QDII基金根据A股及港股通投资比例计算。市场区域分析资产占账户比例，指纳入市场区域分析的资产金额占账户总资产的比例。计算结果采用基金账户权重与区域持仓比例加权汇总。由于基金持仓数据存在披露时滞，且计算基于一定模型假设，结果仅供参考，不构成投资建议。</span></span></div><!--pnid:ACC12_REGION_COVERAGE_PUID_002-->
           <div data-page-node-id="OE4K1FThaQ3GPR9AmD8qna" style="border-radius:3px; overflow:hidden; margin-bottom:14px; display:flex; height:14px"><div data-page-node-id="vuOnBiwWUCFFGWpU0wYJ3f" style="width:68.2%; background:#0080FF"></div><div data-page-node-id="wpXHwaSb1NMUyDH4simvsx" style="width:14.6%; background:#5DA8FF"></div><div data-page-node-id="1Fjlmz3aqOM3jG0QbVHiiU" style="background:#9CC9FF; width:10.4%"></div><div data-page-node-id="uWe4kAYSGBZ7aBEGF2ZXum" style="width:6.8%; background:#C7CDD6"></div></div><!--pnid:ccPHTvpiV0KfFDxvvwEW16-->
           <div data-page-node-id="0srYmrjayd847Gh9gHiIrS" style="display:flex; flex-direction:column; gap:10px"><!--pnid:eHos9dg5BkifvtEwEHrg5K-->
-            <div data-page-node-id="VpFdCuHFYkO9wLzQ9ND8xd" style="display:flex; justify-content:space-between"><span data-page-node-id="ahHocvQCwPW5BDRJB9W7pI" style="display:flex; align-items:center; gap:7px; font-size:13px; color:#333"><span data-page-node-id="F7JmmjTavdGWCxUR2FssCj" style="height:8px; border-radius:2px; background:#0080FF; width:8px"></span><!--pnid:7SvUY0eRCwdIOWJTAvqG1F-->A股</span><span data-page-node-id="uo739GWb2HaKCMxfGZVgro" style="font-size:13px"><b data-page-node-id="0sbjvveb4QaWj1Fo2nrbM9" class="num"><!--pnid:fXGsrIVaTTEdPVignSMXEu-->878,020</b><!--pnid:pOnDQDm9sCUdBAYirbq3po--> <span data-page-node-id="sxMk5hoU1Bw77xPyG519d7" style="margin-left:8px; color:#999; font-size:12px"><!--pnid:Krd5SxEnXbJgfvvbvEniHu-->68.2%</span></span></div><!--pnid:hUzZGVKxUyawPbEviiWE9D-->
+            <div data-page-node-id="VpFdCuHFYkO9wLzQ9ND8xd" style="display:flex; justify-content:space-between"><span data-page-node-id="ahHocvQCwPW5BDRJB9W7pI" style="display:flex; align-items:center; gap:7px; font-size:13px; color:#333"><span data-page-node-id="F7JmmjTavdGWCxUR2FssCj" style="height:8px; border-radius:2px; background:#0080FF; width:8px"></span><!--pnid:7SvUY0eRCwdIOWJTAvqG1F-->境内（A股/债券）</span><span data-page-node-id="uo739GWb2HaKCMxfGZVgro" style="font-size:13px"><b data-page-node-id="0sbjvveb4QaWj1Fo2nrbM9" class="num"><!--pnid:fXGsrIVaTTEdPVignSMXEu-->878,020</b><!--pnid:pOnDQDm9sCUdBAYirbq3po--> <span data-page-node-id="sxMk5hoU1Bw77xPyG519d7" style="margin-left:8px; color:#999; font-size:12px"><!--pnid:Krd5SxEnXbJgfvvbvEniHu-->68.2%</span></span></div><!--pnid:hUzZGVKxUyawPbEviiWE9D-->
             <div data-page-node-id="dRzKOpxRIfFEUSBAaK5Unj" style="display:flex; justify-content:space-between"><span data-page-node-id="vpSzEy9RbuDgiBNFqCS8O5" style="display:flex; align-items:center; gap:7px; font-size:13px; color:#333"><span data-page-node-id="3LlmcFhxw5OK3U8YIs4CAi" style="width:8px; height:8px; border-radius:2px; background:#5DA8FF"></span><!--pnid:MV6AWANp00cs8yXHxDjEcg-->港股</span><span data-page-node-id="3Xe9HE9jnQ5uZzekHAtxtO" style="font-size:13px"><b data-page-node-id="dfWyfGSwnONfVLg7ZCSBcz" class="num"><!--pnid:zAW16O2GJOLoGGi82muInl-->187,960</b><!--pnid:F8af3ztlk92LkmusdKYhBt--> <span data-page-node-id="OtTd0MHCfwiCShFOgFO4Hi" style="color:#999; font-size:12px; margin-left:8px"><!--pnid:krhDJ7HVG89cwW9iOm3dlp-->14.6%</span></span></div><!--pnid:I5Bv6ATJ6aD5BWnhGvezE6-->
-            <div data-page-node-id="Iy1xA7tl4PQRI5UDdfPWfK" style="display:flex; justify-content:space-between"><span data-page-node-id="RLXCHoZg6BGZFBTEpvjDG0" style="color:#333; display:flex; align-items:center; gap:7px; font-size:13px"><span data-page-node-id="NJlxG1kBaJAg7VLiHKEZED" style="height:8px; border-radius:2px; background:#9CC9FF; width:8px"></span><!--pnid:9xNtmbZyhFvdu5Eay7fyuc-->美股</span><span data-page-node-id="vkpQR8ynBjHgxhchyt2j0l" style="font-size:13px"><b data-page-node-id="k065QsgqRtbffEMKltYKFL" class="num"><!--pnid:dPRkPFGl5Tar4EEoRkLwPD-->133,880</b><!--pnid:h0DiIeCjGanY4pLD42qmCO--> <span data-page-node-id="u8l6tD8CmGhFNF2EX3WdZH" style="color:#999; font-size:12px; margin-left:8px"><!--pnid:BYus74QfKdAAX3sVhFgaeL-->10.4%</span></span></div><!--pnid:D4xitEZ3msvTX4Olfz6CWv-->
-            <div data-page-node-id="2Hj9OXSaIWekyn25cucHLC" style="display:flex; justify-content:space-between"><span data-page-node-id="iqIzqQCLU44dkGazlxCYgB" style="display:flex; align-items:center; gap:7px; font-size:13px; color:#333"><span data-page-node-id="JLvjoFj7Dy2xU5YIZAxKoE" style="width:8px; height:8px; border-radius:2px; background:#C7CDD6"></span><!--pnid:ueKToUuXZV8Sgl0UG25IeO-->其他</span><span data-page-node-id="5bACYR2raegAc7pQ6A5kIn" style="font-size:13px"><b data-page-node-id="y9km66TjrpPGBCEsMlvorN" class="num"><!--pnid:vUk4d8PnDRZpTsYcMSj7Jf-->87,560</b><!--pnid:dLacDJ8jUyE16he2FIHBTD--> <span data-page-node-id="6Fd5EFc59UzrcPI9LAQnBx" style="color:#999; font-size:12px; margin-left:8px"><!--pnid:3zSjZ3GqvsA5zJbY9KNaOc-->6.8%</span></span></div><!--pnid:fydWiJD2ZltkAcGdDdY1p8-->
+            <div data-page-node-id="Iy1xA7tl4PQRI5UDdfPWfK" style="display:flex; justify-content:space-between"><span data-page-node-id="RLXCHoZg6BGZFBTEpvjDG0" style="color:#333; display:flex; align-items:center; gap:7px; font-size:13px"><span data-page-node-id="NJlxG1kBaJAg7VLiHKEZED" style="height:8px; border-radius:2px; background:#9CC9FF; width:8px"></span><!--pnid:9xNtmbZyhFvdu5Eay7fyuc-->海外（美股/全球）</span><span data-page-node-id="vkpQR8ynBjHgxhchyt2j0l" style="font-size:13px"><b data-page-node-id="k065QsgqRtbffEMKltYKFL" class="num"><!--pnid:dPRkPFGl5Tar4EEoRkLwPD-->133,880</b><!--pnid:h0DiIeCjGanY4pLD42qmCO--> <span data-page-node-id="u8l6tD8CmGhFNF2EX3WdZH" style="color:#999; font-size:12px; margin-left:8px"><!--pnid:BYus74QfKdAAX3sVhFgaeL-->10.4%</span></span></div><!--pnid:D4xitEZ3msvTX4Olfz6CWv-->
+            <div data-page-node-id="2Hj9OXSaIWekyn25cucHLC" style="display:flex; justify-content:space-between"><span data-page-node-id="iqIzqQCLU44dkGazlxCYgB" style="display:flex; align-items:center; gap:7px; font-size:13px; color:#333"><span data-page-node-id="JLvjoFj7Dy2xU5YIZAxKoE" style="width:8px; height:8px; border-radius:2px; background:#C7CDD6"></span><!--pnid:ueKToUuXZV8Sgl0UG25IeO-->货币现金</span><span data-page-node-id="5bACYR2raegAc7pQ6A5kIn" style="font-size:13px"><b data-page-node-id="y9km66TjrpPGBCEsMlvorN" class="num"><!--pnid:vUk4d8PnDRZpTsYcMSj7Jf-->87,560</b><!--pnid:dLacDJ8jUyE16he2FIHBTD--> <span data-page-node-id="6Fd5EFc59UzrcPI9LAQnBx" style="color:#999; font-size:12px; margin-left:8px"><!--pnid:3zSjZ3GqvsA5zJbY9KNaOc-->6.8%</span></span></div><!--pnid:fydWiJD2ZltkAcGdDdY1p8-->
           </div><!--pnid:1NkseDwMaRQwNlnNxTwWWc-->
-          <div data-page-node-id="Ege6oX6TKkcHukBYc8AFaG" class="disc"><!--pnid:67EFTxgH69jTBRPdjZASQn-->根据基金定期报告分析基金所持有的底层资产，对FOF基金暂未做二次穿透，不包含专户产品。</div><!--pnid:ZcT3J3ACIJYg7oAiYQOeMw-->
+          <div data-page-node-id="Ege6oX6TKkcHukBYc8AFaG" class="disc"><!--pnid:67EFTxgH69jTBRPdjZASQn-->按底层资产投向市场归集，QDII 按实际投向区域计，港股通持仓计入港股；外部导入资产未纳入穿透，仅展示分布情况。</div><!--pnid:ZcT3J3ACIJYg7oAiYQOeMw-->
         </div><!--pnid:SPWVs1g6pr4U9fF9c3Dc8k-->
       </div></div><!--pnid:DCn03bbgBGoYLM6KFHEhpQ-->
     </div><!--pnid:zayhUBbg6NrE3uSgv3pTEg-->
@@ -1776,8 +1432,8 @@ body {
   <div data-page-node-id="TRFPZcgEDPVfs5UQEBCtGR" class="annot"><!--pnid:8wWl2kLXLGDl2v1PDluGre-->
     <div data-page-node-id="v1e5kSs2lNoZpQCWvCTHgl" class="annot-title"><!--pnid:5Qk5YBje3JAkRsuSA3MBGw-->字段与交互逻辑</div><!--pnid:DkyncmmmLrMZ9bpu7R2Q4g-->
     <ul data-page-node-id="Fb7AFGhLONh0cf8Jv5K9fr"><!--pnid:PT6H4KEY3GOoD8hqvIoxoJ-->
-      <li data-page-node-id="0tHVxIlSQE4CecJrTDyZOf"><strong data-page-node-id="DF9iexGZK792Z8CI4NT3U0"><!--pnid:RxDaKsRA4NBTc1j6pMntU8-->四维度切换</strong><!--pnid:AWJFUqq01c8hku22w8aZ6G-->：资产类型（默认）/基金类型/行业主题/市场区域，横向胶囊，切换即换数据</li><!--pnid:iDXzYQ97fC0MwnsBkFwjcr-->
-      <li data-page-node-id="4laALCj7ZVTywQWaZndVz9"><strong data-page-node-id="b1bQETnU1XwbfywBIKWbby"><!--pnid:uPVk8Ys5Ms5dO27blzR9lD-->行业主题特殊处理</strong><!--pnid:1etN6CsuBx8bGncBsBTocz-->：Top5+"其他N个行业"合并+展开全部；穿透不纳入外部资产</li><!--pnid:MmXCKkIY3YmG80z578Ed1F-->
+      <li data-page-node-id="0tHVxIlSQE4CecJrTDyZOf"><strong data-page-node-id="DF9iexGZK792Z8CI4NT3U0"><!--pnid:RxDaKsRA4NBTc1j6pMntU8-->五维度切换</strong><!--pnid:AWJFUqq01c8hku22w8aZ6G-->：资产类型（默认）/行业主题/市场区域/产品类型/投资方式，横向胶囊，切换即换数据</li><!--pnid:iDXzYQ97fC0MwnsBkFwjcr-->
+      <li data-page-node-id="4laALCj7ZVTywQWaZndVz9"><strong data-page-node-id="b1bQETnU1XwbfywBIKWbby"><!--pnid:uPVk8Ys5Ms5dO27blzR9lD-->行业主题特殊处理</strong><!--pnid:1etN6CsuBx8bGncBsBTocz-->：分类标准下拉（申万默认/中信/Wind概念，不平铺标签避免跨行）；Top7+"其他N个行业"合并+展开全部</li><!--pnid:MmXCKkIY3YmG80z578Ed1F-->
       <li data-page-node-id="Aax5HsfwRTsqGt6tjB4GX5"><strong data-page-node-id="xoktKpNTow7Gjya2idRIOT"><!--pnid:VfEYQbEFAGzNNILXBfsH5h-->只陈述不判断（红线）</strong><!--pnid:5JHhZQflzt00BlHHE2u0Uq-->：只展示占比事实，绝无"偏高/过于集中/预警"判断或警示色；"这结构风险如何"追问路由风险评估</li><!--pnid:A6XT89Yfc2GhszSxhAyEIX-->
       <li data-page-node-id="4bA5FafudxWobl1FjKFLJS"><strong data-page-node-id="X6IhgHcFxfuLMrMoI19LnE"><!--pnid:QQzA9EKH36J3iMjZlsaNHQ-->与总资产卡区别</strong><!--pnid:yfz0RdEYnmo83D9Xh6ZCkK-->：总资产卡按持有形态不穿透粗粒度；本卡多维+穿透细粒度，口径不同</li><!--pnid:uCozIz8EfjnqFS88fHcnHN-->
     </ul><!--pnid:3iwkq9KBWRcuHDu2kBcS5j-->
@@ -1786,14 +1442,15 @@ body {
     <table data-page-node-id="ra2Mu2qlwpBOFVZegpGBkL" class="param-table"><!--pnid:XVAyV2DkCDtGASMdF3SRJm-->
       <thead data-page-node-id="jC9IhDXGMfAuz7PQw8hLkU"><tr data-page-node-id="emFPIj0AfyGEcLfjBiKhIV"><th data-page-node-id="T60eQmXkiZPosq5kNvcKer"><!--pnid:VDOzjgfFImrCTbMh0uCmwk-->卡片元素</th><th data-page-node-id="qgIwnL1zTJo1m8InOXebhC"><!--pnid:cKfyKo43oNGuLCrRrvEJ1O-->MCP 字段</th><th data-page-node-id="SGjQKJtUK5JkozXwCBBzsH"><!--pnid:FrtZzv3A3Dk6qFyuuD9co8-->类型</th><th data-page-node-id="K9DZK6KXHZPY0EKBurpDjy"><!--pnid:XLoK93FpmTY1NzmAL1copc-->说明</th></tr></thead><!--pnid:aysVXX7oEbMLQQYuzARJHD-->
       <tbody data-page-node-id="L4xvSOtcRGgeZCUEOZPX8i"><!--pnid:9kc2qmbtTcOfc0dc2Z48Kz-->
-        <tr data-page-node-id="r5REpab9WyFYPPmd1s1YHO"><td data-page-node-id="gUZn2lGdEdJRS9rkK8hmCK"><!--pnid:YkxdwbGOOAFtT6JjHTM37m-->structure_dimension</td><td data-page-node-id="qSSkRlbtHzeclAvlpUF7fK"><!--pnid:T86GDVuPTBlxVVNt2Urp3M-->入参</td><td data-page-node-id="Y47goAl1La7CMG0ABBWyR2"><!--pnid:0cSYRaq9rvbNJ3zGElErrh-->asset_type/fund_type/industry/region</td><td data-page-node-id="fqt0vNfWZmruov9IvoZlHn"><!--pnid:pj7eRu201GcS9ZfeJuar5Z-->四维度</td></tr><!--pnid:skC9Klw9EHCzTezxeVg3GL-->
-        <tr data-page-node-id="5cEE02mP1o7gNEhmHGZTeJ"><td data-page-node-id="z3WhCdeJxgRjmDHGV5oLQF"><!--pnid:ha4AleanYvgpYrPJ37E2H8-->classification_system</td><td data-page-node-id="aNoF3APvUIbeoIPmaQaZv5"><!--pnid:XvTkU5BkRS9kUEN1BejjDn-->入参（行业主题）</td><td data-page-node-id="MxRWjB7OqzhBjUkQ6xujLm"><!--pnid:UsGAvZOJWzZjY1KEgCb0q3-->-</td><td data-page-node-id="ogoU3a3C45vzDpqEMLjyLD"><!--pnid:f5lfIvdDIEvRLYqeg9pepK-->行业主题暂不支持切换分类标准，默认申万行业</td></tr><!--pnid:5CR6C4ADOwAwAoVG6uYWDX-->
+        <tr data-page-node-id="r5REpab9WyFYPPmd1s1YHO"><td data-page-node-id="gUZn2lGdEdJRS9rkK8hmCK"><!--pnid:YkxdwbGOOAFtT6JjHTM37m-->structure_dimension</td><td data-page-node-id="qSSkRlbtHzeclAvlpUF7fK"><!--pnid:T86GDVuPTBlxVVNt2Urp3M-->入参</td><td data-page-node-id="Y47goAl1La7CMG0ABBWyR2"><!--pnid:0cSYRaq9rvbNJ3zGElErrh-->asset_type/industry/region/product/method</td><td data-page-node-id="fqt0vNfWZmruov9IvoZlHn"><!--pnid:pj7eRu201GcS9ZfeJuar5Z-->五维度</td></tr><!--pnid:skC9Klw9EHCzTezxeVg3GL-->
+        <tr data-page-node-id="5cEE02mP1o7gNEhmHGZTeJ"><td data-page-node-id="z3WhCdeJxgRjmDHGV5oLQF"><!--pnid:ha4AleanYvgpYrPJ37E2H8-->classification_system</td><td data-page-node-id="aNoF3APvUIbeoIPmaQaZv5"><!--pnid:XvTkU5BkRS9kUEN1BejjDn-->入参（行业主题）</td><td data-page-node-id="MxRWjB7OqzhBjUkQ6xujLm"><!--pnid:UsGAvZOJWzZjY1KEgCb0q3-->sw/citics/wind</td><td data-page-node-id="ogoU3a3C45vzDpqEMLjyLD"><!--pnid:f5lfIvdDIEvRLYqeg9pepK-->分类标准下拉</td></tr><!--pnid:5CR6C4ADOwAwAoVG6uYWDX-->
         <tr data-page-node-id="VRN6LTkeOnUkyQaSE54154"><td data-page-node-id="u5AhdNwMyqOeRdfjuTETXO"><!--pnid:Ws54IYX1jQHfWujJONCBoL-->items[]</td><td data-page-node-id="DZBxn7feAD5Eyj85w5PuWQ"><!--pnid:zf9x254G98jc3woqhER6Of-->asset_structure.items</td><td data-page-node-id="3cFJEXICO23oF9KVtRIW2g"><!--pnid:DqzGwNYZ6sQehhwHkCYBjH-->array{name,amount,ratio}</td><td data-page-node-id="dYh7oei9FCN62bO59LVvlh"><!--pnid:9CLfnzqGHB4EBIEXslyEDt-->占比条+明细</td></tr><!--pnid:FN3LLEVtzOiFu9b0tOJOgr-->
         <tr data-page-node-id="E9LiO13qjT0AsEGEySDZrY"><td data-page-node-id="IuIsFwPeD0c4rtIPYj6Y8a"><!--pnid:Kf29o2Kqqi4ySnCheJRSnx-->lookthrough_note</td><td data-page-node-id="3hkB0fHCDMzn0XP8Qf3CFX"><!--pnid:x9CpciBPTE9vHt5crVLcbZ-->data_basis_note</td><td data-page-node-id="UP8eZIW4mMtRUxoYrAI09X"><!--pnid:MoTIlmc5uIiiiauvVXodeL-->string</td><td data-page-node-id="Ii7QZB0jD9KudE5Glj8Tqk"><!--pnid:614t5zKaBrwGrIVEnjvTIh-->穿透口径，随维度动态</td></tr><!--pnid:0aQyo6wGFPx2na5r6n1Nvz-->
       </tbody><!--pnid:8CaBj9MctLthv9U4TGjO6k-->
     </table><!--pnid:tqKUp63ECtwfjR0hOI1n16-->
   </div><!--pnid:MFLdATATRDInNnmy0TAoHK-->
 </section>
+
 <section id="acc13" data-page-node-id="iEsOS2La92hZhIIN9HVUvG" class="section"><!--pnid:dxG8fWZMitq50f9abqKEdB-->
   <div data-page-node-id="lNPrUEBIhKs8mFi1SLdfTa" class="section-header"><!--pnid:v4P7tdu9UjMtq4FVOY3t4t-->
     <div data-page-node-id="Ut1nwE91e4oV6vWsM7fasx" class="section-id"><!--pnid:jsJz9yc8ZyJ6u4VXNkkCNt-->ACC-13 · return_summary_card</div><!--pnid:yQdBFbQhOcIAYpZRUUs8oV-->
@@ -1804,16 +1461,9 @@ body {
       <span data-page-node-id="vCcTK88fwzPra5ikvDOL68" class="tag tag-new"><!--pnid:jHv0SQHoCSxhFxsnTXK7yy-->V2 重做</span><!--pnid:GAyQBAQouDucQIc9SYiPVG-->
     </div><!--pnid:dh9Nib7FVgQNgmTH62cJq1-->
     <div data-page-node-id="eFlTAbYv1nVzOAghsGJ0RM" class="section-desc"><!--pnid:HDdFC2hhz4mH4b7noRSZV4-->
-      触发：用户问"我赚了多少 / 收益怎么样 / 跑赢大盘了吗"（最高频）。<!--pnid:ICBFrSEmOFIRRAow5Vf87y-->
+      触发：用户问"我赚了多少 / 收益怎么样 / 跑赢大盘了吗"（最高频）。<br data-page-node-id="3E8GTFrFYIkEdUC7h9rBur"><!--pnid:ICBFrSEmOFIRRAow5Vf87y-->
+      <strong data-page-node-id="AVbkjxR4Pd0uN641ydsWuU"><!--pnid:jkvHV0HUHLk4nLyGZNiouE-->V2 三处重做</strong><!--pnid:W7chDPSgngJohECDct9yn8-->：① 口径分两块——上方固定"累计/持有收益"、下方"区间收益"随 tab 变，两块各自独立标清口径，<strong data-page-node-id="7EDZ0CX1WId1CnAfinhZMY"><!--pnid:OWpPIvEdheOOFxrea5KiNF-->解决上下对不齐</strong><!--pnid:j5VPqLBR2zM7usm896s6S1-->；② 走势图专业化——面积填色折线 + 三线对比（我的/沪深300/可选基准）+ 顶部极值点标注 + 买卖点开关；③ 基准可下拉切换。<strong data-page-node-id="5pXZiww2RNr4zNeuXLD2HI"><!--pnid:ys8VgbBErS9djCpcGUu3ub-->去除"同期基民对比"（合规不允许）。</strong><!--pnid:sxRWGybKcpMbuEPIzEuBcq-->数据源 <code data-page-node-id="KhIvH9XI3BWxDhfG8UgcIB"><!--pnid:oCD1JvOz8Xxg22unYDc2tF-->get_return_performance</code><!--pnid:Gpz2Zr2bhOKujlZhgubzTy-->。
     </div><!--pnid:cYE1ikC0Qy5pKsizKFwBG9-->
-
-    <div data-page-node-id="ACC13_CHANGE_BOX" class="annot"><!--pnid:ACC13_CHANGE_PUID_001-->
-      <div data-page-node-id="ACC13_CHANGE_TITLE" class="annot-title"><!--pnid:ACC13_CHANGE_PUID_002-->变动记录</div><!--pnid:ACC13_CHANGE_PUID_003-->
-      <ul data-page-node-id="ACC13_CHANGE_LIST"><!--pnid:ACC13_CHANGE_PUID_004-->
-        <li data-page-node-id="ACC13_CHANGE_ITEM_2"><strong data-page-node-id="ACC13_CHANGE_LABEL_2"><!--pnid:ACC13_CHANGE_PUID_010-->V2 重做说明：</strong><!--pnid:ACC13_CHANGE_PUID_011-->V2 三处重做：① 口径分两块——上方固定"累计/持有收益"、下方"区间收益"随 tab 变，两块各自独立标清口径，解决上下对不齐；② 走势图专业化——面积填色折线 + 三线对比（我的/沪深300/可选基准）+ 顶部极值点标注 + 买卖点开关；③ 基准可下拉切换。去除"同期基民对比"（合规不允许）。数据源 get_return_performance。</li><!--pnid:ACC13_CHANGE_PUID_012-->
-        <li data-page-node-id="ACC13_CHANGE_ITEM_1"><strong data-page-node-id="ACC13_CHANGE_LABEL_1"><!--pnid:ACC13_CHANGE_PUID_005-->（0720）：</strong><!--pnid:ACC13_CHANGE_PUID_006-->盈利态删掉买卖点标注及选项。</li><!--pnid:ACC13_CHANGE_PUID_007-->
-      </ul><!--pnid:ACC13_CHANGE_PUID_008-->
-    </div><!--pnid:ACC13_CHANGE_PUID_009-->
   </div><!--pnid:l2H0y7AZSFX0YeJBmThTd3-->
 
   <div data-page-node-id="pm9gD9qxESRoLUa4r2hXgI" class="states-grid"><!--pnid:7qT8a1LxwelhIQ76rNwujM-->
@@ -1860,9 +1510,17 @@ body {
                 <polyline data-page-node-id="PKrxhpJBexPRH68v7pJIgW" fill="none" stroke="#5B8FF9" stroke-width="1.5" points="0,52 40,70 75,38 110,30 150,52 195,58 235,82 276,62"/><!--pnid:rcTItG4dEzQCpBlmhPBbXJ-->
                 <!--pnid:dxCcRhUxfBdySFg5HYORGq--><!-- 顶部极值标注 --><!--pnid:Fcap0esM7C2mzmJGsxI4Ci-->
                 <circle data-page-node-id="Kml1CfSdwQL3v7DtYu2NDA" cx="110" cy="16" r="2.5" fill="#FB6340"/><!--pnid:Uwbqk1vkUrCb6wHjiMSAYj-->
+                <!--pnid:6tAIJm0PhB8cNuVaazkwO3--><!-- 买卖点 --><!--pnid:K93lQ5n0nxWgJmcsXGn5bu-->
+                <circle data-page-node-id="Wdg4duSLOIY6sL0IcgCQ2W" fill="#F4333C" stroke="#fff" stroke-width="1" cx="40" cy="58" r="3"/><!--pnid:BLa5sSEWjnue2CfPCofK98-->
+                <circle data-page-node-id="8FGkTOXnSz3QE3Fj7Ukgll" stroke-width="1" cx="150" cy="40" r="3" fill="#22A875" stroke="#fff"/><!--pnid:bEhUcvorgcyXJcFWVG1Nhr-->
+                <circle data-page-node-id="FqBXfF4oBaxsVtcVVyZVGr" stroke="#fff" stroke-width="1" cx="235" cy="78" r="3" fill="#F4333C"/><!--pnid:78Gc4AvTheBVH6sEMt5GVy-->
               </svg><!--pnid:KtbRMOGIYxl6SlJ4YKJu1O-->
               <div data-page-node-id="Aeuba13OuGej10Ucvt6FVj" style="position:absolute; top:8px; left:38%; font-size:9px; color:#888"><!--pnid:YbWKoMO4dj7yrDpoOrPRj3-->峰值 +1.82%</div><!--pnid:jEE29eZuGrWJKMj2CgzR3f-->
             </div><!--pnid:tW9ZPUmyHCMCE9rGqe6n4H-->
+            <div data-page-node-id="VfZJsUgvtCymfB2QfL5vFz" style="display:flex; align-items:center; justify-content:space-between; margin-top:6px"><!--pnid:s6VwmjzYeIPBiF03IMZjtx-->
+              <div data-page-node-id="gixF2AEoHApJoB3xOmH6HT" style="font-size:9px; color:#999; display:flex; gap:7px"><span data-page-node-id="tNpEXnIeOqrsuN3IJFCTyG" style="align-items:center; gap:2px; display:flex"><span data-page-node-id="c5k2md1DDsls9EJZdiYxOi" style="width:7px; height:7px; border-radius:50%; background:#F4333C"></span><!--pnid:UROc2a2Ft7Xk3Zyc1zgogg-->买</span><span data-page-node-id="RBkwsVyeRhM8aG9svpSNTO" style="display:flex; align-items:center; gap:2px"><span data-page-node-id="fbRTk0M1PVHCW27VC7Fbxn" style="border-radius:50%; background:#22A875; width:7px; height:7px"></span><!--pnid:UmEw8DhvuyIv0q92HUsJ0P-->卖</span></div><!--pnid:3icRHyzDeTaTlNYY6yXiBE-->
+              <span data-page-node-id="AxqDMpn2vYolTPuidt92b6" style="display:flex; align-items:center; gap:4px; font-size:9.5px; color:#999"><!--pnid:vy1rxLhIu7IJG2scWWCEnV-->买卖点 <span data-page-node-id="uVkXKfSewag8MHDmhh1Gi5" style="width:26px; height:14px; border-radius:999px; background:#FB5C5F; position:relative; display:inline-block"><span data-page-node-id="Nv18QJgHuwZp8U59EXa0Gd" style="top:1px; width:12px; height:12px; border-radius:50%; background:#fff; position:absolute; right:1px"></span></span></span><!--pnid:OFhCtlAxWqwF4joAR3GAWE-->
+            </div><!--pnid:olXkfq0LFAlBWgYJ9x5c53-->
           </div><!--pnid:4pejim2jinPioKC4cjHNsX-->
 
           <!--pnid:GZav4EprPRIIdzYUtGRErH--><!-- 区间 tab --><!--pnid:PDUn3KDDzIkeg9UkxhD2BU-->
@@ -1969,6 +1627,7 @@ body {
     </table><!--pnid:ntLYglUdUvJIESrGg4qfK5-->
   </div><!--pnid:SzsYreHtuvGCy7ZXnofoXn-->
 </section>
+
 <section id="acc14" data-page-node-id="IKVWW2LU5NG961Ko6BNoHv" class="section"><!--pnid:4u1NK4qTQ5ZO1Usbx7sFs2-->
   <div data-page-node-id="08byJqIT0QPYE1h9sOKrjZ" class="section-header"><!--pnid:yFok2YAVE2VGlAwTnmLYk4-->
     <div data-page-node-id="ysAfbMUynpDb32POLVoBRg" class="section-id"><!--pnid:FpPpVQYKeLGBASvDhw5JSx-->ACC-14 · return_calendar_card</div><!--pnid:Jx0dWe0YOsnkFq1yut2Gw5-->
@@ -2064,6 +1723,7 @@ body {
     </table><!--pnid:QhLIunLXOPyG17BBeTTQ4v-->
   </div><!--pnid:B26yfeDcPBLDNiTyBKZHBb-->
 </section>
+
 <section id="acc15" data-page-node-id="W7MXqEFAHr5PsFtqqds6QE" class="section"><!--pnid:mTpMSqTjemGeXm2NIhqBKs-->
   <div data-page-node-id="peegKqEXL6L1wlHeMmK2be" class="section-header"><!--pnid:ymm1bSmTT5CHP1hsUreLGj-->
     <div data-page-node-id="oomUNaPxG1CzzhPspHVM6j" class="section-id"><!--pnid:qIeINowjRs0QHTRRiX60HG-->ACC-15 · return_attribution_card</div><!--pnid:wKyEXOxcykNfCtaNQJZkkP-->
@@ -2143,6 +1803,7 @@ body {
     </table><!--pnid:YjCbqqCEIWj0OAfjZxGni9-->
   </div><!--pnid:fJo8D22xCXOo2ytTa5bBt5-->
 </section>
+
 <section id="acc16" data-page-node-id="Hy9yC1UN9Whn0icIMeiGBt" class="section"><!--pnid:BOK3xRp9pbnPqpWOYTB0JJ-->
   <div data-page-node-id="FbbOYcNDhKBFnEBnH6Wl5E" class="section-header"><!--pnid:Pn41L1Xbr8Qg2458C0Iei6-->
     <div data-page-node-id="c3ZNdI4GpPuyuc2PDBnI29" class="section-id"><!--pnid:W3RrEGgtT2HXBjxmBxyuDD-->ACC-16 · return_composition_card</div><!--pnid:S3Sbr6FjtetYNiVIu9x0eJ-->
@@ -2232,6 +1893,7 @@ body {
     </table><!--pnid:VV0Wi6GbBkkmET3NhRCbi1-->
   </div><!--pnid:u2gVxstgAhWIJW6ObeM5GC-->
 </section>
+
 <section id="acc17" data-page-node-id="9D2ZVPdqJvHgVU7GtAoYs3" class="section"><!--pnid:ZZNC0mVKLN6jTlLhLdAzML-->
   <div data-page-node-id="SJoQs9IGOPsBqgEkuRcelM" class="section-header"><!--pnid:Hyqt1sKcCLGsCzaFz99IMC-->
     <div data-page-node-id="JvZW39VmR1LRPK2EsRGpFS" class="section-id"><!--pnid:LBycoDjBqymtN9wVcKuBnM-->ACC-17 · interval_attribution_card</div><!--pnid:jNpKN4yi6DI3SDjkcXPsNG-->
@@ -2488,59 +2150,7 @@ body {
     </table><!--pnid:kUh2J9XKvr4cyjLGr0TGQn-->
   </div><!--pnid:yirKyWdHDk3nkK60bxQWNq-->
 </section><!--pnid:QhHknZv9xi7KGN9yJkrC4M-->
-
-<script data-page-node-id="OW6D1g7hiC0ouuFXLue9Sb" data-pnid-children="63ADa5REmrlOeXPP0xiEzm">
-/* 收益日历 demo 数据渲染 */
-(function(){
-  var cal=document.getElementById('acc07cal');
-  if(cal){
-    function fmt(v){ if(v===null)return ''; if(v===0)return '0'; var s=v>0?'+':'−'; var a=Math.abs(v); if(a>=10000)return s+(a/10000).toFixed(1)+'万'; return s+a; }
-    var cells=[{d:1,v:520},{d:2,v:-340},{d:3,v:880},{d:4,v:210},{d:5,v:-120},{d:6,v:6},{d:7,v:6},{d:8,v:1320},{d:9,v:640},{d:10,v:-760},{d:11,v:430},{d:12,v:1180},{d:13,v:6},{d:14,v:6},{d:15,v:-420},{d:16,v:760},{d:17,v:1840,sel:true},{d:18,v:380},{d:19,v:-428},{d:20,v:6},{d:21,v:6},{d:22,v:560},{d:23,v:1240},{d:24,v:320},{d:25,v:-210},{d:26,v:690},{d:27,v:6},{d:28,v:6},{d:29,v:840},{d:30,v:280},{e:1},{e:1},{e:1},{e:1},{e:1}];
-    cells.forEach(function(c){
-      var cell=document.createElement('div');
-      if(c.e){ cell.style.height='32px'; cal.appendChild(cell); return; }
-      var bg,fg,bd='';
-      if(c.v===null||c.v===0){ bg='#F2F3F5'; fg='#B8BCC2'; }
-      else if(c.v>0){ bg='#FDE9EA'; fg='#D9342C'; }
-      else { bg='#E6F5EE'; fg='#1A9D6E'; }
-      if(c.sel) bd='box-shadow:0 0 0 2px #FB5C5F;';
-      cell.style.cssText='height:32px;border-radius:5px;display:flex;flex-direction:column;align-items:center;justify-content:center;background:'+bg+';'+bd;
-      cell.innerHTML='<div style="font-size:9px;color:#999;line-height:1;">'+c.d+'</div><div style="font-size:9px;font-weight:700;font-family:DIN Alternate,sans-serif;line-height:1.3;color:'+fg+';">'+fmt(c.v)+'</div>';
-      cal.appendChild(cell);
-    });
-  }
-  var mcal=document.getElementById('acc07mcal');
-  if(mcal){
-    function fmt2(v){ if(v===null)return '—'; var s=v>0?'+':'−'; var a=Math.abs(v); if(a>=10000)return s+(a/10000).toFixed(1)+'万'; return s+a; }
-    var months=[{m:'1月',v:8200},{m:'2月',v:-15200},{m:'3月',v:23400},{m:'4月',v:-9800},{m:'5月',v:22140},{m:'6月',v:9860,sel:true},{m:'7月',v:null},{m:'8月',v:null},{m:'9月',v:null},{m:'10月',v:null},{m:'11月',v:null},{m:'12月',v:null}];
-    months.forEach(function(c){
-      var cell=document.createElement('div'); var bg,fg,bd='';
-      if(c.v===null){ bg='#F7F8F9'; fg='#C8CBD0'; }
-      else if(c.v>0){ bg='#FDE9EA'; fg='#D9342C'; }
-      else { bg='#E6F5EE'; fg='#1A9D6E'; }
-      if(c.sel) bd='box-shadow:0 0 0 2px #FB5C5F;';
-      cell.style.cssText='height:50px;border-radius:7px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;background:'+bg+';'+bd;
-      cell.innerHTML='<div style="font-size:11px;color:#888;">'+c.m+'</div><div style="font-size:12px;font-weight:700;font-family:DIN Alternate,sans-serif;color:'+fg+';">'+fmt2(c.v)+'</div>';
-      mcal.appendChild(cell);
-    });
-  }
-  var ycal=document.getElementById('acc07ycal');
-  if(ycal){
-    function fmt3(v){ if(v===null)return '—'; if(v===0)return '0.00'; var s=v>0?'+':'−'; var a=Math.abs(v); if(a>=10000)return s+(a/10000).toFixed(1)+'万'; return s+a; }
-    var years=[{y:'2020',v:5558},{y:'2021',v:-16918},{y:'2022',v:-6725},{y:'2023',v:-69},{y:'2024',v:117},{y:'2025',v:352},{y:'2026',v:45600,sel:true}];
-    years.forEach(function(c){
-      var cell=document.createElement('div'); var bg,fg,bd='';
-      if(c.v===null){ bg='#F7F8F9'; fg='#C8CBD0'; }
-      else if(c.v>0){ bg='#FDE9EA'; fg='#D9342C'; }
-      else { bg='#E6F5EE'; fg='#1A9D6E'; }
-      if(c.sel) bd='box-shadow:0 0 0 2px #FB5C5F;';
-      cell.style.cssText='height:50px;border-radius:7px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;background:'+bg+';'+bd;
-      cell.innerHTML='<div style="font-size:11px;color:#888;">'+c.y+'年</div><div style="font-size:12px;font-weight:700;font-family:DIN Alternate,sans-serif;color:'+fg+';">'+fmt3(c.v)+'</div>';
-      ycal.appendChild(cell);
-    });
-  }
-})();
-</script><!--pnid:H8rbc5W9NG7IFftLw98tgX-->
-</div><!--pnid:OcBE5bT150AR4OXSARx3UX-->
-</body><!--pnid:AXbMXSqyaMxxNGfyJo691E-->
-</html><!--pnid:8LoFlgyQO8thndj8HGQkGF-->
+</div>
+<script src="assets/js/calendars.js"></script>
+</body>
+</html>

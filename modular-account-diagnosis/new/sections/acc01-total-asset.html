@@ -1,0 +1,1026 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../assets/css/account-diagnosis.css" />
+    <style>
+      body {
+        padding: 20px 16px !important;
+        background: transparent !important;
+        overflow: hidden;
+      }
+      .main-content {
+        margin-left: 0 !important;
+      }
+      .section {
+        max-width: none !important;
+        margin: 0 !important;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="main-content">
+      <section
+        id="acc01"
+        data-page-node-id="CfeWNBgNK2ZFRu9DZoYe2q"
+        class="section"
+      >
+        <!--pnid:BTj0DpxbSQOcPLzjW64c99-->
+        <div data-page-node-id="5vRHztn32siPGk3LPogtd6" class="section-header">
+          <!--pnid:zfzmubf2hEf7Z46wQD4sNu-->
+          <div data-page-node-id="fFfcuCW15GaclGu7EuCZhb" class="section-id">
+            <!--pnid:JxUz1HBGZHrjvRDftEupOg-->ACC-01 · account_total_asset_card
+          </div>
+          <!--pnid:FRjbN89IXwmOL0zTy7x3fd-->
+          <div data-page-node-id="TEAZEtHjiyZCYAIZbfA5BD" class="section-title">
+            <!--pnid:7nW1Jw3j3mnTzzZ7KC7TgQ-->账户总资产卡
+          </div>
+          <!--pnid:7tZ5YkJlChmsnNncjm1FCA-->
+          <div data-page-node-id="sHx5z2PxZB2zWOamh1wAY9" class="section-tags">
+            <!--pnid:vTcsjLP4XtTbXTBR9CF1Jz-->
+            <span data-page-node-id="gHQntBtc7hEZstdqulGoLa" class="tag tag-p0"
+              ><!--pnid:pup4TFztZdHAjHEbUDpmg0-->P0</span
+            ><!--pnid:DasrfbGSuvuSTT1MkCt6lk-->
+            <span data-page-node-id="7b7mol9ZL1XbEMkHq1ss5H" class="tag tag-sl"
+              ><!--pnid:P2cEzfLyADPksVfn0w22LU-->账户诊断 · 资产总览</span
+            ><!--pnid:11L7poE4Mn04misKkkADrh-->
+          </div>
+          <!--pnid:p78YBwaRFgkU47iZh0zTXG-->
+          <div data-page-node-id="fENCuUXuIGYWeEWFiZCqxd" class="section-desc">
+            <!--pnid:4cTCH8KWSUzll3mL6NOQms-->
+            触发：用户问"我有多少钱 / 账户总资产 / 我的钱构成 /
+            某个账户怎么样"。账户诊断的<strong
+              data-page-node-id="FPRQ9gYDahTk3j65eWlPAf"
+              ><!--pnid:WNP33sAnQwpPRRtSoQB1eC-->顶层入口卡</strong
+            ><!--pnid:3meSzM5szRGqAWtDAVsojp-->——回答总额 + 收益 +
+            按账户类型的构成，并作为五类账户详情的下钻入口。<br
+              data-page-node-id="HqpAqVr69lYH4s1mhW1hjq"
+            /><!--pnid:VUXzCJWHeDlCGULR8r6pK0-->
+            形态：头部总市值（估值状态）+ 收益三栏（今日预估/持仓/累计）+
+            资产构成五格（货币基金/基金/投顾/组合/专户，<strong
+              data-page-node-id="xeqi8B0yHSAWfhgBD2vm9E"
+              ><!--pnid:RGBqKVvSAAwEwrYo1k4jHK-->每格可点击进对应账户详情</strong
+            ><!--pnid:7ZXMO47cgNFJwJu4Nbf00Q-->）+ 资产来源（折叠）。数据源
+            <code data-page-node-id="F922IRJDI1mOGzIGPNsZ4R"
+              ><!--pnid:TiCNDWSt9GOoAzu5n5M6k6-->get_account_asset_summary</code
+            ><!--pnid:wdGtjaLyCFZIgi7l7JV5mM-->
+            +
+            <code data-page-node-id="ip3y7qYitJbxggvtk7JPRV"
+              ><!--pnid:FgxXdXB6KUUdE6tf66wDWe-->get_asset_structure</code
+            ><!--pnid:T4czCsZnIkhXdjIgVWAWrH-->。
+          </div>
+          <!--pnid:XK2RKCnxgkdHBwpPbsSASV-->
+
+          <div data-page-node-id="NEW_STD_CHANGE_BOX" class="annot">
+            <!--pnid:NEW_STD_CHANGE_PUID_001-->
+            <div data-page-node-id="NEW_STD_CHANGE_TITLE" class="annot-title">
+              <!--pnid:NEW_STD_CHANGE_PUID_002-->变动记录
+            </div>
+            <!--pnid:NEW_STD_CHANGE_PUID_003-->
+            <ul data-page-node-id="NEW_STD_CHANGE_LIST">
+              <!--pnid:NEW_STD_CHANGE_PUID_004-->
+              <li data-page-node-id="NEW_STD_CHANGE_ITEM_4">
+                <strong data-page-node-id="NEW_STD_CHANGE_LABEL_4"
+                  ><!--pnid:NEW_STD_CHANGE_PUID_016-->（0720）变动：</strong
+                ><!--pnid:NEW_STD_CHANGE_PUID_017-->1）删掉累计收益率
+                2）仅基金（非货币）保留 今日预估 3）盘中预估标签样式及位置调整
+              </li>
+              <!--pnid:NEW_STD_CHANGE_PUID_018-->
+            </ul>
+            <!--pnid:NEW_STD_CHANGE_PUID_014-->
+          </div>
+          <!--pnid:NEW_STD_CHANGE_PUID_015-->
+        </div>
+        <!--pnid:cEBysjSC5Ow9gTG40RxBAk-->
+
+        <div data-page-node-id="ZDdLtbQC0ePz5XjA7h13w4" class="states-grid">
+          <!--pnid:U6lJK0Bp2lMskDMbY14m2N-->
+          <!--pnid:z57p2nITwDtuZ3fScDAbaH--><!-- 盘中预估态 --><!--pnid:DKHgaOwf9u2mVpVXivHXLi-->
+          <div data-page-node-id="t0DcStINhNJmbJSQ0QTfDh" class="state-box">
+            <!--pnid:iu3wZIEjWONhmpSbhmH9Cw-->
+            <div data-page-node-id="a0GbLgGbciDVD5VgKUjMvm" class="state-label">
+              <!--pnid:UTigSxEmDzKl8RiVdCBzlS-->盘中预估
+              <span
+                data-page-node-id="PKE0kLwY0mgshB6Fqw5GNS"
+                class="badge badge-ok"
+                ><!--pnid:gKu5Cp2VwOPFpl9EVm3MfB-->正常态</span
+              >
+            </div>
+            <!--pnid:g10KCILA1EhUchTggtDRL1-->
+            <div data-page-node-id="Fu19zzpAFQSQCsWhN0PO14" class="state-desc">
+              <!--pnid:XQpvLfK1O88ZFI5zsCsqGa-->9:30–18:30，主数字用实时预估，标"预估"灰标签，盘中涨跌为预估
+            </div>
+            <!--pnid:nTT8uEUYHxwmeJPF9zHP9K-->
+            <div data-page-node-id="edPOr0AED7tEy2sRz3A56A" class="preview-box">
+              <div
+                data-page-node-id="MD7dbuFTHecMxMiO81k70a"
+                class="card-preview"
+              >
+                <!--pnid:0npphWbqvrySeA5ZKsYflr-->
+                <div data-page-node-id="fwA3d5oOAnFbpNzBDmcdNB" class="card">
+                  <!--pnid:nU3dfsbdBRKU4MdQfqdvRH-->
+                  <div
+                    data-page-node-id="RKB9pWQ7DFbpFHsfcoEi5M"
+                    style="padding: 2px 0 0; text-align: center"
+                  >
+                    <!--pnid:1ssHeodsjFiGrsqcxwnOb9-->
+                    <div
+                      data-page-node-id="LmOwNkWq7S1G19AbxTMgv1"
+                      style="font-size: 12px; color: #888"
+                    >
+                      <!--pnid:Byzk5Umnk5wizYwfsgfXbP-->总资产（元）
+                    </div>
+                    <!--pnid:XFwEQMFSKeWfZRufJkBb5o-->
+                    <div
+                      data-page-node-id="FFOEbDPGBBAFpMhSikivN1"
+                      class="num"
+                      style="
+                        font-size: 29px;
+                        font-weight: 600;
+                        color: #1a1d21;
+                        letter-spacing: -0.5px;
+                        line-height: 1.15;
+                        margin-top: 3px;
+                      "
+                    >
+                      <!--pnid:1H2hHvscXr7BPbAR1GbHxm-->1,432,420.58
+                    </div>
+                    <!--pnid:SzQiQ3tJoqW3wktG8wgAGy-->
+                  </div>
+                  <!--pnid:lI8Ks7o2sIWmLxC7e5J32t-->
+                  <div
+                    data-page-node-id="ei15R3BkJGimMKsAl1yaQA"
+                    style="
+                      display: flex;
+                      margin-top: 12px;
+                      padding: 12px 0;
+                      border-top: 1px dashed #ececec;
+                      border-bottom: 1px dashed #ececec;
+                    "
+                  >
+                    <!--pnid:0K3tPSDeIKsw43iMYPCjGM-->
+                    <div
+                      data-page-node-id="JoOEbRxT8vCUP2Xo8KU4gc"
+                      style="flex: 1; text-align: center"
+                    >
+                      <div
+                        data-page-node-id="5n7D4zdwrD5f38BVPWyevk"
+                        style="
+                          font-size: 10.5px;
+                          color: #999;
+                          display: inline-flex;
+                          align-items: center;
+                          justify-content: center;
+                          gap: 4px;
+                        "
+                      >
+                        <!--pnid:zpmYqpziNXEqnDGv0JChfO-->今日收益<span
+                          data-page-node-id="NEW_EST_TAG"
+                          style="
+                            font-size: 9px;
+                            color: #999;
+                            background: #f2f3f5;
+                            border-radius: 3px;
+                            padding: 1px 4px;
+                            line-height: 1;
+                          "
+                          >预估</span
+                        >
+                      </div>
+                      <div
+                        data-page-node-id="8CHgc5S5gDNubtpohrapTP"
+                        class="num up"
+                        style="
+                          font-size: 15px;
+                          font-weight: 600;
+                          margin-top: 3px;
+                        "
+                      >
+                        <!--pnid:8fzAC5vVlsxlsDBfnb6Z6V-->+3,520.12
+                      </div>
+                      <div
+                        data-page-node-id="QgjYvqHyBGLf9czdegt2qE"
+                        class="num up"
+                        style="font-size: 10px; margin-top: 1px"
+                      >
+                        <!--pnid:VEOzmWKRkRsRXW3xtoGnIW-->+0.25%
+                      </div>
+                    </div>
+                    <!--pnid:IBrNffUC26p6XKbnFA8RTU-->
+                    <div
+                      data-page-node-id="18tfyV8nb42i1UKEXTdwbi"
+                      style="
+                        border-left: 0.5px solid #eee;
+                        border-right: 0.5px solid #eee;
+                        flex: 1;
+                        text-align: center;
+                      "
+                    >
+                      <div
+                        data-page-node-id="WYQjDllDhk0S1ZiOrLzNdh"
+                        style="
+                          font-size: 10.5px;
+                          color: #999;
+                          display: inline-flex;
+                          align-items: center;
+                          justify-content: center;
+                          gap: 4px;
+                        "
+                      >
+                        <!--pnid:e4RVgRT0m9rj1FBV1frFCr-->持仓收益
+                      </div>
+                      <div
+                        data-page-node-id="c46Ck1Nq8jictRfJmsrylo"
+                        class="num up"
+                        style="
+                          font-size: 15px;
+                          font-weight: 600;
+                          margin-top: 3px;
+                        "
+                      >
+                        <!--pnid:CJZVZvJMn7hCiSqaNFsg7g-->+145,876.45
+                      </div>
+                      <div
+                        data-page-node-id="QTzahDWYq1Is02GRPjMDxv"
+                        class="num up"
+                        style="font-size: 10px; margin-top: 1px"
+                      >
+                        <!--pnid:igB6s0SDuTBseqBZ6QhOAo-->+11.34%
+                      </div>
+                    </div>
+                    <!--pnid:aMmkHUYYYZGVDkZ3yIHo5y-->
+                    <div
+                      data-page-node-id="r6PgFV7zZADyaIkLHLqwKk"
+                      style="text-align: center; flex: 1"
+                    >
+                      <div
+                        data-page-node-id="QRn0JvhBCoGsbZZ6hweGUd"
+                        style="
+                          color: #999;
+                          font-size: 10.5px;
+                          display: inline-flex;
+                          align-items: center;
+                          justify-content: center;
+                          gap: 4px;
+                        "
+                      >
+                        <!--pnid:H4yu0CPyKmofGTRdGf6fow-->累计收益
+                      </div>
+                      <div
+                        data-page-node-id="ACC01_TOTAL_PROFIT_VALUE"
+                        class="num up"
+                        style="
+                          font-size: 15px;
+                          font-weight: 600;
+                          margin-top: 3px;
+                        "
+                      >
+                        <!--pnid:ACC01_TOTAL_PROFIT_VALUE_PUID-->+168,240.92
+                      </div>
+                    </div>
+                    <!--pnid:T3Bq2UnuEBP33rjJNg3h8P-->
+                  </div>
+                  <!--pnid:bmpGubFAFcmdJ7IA2U2tqA-->
+
+                  <div
+                    data-page-node-id="d2fHl470ututpfFVlhEp4R"
+                    style="margin-top: 16px"
+                  >
+                    <!--pnid:5F9ER2y9T5vK5kHM86YKy6-->
+                    <div
+                      data-page-node-id="mOXpBKddfDJPpVRSuyjjnP"
+                      style="
+                        display: flex;
+                        align-items: baseline;
+                        justify-content: space-between;
+                        margin-bottom: 11px;
+                      "
+                    >
+                      <span
+                        data-page-node-id="uWKUQtuCw4Y0ZT4L1C0Q7v"
+                        style="
+                          font-weight: 600;
+                          font-size: 14px;
+                          color: #1a1d21;
+                        "
+                        ><!--pnid:clR0exkqpYlP913okRagce-->资产构成</span
+                      ><span
+                        data-page-node-id="vDG3uM7uFD5VcqeSQ7lLEj"
+                        style="font-size: 10.5px; color: #aab"
+                        ><!--pnid:azb1oMYFnOVhtCZCURyznB-->按账户类型 ·
+                        点击进入账户</span
+                      >
+                    </div>
+                    <!--pnid:d1DRpGo6EjQ1a0CIMjN5eD-->
+                    <div
+                      data-page-node-id="Cm3NHeBMU81yRCh7xHzLef"
+                      style="
+                        gap: 9px;
+                        display: grid;
+                        grid-template-columns: 1fr 1fr;
+                      "
+                    >
+                      <!--pnid:LdPR0FrQWDeJTDK7P1clHC-->
+
+                      <div
+                        data-page-node-id="czpiKCHWGcREiNgIKl5TQJ"
+                        style="
+                          background: #fafbfc;
+                          border: 0.5px solid #eceef1;
+                          border-radius: 12px;
+                          padding: 11px 12px 9px;
+                        "
+                      >
+                        <!--pnid:UJ7h2tqLGumDyrExZztfP8-->
+                        <div
+                          data-page-node-id="rBpD4rovmNNAhcTE2JY00Y"
+                          style="
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                            gap: 5px;
+                            position: relative;
+                          "
+                        >
+                          <span
+                            data-page-node-id="k02hZSQQuyBdOXxuDdqcQc"
+                            style="
+                              width: 6px;
+                              height: 6px;
+                              border-radius: 50%;
+                              background: #3b82f6;
+                            "
+                          ></span
+                          ><span
+                            data-page-node-id="Y3NiZ7Bo29mlcrZ7ffJP7u"
+                            style="
+                              font-weight: 500;
+                              font-size: 12px;
+                              color: #444;
+                            "
+                            ><!--pnid:AkjIt5gzuMIGcamZveVG51-->货币基金</span
+                          ><span
+                            data-page-node-id="w3uXfRPycUSbuHxwd4yvX4"
+                            style="
+                              font-size: 11px;
+                              color: #c4c9d0;
+                              position: absolute;
+                              right: 0;
+                            "
+                            ><!--pnid:vb8LITpEkEjVANpu39LTm5-->›</span
+                          >
+                        </div>
+                        <!--pnid:qXafbMZuS2OSiGXaVB61ij-->
+                        <div
+                          data-page-node-id="5fh3mSa53MDy1qJFkuouAi"
+                          class="num"
+                          style="
+                            text-align: center;
+                            margin: 7px 0 1px;
+                            font-size: 17px;
+                            font-weight: 600;
+                            color: #1a1d21;
+                          "
+                        >
+                          <!--pnid:y3pTb4q8GGWcibvMdSu9t0-->75,240.58
+                        </div>
+                        <!--pnid:FbsmLR0sf3R86PfmyhDlbI-->
+                        <div
+                          data-page-node-id="gwOrl0p4BHwAJBrb3nbix2"
+                          style="
+                            text-align: center;
+                            font-size: 9.5px;
+                            color: #b0b6be;
+                            margin-bottom: 7px;
+                          "
+                        >
+                          <!--pnid:4W2vlPteg4ue1dtq7o1qhg-->占比 5.3%
+                        </div>
+                        <!--pnid:CKJAtEHekJC2Y5iFFrZkC2-->
+                      </div>
+                      <!--pnid:0wnvAQ4XctwgB2gSgsXVYO-->
+
+                      <div
+                        data-page-node-id="ghJyA23QcxCMvEkYruBNlw"
+                        style="
+                          background: #fafbfc;
+                          border: 0.5px solid #eceef1;
+                          border-radius: 12px;
+                          padding: 11px 12px 9px;
+                        "
+                      >
+                        <!--pnid:W0KARyR4HDA0zCMfdAQiqF-->
+                        <div
+                          data-page-node-id="7MQLQEE8Gpi8LaVaFHbLN5"
+                          style="
+                            gap: 5px;
+                            position: relative;
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                          "
+                        >
+                          <span
+                            data-page-node-id="v4ynAHClyT7JZerFGpIy5Q"
+                            style="
+                              background: #0080ff;
+                              width: 6px;
+                              height: 6px;
+                              border-radius: 50%;
+                            "
+                          ></span
+                          ><span
+                            data-page-node-id="wF3UWLoxvLk0BHD2GKtjDU"
+                            style="
+                              font-weight: 500;
+                              font-size: 12px;
+                              color: #444;
+                            "
+                            ><!--pnid:TEjt0WcE7nwSQSAYcHPinx-->基金</span
+                          ><span
+                            data-page-node-id="QvqbpUGMNCmqcs89Rv2B27"
+                            style="
+                              position: absolute;
+                              right: 0;
+                              font-size: 11px;
+                              color: #c4c9d0;
+                            "
+                            ><!--pnid:thbDgbxTxgjCCtg4CzbYl2-->›</span
+                          >
+                        </div>
+                        <!--pnid:QUxZATfHremisxWLvJiPDK-->
+                        <div
+                          data-page-node-id="9NCneKUq3Ac1HaHBZlXl6k"
+                          class="num"
+                          style="
+                            color: #1a1d21;
+                            text-align: center;
+                            margin: 7px 0 1px;
+                            font-size: 17px;
+                            font-weight: 600;
+                          "
+                        >
+                          <!--pnid:riCzSlkWGWw8So1Kxpod5K-->742,180.00
+                        </div>
+                        <!--pnid:SehGzYQqReyKTCuSszapgO-->
+                        <div
+                          data-page-node-id="k927cgpnSvw3wRKYM8tdyq"
+                          style="
+                            color: #b0b6be;
+                            margin-bottom: 7px;
+                            text-align: center;
+                            font-size: 9.5px;
+                          "
+                        >
+                          <!--pnid:MAqR74bzTOQjLDJfRCV56q-->占比 51.8%
+                        </div>
+                        <!--pnid:wQ809fOsiWWk4iTRgMqU3P-->
+                        <div
+                          data-page-node-id="E6AJ1bDw48HvBGXDuDGdLC"
+                          style="
+                            text-align: center;
+                            padding-top: 7px;
+                            border-top: 0.5px solid #eef0f2;
+                          "
+                        >
+                          <span
+                            data-page-node-id="pbP87CADycHAW2SJBjhs8Y"
+                            style="color: #aab; font-size: 9.5px"
+                            ><!--pnid:VjZy1lG3hdkRtlrAqP4gsy-->今日预估 </span
+                          ><span
+                            data-page-node-id="vDTAwfL4ziK5WBGxPnuKYN"
+                            class="num down"
+                            style="font-size: 12px; font-weight: 600"
+                            ><!--pnid:SaCtxglYXPibY2pdj1pbIA-->−7,444</span
+                          >
+                        </div>
+                        <!--pnid:WWAInGzZOP4otFEy0xxJkY-->
+                      </div>
+                      <!--pnid:yH8Ubh1u3g0tXu0ePlkVco-->
+
+                      <div
+                        data-page-node-id="craCqlpJDR18QqgfHTBsjU"
+                        style="
+                          background: #fafbfc;
+                          border: 0.5px solid #eceef1;
+                          border-radius: 12px;
+                          padding: 11px 12px 9px;
+                        "
+                      >
+                        <!--pnid:XEGRHXGTa22DGhgElPuL1F-->
+                        <div
+                          data-page-node-id="NlHbC7QijAMJDJrABLQrew"
+                          style="
+                            position: relative;
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                            gap: 5px;
+                          "
+                        >
+                          <span
+                            data-page-node-id="VCnZmO4FO2Ioet3LkR8uD6"
+                            style="
+                              height: 6px;
+                              border-radius: 50%;
+                              background: #5da8ff;
+                              width: 6px;
+                            "
+                          ></span
+                          ><span
+                            data-page-node-id="RQY2J2cNAFKImR4EPpUZdA"
+                            style="
+                              color: #444;
+                              font-weight: 500;
+                              font-size: 12px;
+                            "
+                            ><!--pnid:hp14HfEKTpNzuyLsbvsTfN-->投顾</span
+                          ><span
+                            data-page-node-id="eDUzD6lisvWIq78ULgwpsp"
+                            style="
+                              position: absolute;
+                              right: 0;
+                              font-size: 11px;
+                              color: #c4c9d0;
+                            "
+                            ><!--pnid:CnT6wwLFhdl20PLr8g4QmY-->›</span
+                          >
+                        </div>
+                        <!--pnid:0sIOpJbXxECEhGQCN8kcjg-->
+                        <div
+                          data-page-node-id="7KpWNNFAvYE2UE0VoYHy8X"
+                          class="num"
+                          style="
+                            margin: 7px 0 1px;
+                            font-size: 17px;
+                            font-weight: 600;
+                            color: #1a1d21;
+                            text-align: center;
+                          "
+                        >
+                          <!--pnid:EODuYrz6xyXlsJ1A1RCKo3-->312,000.00
+                        </div>
+                        <!--pnid:aVWInsVU8wGmEbH0IEf3yt-->
+                        <div
+                          data-page-node-id="zz45qVoK2XDsE7ipeNRFvl"
+                          style="
+                            text-align: center;
+                            font-size: 9.5px;
+                            color: #b0b6be;
+                            margin-bottom: 7px;
+                          "
+                        >
+                          <!--pnid:kbedrd6wPka4UgSVZrGMZs-->占比 21.8%
+                        </div>
+                        <!--pnid:qxNd7KaPF9bqEv9gSAjDpq-->
+                      </div>
+                      <!--pnid:RM4lAvQwlah0WYfyP4CFNR-->
+
+                      <div
+                        data-page-node-id="1QTniBH6beWU4XBLJ9xP29"
+                        style="
+                          padding: 11px 12px 9px;
+                          background: #fafbfc;
+                          border: 0.5px solid #eceef1;
+                          border-radius: 12px;
+                        "
+                      >
+                        <!--pnid:f8JDuEJvQC5fa5vUg1veVC-->
+                        <div
+                          data-page-node-id="NIKbV3TXIVaje1mzZMP24V"
+                          style="
+                            position: relative;
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                            gap: 5px;
+                          "
+                        >
+                          <span
+                            data-page-node-id="UDUBjiftbxlwgyMkYi3McS"
+                            style="
+                              height: 6px;
+                              border-radius: 50%;
+                              background: #8b7fe8;
+                              width: 6px;
+                            "
+                          ></span
+                          ><span
+                            data-page-node-id="pdJOiiWE3n3ujQh3FLEaO5"
+                            style="
+                              font-size: 12px;
+                              color: #444;
+                              font-weight: 500;
+                            "
+                            ><!--pnid:oXfDELtu98mYW9bAFiUKK3-->组合</span
+                          ><span
+                            data-page-node-id="CX9fNj0FvwcGRSbYiSCdlp"
+                            style="
+                              position: absolute;
+                              right: 0;
+                              font-size: 11px;
+                              color: #c4c9d0;
+                            "
+                            ><!--pnid:cFjxYo4GUksaRS0GfUE8qQ-->›</span
+                          >
+                        </div>
+                        <!--pnid:6pCVr9FnDuPY608oT297W8-->
+                        <div
+                          data-page-node-id="JIXkJfK87msAlNJBhnFTuo"
+                          class="num"
+                          style="
+                            font-size: 17px;
+                            font-weight: 600;
+                            color: #1a1d21;
+                            text-align: center;
+                            margin: 7px 0 1px;
+                          "
+                        >
+                          <!--pnid:D0v8tOWRrosp15PCzc2ltp-->145,000.00
+                        </div>
+                        <!--pnid:koFIGBYyIUNNqMLxRu7TXS-->
+                        <div
+                          data-page-node-id="iOCQEAQI8boF2iiNoBJoZ2"
+                          style="
+                            text-align: center;
+                            font-size: 9.5px;
+                            color: #b0b6be;
+                            margin-bottom: 7px;
+                          "
+                        >
+                          <!--pnid:NLGmkJl1gGdeCprXZjTQyo-->占比 10.1%
+                        </div>
+                        <!--pnid:kfGrzyskCiILOZjp3h7Hwl-->
+                      </div>
+                      <!--pnid:2RDYTvQqir0V7mACCF6933-->
+
+                      <div
+                        data-page-node-id="YgAkBrcSJMoHs2V3sKETsU"
+                        style="
+                          background: #fafbfc;
+                          border: 0.5px solid #eceef1;
+                          border-radius: 12px;
+                          padding: 11px 12px 9px;
+                        "
+                      >
+                        <!--pnid:JFbGUensrAeByHJxirbcKY-->
+                        <div
+                          data-page-node-id="zWflxQQ3Ne6wXmZpSC1BGE"
+                          style="
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                            gap: 5px;
+                            position: relative;
+                          "
+                        >
+                          <span
+                            data-page-node-id="dUVCTvCwtj2l8McCPwJcnd"
+                            style="
+                              width: 6px;
+                              height: 6px;
+                              border-radius: 50%;
+                              background: #ffb02e;
+                            "
+                          ></span
+                          ><span
+                            data-page-node-id="BARAa09MEoxLRNMcCWHAWD"
+                            style="
+                              color: #444;
+                              font-weight: 500;
+                              font-size: 12px;
+                            "
+                            ><!--pnid:7LvxR5bIrRPXA7mn1E3wA4-->专户</span
+                          ><span
+                            data-page-node-id="gntI315QYTGZ9ICGEDZHFT"
+                            style="
+                              color: #c4c9d0;
+                              position: absolute;
+                              right: 0;
+                              font-size: 11px;
+                            "
+                            ><!--pnid:XjVrPYK28OrfEktRDoObHx-->›</span
+                          >
+                        </div>
+                        <!--pnid:jlDEI654nrU45woNepDoS7-->
+                        <div
+                          data-page-node-id="DPRh0btOZEUOReIStYeObe"
+                          class="num"
+                          style="
+                            font-size: 17px;
+                            font-weight: 600;
+                            color: #1a1d21;
+                            text-align: center;
+                            margin: 7px 0 1px;
+                          "
+                        >
+                          <!--pnid:a4GmdAoLFLq0ZbcmHmELfi-->158,000.00
+                        </div>
+                        <!--pnid:1XJqaODEruWPSjHH6ttSTn-->
+                        <div
+                          data-page-node-id="K1R3ZLgEhNpwjOFXGrq4e7"
+                          style="
+                            text-align: center;
+                            font-size: 9.5px;
+                            color: #b0b6be;
+                            margin-bottom: 7px;
+                          "
+                        >
+                          <!--pnid:gZ2877C4bxUYGAefFZ8uI2-->占比 11.0%
+                        </div>
+                        <!--pnid:h3L8s7BXHYAkttraAfats4-->
+                      </div>
+                      <!--pnid:CQUlnThcKAgwY558QT2pZy-->
+                    </div>
+                    <!--pnid:s754BjfnQcHMqKvNDnbUAE-->
+                  </div>
+                  <!--pnid:7BmTFM3f8QyxB5qQsa0GEb-->
+
+                  <div
+                    data-page-node-id="yIrGaFchU1fse2v7QCYSen"
+                    style="
+                      margin-top: 16px;
+                      padding-top: 13px;
+                      display: flex;
+                      justify-content: space-between;
+                      align-items: center;
+                      border-top: 0.5px solid #eee;
+                    "
+                  >
+                    <!--pnid:edoPNorvNEAPL4Xs6W7KUN-->
+                    <span
+                      data-page-node-id="VjKhL4bDFhMlklVAxuZOla"
+                      style="font-weight: 500; font-size: 13px; color: #333"
+                      ><!--pnid:aEJnD4ELEGIRsAQgDSAUJz-->资产来源</span
+                    ><!--pnid:78ScTNeYdddeMWMyEJGkNF-->
+                    <span
+                      data-page-node-id="o3EgBNlPMJzMuGZwDdJ7vv"
+                      style="font-size: 12px; color: #fb5c5f"
+                      ><!--pnid:Dv7cNArQyNEIA9PV5Z9TxP-->展开 ›</span
+                    ><!--pnid:gD2Q0cH2faZEE3X7kRu5Fx-->
+                  </div>
+                  <!--pnid:liBxm3yBFQlZy5pxsO1l39-->
+                  <div
+                    data-page-node-id="oFF4umvUjxoJ6cSY7omAHB"
+                    class="disc"
+                    style="border-top: none; padding-top: 8px"
+                  >
+                    <!--pnid:s1bTlmcSB9t4QpUxzU3Eag-->点击各资产类型进入对应账户详情。今日预估收益盘后以确认净值更新为"最新收益(披露日)"；数据来源：账户系统。
+                  </div>
+                  <!--pnid:MG3JYfEEXJAL0xr6KyGSKh-->
+                </div>
+                <!--pnid:V5R7lOVsIAZJMc378SYtS9-->
+              </div>
+            </div>
+            <!--pnid:PKaFVK6btqVBovFUlHP67F-->
+          </div>
+          <!--pnid:CzmQWhD0XBultzZqz2mEYc-->
+
+          <!--pnid:yd2mEQu3UTBCWMP2YG2CvK--><!-- 数据不可用态 --><!--pnid:3ZbVYu8LeIOSaMdH2YWhUc-->
+          <div data-page-node-id="ROMGtdTEYHkn4YT398xKil" class="state-box">
+            <!--pnid:lvGIfl8HQBRpbeoUv1j7YL-->
+            <div data-page-node-id="sW9fAFRKxEhCD6FHKs1QE5" class="state-label">
+              <!--pnid:9vA21RXj5wfTn7oLKR1hSq-->数据不可用
+              <span
+                data-page-node-id="wPfCWnEMT2CZcK5Bhx7GYS"
+                class="badge badge-var"
+                ><!--pnid:zjaDCGjdfMcDtcGxLQeKvX-->变种</span
+              >
+            </div>
+            <!--pnid:WmjhzkS8jiLieg6xqZ3YLv-->
+            <div data-page-node-id="41gKUs5mnZONAGIPI1egmG" class="state-desc">
+              <!--pnid:yQCbEd4nnkAzrhKdDpsiD4-->主数字显"——"不显
+              0/空白（避免吓到客户），给刷新入口；卡片仍渲染（账户类必出）
+            </div>
+            <!--pnid:5bXQ7jVx73LS4aHYJG1DAY-->
+            <div data-page-node-id="oTSAf1KLLm0VRu4xOLe4Gd" class="preview-box">
+              <div
+                data-page-node-id="ZcvlDyXhGYqsd5NH6nUwF3"
+                class="card-preview"
+              >
+                <!--pnid:ucFWOb4Zxve468LUpk6Ypd-->
+                <div data-page-node-id="GAqGTvUbV9y54BuUMA1Daw" class="card">
+                  <!--pnid:oEMTgx49qnShgjPusQu6BS-->
+                  <div
+                    data-page-node-id="PZ6TxYZ1FdNgiGvVBJb6Qj"
+                    style="margin-bottom: 7px; font-size: 13px; color: #666"
+                  >
+                    <!--pnid:I1EY3Yc2G1qyXUB11NGEpE-->总资产（元）
+                  </div>
+                  <!--pnid:cxkazYgxHCjKrYtswiAtWR-->
+                  <div
+                    data-page-node-id="PBM9i5JmrzzdqiOGR3tLbN"
+                    class="num"
+                    style="
+                      color: #ccc;
+                      letter-spacing: -0.5px;
+                      font-size: 27px;
+                      font-weight: 600;
+                    "
+                  >
+                    <!--pnid:wL3NdqyiMOH8HdAu1Xx7TE-->— —
+                  </div>
+                  <!--pnid:rfkNIDO0vaXMqiBp5CkW4T-->
+                  <div
+                    data-page-node-id="NaUrZSChuzLna3LsTNigLS"
+                    style="
+                      margin-top: 10px;
+                      line-height: 1.6;
+                      font-size: 12px;
+                      color: #999;
+                    "
+                  >
+                    <!--pnid:eGA6NtUUGHzbJTB77X3OE8-->资产数据暂时无法获取，请稍后再试
+                  </div>
+                  <!--pnid:knGu1hyD6LgsHrKCTkhJtH-->
+                  <div
+                    data-page-node-id="GOKxIKyFXNQXaO1MgDzteN"
+                    style="margin-top: 12px"
+                  >
+                    <span
+                      data-page-node-id="0Mloshlc1P5HznQyUmjwik"
+                      class="chip"
+                      ><!--pnid:N8ttt0CfWifAge2xd4fFNj-->刷新重试</span
+                    >
+                  </div>
+                  <!--pnid:px9LuxpwW1ht23dBIOG5M0-->
+                </div>
+                <!--pnid:7QyuBgTBB4h41kw5V02be7-->
+              </div>
+            </div>
+            <!--pnid:dbKz2syRySrPZIAlrVLvQv-->
+          </div>
+          <!--pnid:MuC5npajZxmSBUnluzzJgD-->
+        </div>
+        <!--pnid:swWCT40NNFHsKv0YuhndKj-->
+
+        <div data-page-node-id="Ylc7uaDEIIH6zJJYhSirdS" class="annot">
+          <!--pnid:NxQGQKYm39qVlNfGy46X3J-->
+          <div data-page-node-id="iGmfj8x3D80i1DHfIWePRy" class="annot-title">
+            <!--pnid:5FVPWf7IZOPxod718dBx0n-->字段与交互逻辑
+          </div>
+          <!--pnid:axmHvmSkPjxGMibntqTfE7-->
+          <ul data-page-node-id="ynbP2g1b5WXPZnGtXyAXo6">
+            <!--pnid:umdVQQKDOPLs4CDVNnoJ56-->
+            <li data-page-node-id="kicbBGBUcd49O73vVB7lhm">
+              <strong data-page-node-id="jp4G5pftAW6syHwZYO4oc5"
+                ><!--pnid:SC9LjGyiB1IekZuI64S0zO-->四种估值态</strong
+              ><!--pnid:HTRJGXCGgLkFKWUp1DNHno-->：预估（盘中，灰标签）/ 更新中
+              / 已更新（蓝标签+净值日）/ 仅净值日期。主数字口径随
+              <code data-page-node-id="pbhKOL7aGGCQXqDbg42peb"
+                ><!--pnid:eE05zOlF8LR8F74Abb8sw1-->valuation_status</code
+              ><!--pnid:RTdg9D3e0dEcHEz69mOC8X-->
+              切换
+            </li>
+            <!--pnid:99QHL46zCrzLxT3KeAk53A-->
+            <li data-page-node-id="dD1QqwTvLrRr3osFEeDTPV">
+              <strong data-page-node-id="ObgY1Qw84r1STBHJ65VjyU"
+                ><!--pnid:0HeMpLFhR2tlSgdrAPGQDp-->账户类型口径【不穿透】</strong
+              ><!--pnid:STOtY4MHdr4WarvKPB9EYH-->：货币基金/基金/投顾/组合/专户按持有形态划分，"基金"只统计直接持有、不含投顾/组合/专户穿透底层；五类加总=总资产、不重叠。组合=自选/平台打包的基金篮子（非签约投顾），底层可穿透；专户合规不可穿透
+            </li>
+            <!--pnid:0hl9JmW2u2lghW1jtTC92M-->
+            <li data-page-node-id="uCqMLDC9ZG0XHruAAs75fF">
+              <strong data-page-node-id="1bnkIht1ertp4Dzjqlv7HQ"
+                ><!--pnid:ohCF1O4u8R4yw1JnlIoQ1A-->资产来源默认折叠</strong
+              ><!--pnid:l3OQHWGd8C2gcG4ostokQf-->：展开后汇添富资产/在途（缩进于汇添富下）/外部导入；在途归汇添富，不与外部并列
+            </li>
+            <!--pnid:jRiVydlLHsv1SiiIfoPFVZ-->
+            <li data-page-node-id="nMl14RXD3iRzFkELJGN0qQ">
+              <strong data-page-node-id="DjGk3JbcPK9INPtNNn7mPZ"
+                ><!--pnid:ZcWEKKJvOxlFc8ch3Rl1k4-->缺失/异常</strong
+              ><!--pnid:lopjpGoLewAVBm5IAw6tvI-->：数据不可用主数字显"——"不显
+              0；整卡可点进持仓明细详情
+            </li>
+            <!--pnid:aJBmd72ocxS2Z7s9uWYqDK-->
+            <li data-page-node-id="cgQoaOD1ChbmDq6Bf6yevE">
+              <strong data-page-node-id="ypiT2q1QVDHHvGRbGRoSHH"
+                ><!--pnid:ErIkcgYOgjbDpEROEfN60E-->三红分工</strong
+              ><!--pnid:TkF8zvoYj3yWyoRhWozpJK-->：涨跌用
+              <code data-page-node-id="27AO2hBAhxkFxM9blpsuSC"
+                ><!--pnid:mSqVu7JBbN3Bm8srWmRZNF-->#F4333C/#22A875</code
+              ><!--pnid:HgJmmbDl1frPHswFPbLuCR-->，分类色用蓝系+橙+灰避开红绿，"展开"用品牌红
+            </li>
+            <!--pnid:aQOuBZYQk5wJ6Gwn3o3d7g-->
+          </ul>
+          <!--pnid:MlRKBBHmKTC5KeBMWo4d8n-->
+          <div
+            data-page-node-id="els0FWtYn5iuVDEcEPnjDn"
+            class="annot-title"
+            style="margin-top: 14px"
+          >
+            <!--pnid:LGblxzWf5nSYgiN8zLY4TG-->字段 → MCP 数据契约
+          </div>
+          <!--pnid:sOUzXWySV17TkLkGsxX3FV-->
+          <table data-page-node-id="olklhrNpk0SdHOYCbMBneb" class="param-table">
+            <!--pnid:U7v0C0KotiOhZqCBXar6Xu-->
+            <thead data-page-node-id="ATGYNySO1Bhh6J0CXX2guH">
+              <tr data-page-node-id="FuFdbKzq5A4oFOZBbIjkYQ">
+                <th data-page-node-id="10yiHqd2cGHIZ2Wbj3AOHE">
+                  <!--pnid:hUwpkoemiaux9zPAxsGRVz-->卡片元素
+                </th>
+                <th data-page-node-id="xO6OMb9shg4CuzGG7wn5Ya">
+                  <!--pnid:o0o4cyKL6U0vD2LeuPpMAF-->MCP 字段
+                </th>
+                <th data-page-node-id="pkpWldhwtXWtnttywqFD3Q">
+                  <!--pnid:fnq2tPR4vYYMtbE7L2QYKX-->类型
+                </th>
+                <th data-page-node-id="1qLGBOBtiH8GHxRPb0LMx4">
+                  <!--pnid:4maB8AJBspXyPD1d4N97bk-->说明
+                </th>
+              </tr>
+            </thead>
+            <!--pnid:HhfA4IzyA87uCYIWulGRuR-->
+            <tbody data-page-node-id="7XHXbGCtRF3D9rpAvPXYxe">
+              <!--pnid:R6Yj4ZCEmS0zEWAKlfAXhz-->
+              <tr data-page-node-id="bttydI713l0oej4F5NmXjj">
+                <td data-page-node-id="XnHxSM7D6QdCV6nGnT6NrO">
+                  <!--pnid:wY6g97Z6IZtou76FppeuB3-->total_value
+                </td>
+                <td data-page-node-id="bXJMtO4JnqtuiN27tYTnZM">
+                  <!--pnid:vN8DRcCM9QiS3W07jG9KrP-->get_account_asset_summary.estimated/confirmed_asset_value
+                </td>
+                <td data-page-node-id="cK12E4Cr9lf1YAbkDYDfkJ">
+                  <!--pnid:roqdrf7845l6ye8R4vzbY2-->number/null
+                </td>
+                <td data-page-node-id="3su39AxF3zHLTtZ3SrYlMr">
+                  <!--pnid:wTE162SpHLZYkoCm1UIH9K-->按估值态取预估或确认；null
+                  显"——"
+                </td>
+              </tr>
+              <!--pnid:wM87aL33Dc3F2Hb7Jf0D42-->
+              <tr data-page-node-id="BzZqxSaC9XiCFOIcmIxonN">
+                <td data-page-node-id="XImxkCLSahtNZZkeMrW9qw">
+                  <!--pnid:5O8pEaAO4pwrjo2jaDuH3H-->valuation_status
+                </td>
+                <td data-page-node-id="pODeDteumeBIErCK9Hyukg">
+                  <!--pnid:LEfXzALE2M6oa8lYVfOBoM-->.valuation_status
+                </td>
+                <td data-page-node-id="pIjL7XqoAo29mAHxkGHs6y">
+                  <!--pnid:gq2OjmuDHdskWlE9OSBVtH-->estimated/updating/confirmed/hidden
+                </td>
+                <td data-page-node-id="plJ4O8w9T4tfHAVpuB5iUY">
+                  <!--pnid:X0DpUoqC2lCHEjVs7Txnft-->状态标签
+                </td>
+              </tr>
+              <!--pnid:DDrCsKdiCv2MJjtvUplPmn-->
+              <tr data-page-node-id="qa4WCmobCVhZWsxDkQ8kP0">
+                <td data-page-node-id="Q7XkRBkZJJbG7F0K0huVex">
+                  <!--pnid:7KCCZeLBHLbMRk7Xgn3pmt-->today_change_amount /
+                  today_change_rate
+                </td>
+                <td data-page-node-id="eh4AxEWsc6UG3TNHv89Zua">
+                  <!--pnid:4A6Vg1bvPRCRPBMu6oHCEW-->.today_change_amount /
+                  .today_change_rate
+                </td>
+                <td data-page-node-id="Kfi1y8c3ihtzFhsGF00OdU">
+                  <!--pnid:c8gRg0tv8F6LZIRQqzqyr0-->number/null
+                </td>
+                <td data-page-node-id="xLZh34RpoVNiWO5vKb1pEr">
+                  <!--pnid:B6vNVQmIQHV36SIXGUcDU0-->金额为元，rate 为 decimal
+                  ratio；盘中为预估
+                </td>
+              </tr>
+              <!--pnid:pfcqTNctHw4nhAFK01HM1a-->
+              <tr data-page-node-id="FKwoDQecO07UgI3cnD5mmZ">
+                <td data-page-node-id="BuflCXXBNmFNq5vYf6mJP7">
+                  <!--pnid:h9WctSUJsilSu0SEFhv4x6-->account_type_assets[]
+                </td>
+                <td data-page-node-id="lUUZiX1SmI0j4dyvydJiNn">
+                  <!--pnid:yOkWHUDyyiUNjBu6rHULZl-->get_account_asset_summary.account_type_assets
+                </td>
+                <td data-page-node-id="GK6oE68T3bfGsaE0pmFjSr">
+                  <!--pnid:PG6iDlUHSbeuG7nAc97ECY-->array{name,type_code,value,ratio,today_change_rate}
+                </td>
+                <td data-page-node-id="uemcP6XqB5LrC9Hqtt2dgI">
+                  <!--pnid:qiknE8XkFE4Ffy2zublpG6-->五类账户类型资产，不穿透；加总等于总资产
+                </td>
+              </tr>
+              <!--pnid:5qW3HbHNbpkWMPFiPbzCoN-->
+              <tr data-page-node-id="DNO5nlds3epE9T5jQ7ifBO">
+                <td data-page-node-id="pg2Gzw0JXvUGmgmwZ9Kn1A">
+                  <!--pnid:hKGzf0NnIuhh4HTJG5ii9Z-->asset_sources
+                </td>
+                <td data-page-node-id="ntRahiIxfQecq9aDnPWRK2">
+                  <!--pnid:ciFKxt0PrWlSn08XpxHLBn-->get_account_asset_summary（tfund/in_transit/external）
+                </td>
+                <td data-page-node-id="BOJs91FGzLlVByCk76iWUB">
+                  <!--pnid:oQAJhR48avmICa1pzQW08d-->object
+                </td>
+                <td data-page-node-id="IDpGqb4krNHju0AP6WcWAO">
+                  <!--pnid:f1opHjzyVJ6goV4mfEJNtw-->默认折叠，在途缩进汇添富下
+                </td>
+              </tr>
+              <!--pnid:x4xwrRHHq1HsT9Xr942FPn-->
+            </tbody>
+            <!--pnid:nMlfXsrc72rAZzGXYXsZO5-->
+          </table>
+          <!--pnid:DsrejxFD5dJtLBEKS81frc-->
+        </div>
+        <!--pnid:Mq4BF1Uq64ZirfhDvKdKpl-->
+      </section>
+    </div>
+    <script src="../assets/js/calendars.js"></script>
+    <script src="../assets/js/section-frame.js"></script>
+  </body>
+</html>

@@ -1,0 +1,80 @@
+  <section id="catalog" class="section">
+    <div class="section-header">
+      <div class="section-id">目录 · 卡片取值方式</div>
+      <div class="section-title">卡片取值方式目录（815 上线版）</div>
+      <div class="section-desc">
+        本目录说明 17 张账户卡片的<strong>数据取值方式（dataMode）</strong>与<strong>召回交互</strong>，供前端开发确定每张卡"如何取数、何时显示"。核心结论：<strong>每个卡片有固定的 dataMode，由卡自身性质决定，不因"被怎么打开"而改变；卡片召回分两种入口（直接问 / 点击下钻），入口只决定何时触发，不改取数方式。</strong>
+      </div>
+    </div>
+
+    <h3 class="cat-h">一、取值方式定义（dataMode）</h3>
+    <div class="cat-block">
+      <p>每个卡片有<strong>固定的 dataMode</strong>，由卡片自身性质决定，<strong>不因"被怎么打开"而改变</strong>：</p>
+      <table class="param-table">
+        <tr><th style="width:130px">模式</th><th>含义</th><th>适用</th></tr>
+        <tr><td><span class="mode-inline">inline</span></td><td>OpenClaw 直接输出完整 <code>data</code>，前端<strong>直接渲染、不二次取数</strong>。</td><td>数据量小、无复杂交互、无长时序走势的汇总 / 列表卡。</td></tr>
+        <tr><td><span class="mode-deferred">deferred</span></td><td>OpenClaw 仅输出 <code>dataMode:'deferred'</code> + <code>data.request</code>（标题 + 参数），前端再调专用 API 取数后渲染；取数失败则整卡隐藏。</td><td>数据量大、多 tab / 维度切换、长时序走势图、需穿透计算的卡。</td></tr>
+      </table>
+    </div>
+
+    <h3 class="cat-h">二、召回交互（两种入口，只决定"何时触发显示"）</h3>
+    <div class="cat-block">
+      <table class="param-table">
+        <tr><th style="width:170px">召回入口</th><th>说明</th></tr>
+        <tr><td>① 直接问（query）</td><td>用户在对话中直接提问，OpenClaw 召回该卡。dataMode 不变。</td></tr>
+        <tr><td>② 点击进入（下钻）</td><td>从另一张卡片的按钮 / 格点击进入（见第三节下钻关系网）。dataMode 不变。</td></tr>
+      </table>
+      <div class="redline-box">
+        <strong>关键原则</strong>：入口（直问 or 点击）只影响"这张卡何时被触发"，<strong>不影响取数方式</strong>。前端统一逻辑：见到一张卡 → 读它的固定 dataMode → <span class="mode-inline">inline</span> 直接渲染 <code>data</code>；<span class="mode-deferred">deferred</span> 先发 <code>data.request</code> 给后端 API <code>/api/account/card/{cardId}</code> 再渲染。
+      </div>
+    </div>
+
+    <h3 class="cat-h">三、下钻关系网（账户树为三层下钻；收益 / 持仓 / 结构为独立入口）</h3>
+    <div class="cat-block">
+      <div class="drill-tree">
+        <div class="drill-root">ACC-01 账户总资产 ＝ 顶层入口</div>
+        <div class="drill-item">货币基金格 → <b>ACC-07</b> 货币账户详情 → 单只货基 → <b>ACC-08</b> 货币持有详情 <span class="drill-end">终点</span></div>
+        <div class="drill-item">基金格 → <b>ACC-02</b> 基金账户详情 → 单只基金 → <b>ACC-03</b> 基金持有详情</div>
+        <div class="drill-item">投顾格 → <b>ACC-04</b> 投顾账户详情 → 点组合 → <b>ACC-05</b> 投顾组合详情 → 查看调仓 → <b>ACC-06</b> 投顾调仓记录 <span class="drill-end">终点</span></div>
+        <div class="drill-item">组合格 → <span class="drill-grey">（未单列，815 置灰 / 即将上线）</span></div>
+        <div class="drill-item">专户格 → <b>ACC-09</b> 专户账户详情 → 单个专户 → <b>ACC-10</b> 专户持有详情 <span class="drill-end">终点</span></div>
+        <div class="drill-note">ACC-11~17（持仓明细 / 资产结构 / 收益批）为独立入口，非 ACC-01 下钻。</div>
+      </div>
+    </div>
+
+    <h3 class="cat-h">四、逐卡固定取值 + 召回关系</h3>
+    <div class="cat-block">
+      <table class="param-table recall-table">
+        <tr><th>编号</th><th>卡片</th><th>固定 dataMode</th><th>召回① 直接问</th><th>召回② 点击入口（来自）</th></tr>
+        <tr><td>ACC-01</td><td>账户总资产</td><td><span class="mode-inline">inline</span></td><td>✓</td><td>—（顶层入口）</td></tr>
+        <tr><td>ACC-02</td><td>基金账户详情</td><td><span class="mode-inline">inline</span></td><td>✓</td><td>ACC-01 基金格</td></tr>
+        <tr><td>ACC-03</td><td>基金持有详情</td><td><span class="mode-deferred">deferred</span></td><td>✓</td><td>ACC-02 单只基金</td></tr>
+        <tr><td>ACC-04</td><td>投顾账户详情</td><td><span class="mode-inline">inline</span></td><td>✓</td><td>ACC-01 投顾格</td></tr>
+        <tr><td>ACC-05</td><td>投顾组合详情</td><td><span class="mode-deferred">deferred</span></td><td>✓</td><td>ACC-04 点组合</td></tr>
+        <tr><td>ACC-06</td><td>投顾调仓记录</td><td><span class="mode-inline">inline</span></td><td>✓</td><td>ACC-05 查看调仓</td></tr>
+        <tr><td>ACC-07</td><td>货币账户详情</td><td><span class="mode-inline">inline</span></td><td>✓</td><td>ACC-01 货币基金格</td></tr>
+        <tr><td>ACC-08</td><td>货币持有详情</td><td><span class="mode-inline">inline</span></td><td>✓</td><td>ACC-07 单只货基</td></tr>
+        <tr><td>ACC-09</td><td>专户账户详情</td><td><span class="mode-inline">inline</span></td><td>✓</td><td>ACC-01 专户格</td></tr>
+        <tr><td>ACC-10</td><td>专户持有详情</td><td><span class="mode-inline">inline</span></td><td>✓</td><td>ACC-09 单只专户</td></tr>
+        <tr><td>ACC-11</td><td>持仓明细</td><td><span class="mode-deferred">deferred</span></td><td>✓</td><td>独立入口</td></tr>
+        <tr><td>ACC-12</td><td>资产结构</td><td><span class="mode-deferred">deferred</span></td><td>✓</td><td>独立入口</td></tr>
+        <tr><td>ACC-13</td><td>账户收益总览</td><td><span class="mode-deferred">deferred</span></td><td>✓</td><td>独立入口</td></tr>
+        <tr><td>ACC-14</td><td>收益明细日历</td><td><span class="mode-deferred">deferred</span></td><td>✓</td><td>独立入口</td></tr>
+        <tr><td>ACC-15</td><td>收益归因</td><td><span class="mode-deferred">deferred</span></td><td>✓</td><td>独立入口</td></tr>
+        <tr><td>ACC-16</td><td>收益构成</td><td><span class="mode-deferred">deferred</span></td><td>✓</td><td>独立入口</td></tr>
+        <tr><td>ACC-17</td><td>区间收益归因</td><td><span class="mode-deferred">deferred</span></td><td>✓</td><td>独立入口</td></tr>
+      </table>
+    </div>
+
+    <h3 class="cat-h">五、API 契约（deferred 模式）</h3>
+    <div class="cat-block">
+      <ul class="annot">
+        <li><strong>路径</strong>：<code>POST /api/account/card/{cardId}</code>（如 <code>/api/account/card/acc03</code>）。</li>
+        <li><strong>入参</strong>：<code>data.request</code> 原样透传，至少含 <code>account_type</code> / <code>card_id</code> / <code>view_mode</code> / <code>dimension</code> / <code>period</code> 等。</li>
+        <li><strong>出参</strong>：与 inline 卡同构的 <code>data</code> 对象。</li>
+        <li><strong>失败处理</strong>：HTTP 非 2xx 或超时 → 该卡整卡隐藏，不展示"加载失败"占位（遵循文档跳过规则）。</li>
+      </ul>
+    </div>
+  </section>
+
+  <!--pnid:NnrZjnHtqDy6bwEHDwxT2o--><!-- 卡片 sections --><!--pnid:Pf1y46ikSPJnVN7yiGAQG9-->

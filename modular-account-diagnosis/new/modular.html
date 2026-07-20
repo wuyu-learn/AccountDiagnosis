@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>问账户页面显示（815上线版）— 模块化新版</title>
+<link rel="stylesheet" href="assets/css/account-diagnosis.css">
+<style>
+  .section-frame-list { display: flex; flex-direction: column; gap: 28px; }
+  .section-frame-wrap { width: 100%; }
+  .section-frame { width: 100%; height: 720px; display: block; border: 0; background: transparent; overflow: hidden; }
+</style>
+</head>
+<body>
+<div data-include="partials/sidebar.html"></div>
+<div class="main-content">
+  <div data-include="partials/page-header.html"></div>
+  <div class="section-frame-list" data-section-frame-list data-include-catalog="true" data-frame-id="new"></div>
+</div>
+<script src="assets/js/include-html.js"></script>
+<script src="assets/js/section-manifest.js"></script>
+<script src="assets/js/section-loader.js"></script>
+</body>
+</html>

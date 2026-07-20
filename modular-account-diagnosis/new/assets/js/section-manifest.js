@@ -1,0 +1,21 @@
+window.ACCOUNT_DIAGNOSIS_SECTIONS = [
+  { id: 'catalog', title: '目录 · 卡片取值方式', file: 'catalog.html' },
+  { id: 'acc01', title: 'ACC-01 账户总资产卡', file: 'acc01-total-asset.html' },
+  { id: 'acc02', title: 'ACC-02 基金账户详情卡', file: 'acc02-fund-account.html' },
+  { id: 'acc03', title: 'ACC-03 基金持有详情卡', file: 'acc03-fund-holding.html' },
+  { id: 'acc04', title: 'ACC-04 投顾账户详情卡', file: 'acc04-advisor-account.html' },
+  { id: 'acc05', title: 'ACC-05 投顾组合详情卡', file: 'acc05-advisor-combo.html' },
+  { id: 'acc06', title: 'ACC-06 投顾调仓记录卡', file: 'acc06-advisor-rebalance.html' },
+  { id: 'acc07', title: 'ACC-07 货币账户详情卡', file: 'acc07-money-account.html' },
+  { id: 'acc08', title: 'ACC-08 货币持有详情卡', file: 'acc08-money-holding.html' },
+  { id: 'acc09', title: 'ACC-09 专户账户详情卡', file: 'acc09-private-account.html' },
+  { id: 'acc10', title: 'ACC-10 专户持有详情卡', file: 'acc10-private-holding.html' },
+  { id: 'acc11', title: 'ACC-11 持仓明细卡', file: 'acc11-position-detail.html' },
+  { id: 'acc12', title: 'ACC-12 资产结构卡', file: 'acc12-asset-structure.html' },
+  { id: 'acc13', title: 'ACC-13 账户收益总览卡', file: 'acc13-return-overview.html' },
+  { id: 'acc14', title: 'ACC-14 收益明细日历卡', file: 'acc14-return-calendar.html' },
+  { id: 'acc15', title: 'ACC-15 收益归因卡', file: 'acc15-return-attribution.html' },
+  { id: 'acc16', title: 'ACC-16 收益构成卡', file: 'acc16-return-composition.html' },
+  { id: 'acc17', title: 'ACC-17 区间收益归因卡', file: 'acc17-period-attribution.html' },
+  { id: 'acc18', title: 'ACC-18 自选基金估值卡', file: 'acc18-watchlist-valuation.html' }
+];

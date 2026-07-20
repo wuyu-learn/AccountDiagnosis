@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>问账户页面显示（815上线版）— 跟我投问AI</title>
+<link rel="stylesheet" href="assets/css/account-diagnosis.css">
+<style>
+  .section-frame-list { display: flex; flex-direction: column; gap: 28px; }
+  .section-frame-wrap { width: 100%; }
+  .section-frame { width: 100%; height: 720px; display: block; border: 0; background: transparent; overflow: hidden; }
+</style>
+</head>
+<body>
+<nav class="sidebar">
+  <div class="sb-title">问账户页面显示（815上线版）</div>
+  <div class="sb-meta">跟我投问AI · 账户诊断 Agent<br>815 上线精选 18 张 · 2026-06-10 示例账户</div>
+  <a href="#catalog" class="anchor-chip" style="background:var(--color-brand-red-lighter);color:var(--color-brand-red);font-weight:600">目录 · 卡片取值方式</a>
+  <div class="sb-label">资产总览与账户树</div>
+  <a href="#acc01" class="anchor-chip">ACC-01 账户总资产卡</a>
+  <a href="#acc02" class="anchor-chip">ACC-02 基金账户详情卡</a>
+  <a href="#acc03" class="anchor-chip">ACC-03 基金持有详情卡</a>
+  <a href="#acc04" class="anchor-chip">ACC-04 投顾账户详情卡</a>
+  <a href="#acc05" class="anchor-chip">ACC-05 投顾组合详情卡</a>
+  <a href="#acc06" class="anchor-chip">ACC-06 投顾调仓记录卡</a>
+  <a href="#acc07" class="anchor-chip">ACC-07 货币账户详情卡</a>
+  <a href="#acc08" class="anchor-chip">ACC-08 货币持有详情卡</a>
+  <a href="#acc09" class="anchor-chip">ACC-09 专户账户详情卡</a>
+  <a href="#acc10" class="anchor-chip">ACC-10 专户持有详情卡</a>
+  <div class="sb-label">持仓与结构</div>
+  <a href="#acc11" class="anchor-chip">ACC-11 持仓明细卡</a>
+  <a href="#acc12" class="anchor-chip">ACC-12 资产结构卡</a>
+  <div class="sb-label">收益表现</div>
+  <a href="#acc13" class="anchor-chip">ACC-13 账户收益总览卡</a>
+  <a href="#acc14" class="anchor-chip">ACC-14 收益明细日历卡</a>
+  <div class="sb-label">收益归因</div>
+  <a href="#acc15" class="anchor-chip">ACC-15 收益归因卡</a>
+  <a href="#acc16" class="anchor-chip">ACC-16 收益构成卡</a>
+  <a href="#acc17" class="anchor-chip">ACC-17 区间收益归因卡</a>
+  <div class="sb-label">自选盯盘</div>
+  <a href="#acc18" class="anchor-chip">ACC-18 自选基金估值卡</a>
+</nav>
+
+<div class="main-content">
+  <div class="page-header">
+    <div class="page-title">问账户页面显示（815上线版）— 跟我投问AI</div>
+    <div class="page-meta">基于《投顾小程序设计规范 v0.14》· 与《问基金卡片组件 v1》同源设计语言 · 375px 微信小程序 · 2026-06-10</div>
+    <div class="doc-note">
+      · 本文档为「跟我投」账户诊断 Agent 卡片组件规范，供 UI 设计师与前端开发交付使用，范式与《问基金卡片组件 v1》对齐（v3.2：总资产四格改富途风（市值主+今日预估单独行带涨跌色+占比角标弱化）；基金持有详情参考行业页重做（头部持有概览+净值成本份额+收益统计/业绩走势双tab走势图+相关资讯板块）；侧边栏账户详情/持有详情补回ACC编号）<br>
+      · 每个 Section 包含：触发条件 · 形态变种（正常态 / 变种 / 跳过条件）· 字段与交互逻辑 · 字段 → MCP 数据契约<br>
+      · 卡片 key（<code>account_total_asset_card</code> 等）与《卡片组件契约 V1.0.4》注册表严格对齐<br>
+      · <strong>三红分工</strong>：涨跌红绿 <code>#F4333C/#22A875</code> 仅服务行情收益；品牌红 <code>#FB5C5F</code> 仅服务操作导航；风险用红系刻度（当前档 <code>#E0392B</code>）+ 琥珀提示<br>
+      · <strong>跳过规则</strong>：图表/明细卡数据不足时整卡跳过不渲染，不展示"暂无数据"占位；非图表卡字段缺失显"—"（字段降级，卡片仍渲染）<br>
+      · <strong>诊断只诊断不开方</strong>：账户诊断卡均不出调仓建议，调整/优化/要不要换/调仓类问题经 guidance 引导至策略配置 Agent<br>
+      · <strong>ACC-24 comprehensive_diagnosis 已废弃</strong>：编号暂不复用；"我账户怎么样 / 帮我看看账户"由多卡摘要模式承接，不生成健康分或综合评分。
+    </div>
+  </div>
+
+  <div class="section-frame-list" data-section-frame-list data-include-catalog="true" data-frame-id="new"></div>
+</div>
+<script src="assets/js/section-manifest.js"></script>
+<script src="assets/js/section-loader.js"></script>
+</body>
+</html>

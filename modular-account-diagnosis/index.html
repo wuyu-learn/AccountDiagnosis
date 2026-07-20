@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>问账户页面显示（815上线版）｜新版 / 旧版对照</title>
+<style>
+  * { box-sizing: border-box; }
+  html, body { margin: 0; min-height: 100%; font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Helvetica Neue", sans-serif; background: #ECEFF3; color: #1A1D21; }
+  body { min-height: 100vh; overflow: auto; }
+  .shell { min-height: 100vh; }
+  .topbar { height: 52px; position: sticky; top: 0; z-index: 30; display: flex; align-items: center; justify-content: space-between; padding: 0 18px; background: rgba(255,255,255,.92); border-bottom: 1px solid rgba(208,214,222,.8); backdrop-filter: blur(10px); }
+  .title { font-size: 15px; font-weight: 700; }
+  .toolbar { display: flex; gap: 8px; align-items: center; }
+  .tool, .toolbar a { appearance: none; border: 0; color: #FB5C5F; text-decoration: none; font-size: 12px; padding: 6px 10px; border-radius: 5px; background: #FDEDED; cursor: pointer; line-height: 1.2; }
+  .tool:hover, .toolbar a:hover { background: #FADCDC; }
+  .layout { position: relative; }
+  .side-nav { position: fixed; left: 18px; top: 70px; z-index: 25; width: 220px; max-height: calc(100vh - 88px); overflow-y: auto; padding: 14px 12px; background: rgba(255,255,255,.92); border: 1px solid rgba(221,225,230,.9); border-radius: 8px; box-shadow: 0 12px 32px rgba(31,41,55,.12); backdrop-filter: blur(10px); }
+  .nav-title { font-size: 12px; color: #8A9099; font-weight: 700; margin: 2px 4px 10px; }
+  .side-nav a { display: block; padding: 7px 9px; border-radius: 5px; color: #555D66; font-size: 12px; line-height: 1.25; text-decoration: none; }
+  .side-nav a:hover, .side-nav a.active { background: #FDEDED; color: #FB5C5F; font-weight: 600; }
+  .update-badge { display: inline-flex; align-items: center; margin-left: 6px; padding: 1px 5px; border-radius: 999px; background: #FDEDED; color: #FB5C5F; font-size: 10px; font-weight: 700; line-height: 1.4; vertical-align: 1px; }
+  .stage { overflow-x: auto; overflow-y: visible; min-height: calc(100vh - 52px); }
+  .shared-catalog { width: 980px; margin: 42px 80px 0 280px; background: transparent; }
+  .shared-catalog-label { display: inline-flex; align-items: center; gap: 8px; margin: 0 0 12px 8px; padding: 6px 10px; border-radius: 999px; background: rgba(255,255,255,.88); border: 1px solid rgba(221,225,230,.9); box-shadow: 0 4px 16px rgba(31,41,55,.08); font-size: 13px; font-weight: 700; }
+  .shared-catalog-label span { color: #8A9099; font-size: 11px; font-weight: 400; }
+  .canvas { width: max-content; min-height: calc(100vh - 52px); display: flex; align-items: flex-start; gap: 88px; padding: 42px 80px 72px 280px; background:
+    linear-gradient(rgba(255,255,255,.44) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,.44) 1px, transparent 1px),
+    #ECEFF3;
+    background-size: 32px 32px;
+  }
+  .page { position: relative; width: 980px; min-width: 980px; background: transparent; }
+  .page-label { position: sticky; top: 64px; z-index: 10; display: inline-flex; align-items: center; gap: 8px; margin: 0 0 12px 8px; padding: 6px 10px; border-radius: 999px; background: rgba(255,255,255,.88); border: 1px solid rgba(221,225,230,.9); box-shadow: 0 4px 16px rgba(31,41,55,.08); font-size: 13px; font-weight: 700; }
+  .page-label span { color: #8A9099; font-size: 11px; font-weight: 400; }
+  iframe { width: 100%; height: 2400px; display: block; border: 0; background: #DDDFE3; overflow: hidden; box-shadow: 0 18px 46px rgba(31,41,55,.12); }
+  .shared-catalog iframe { height: 640px; background: transparent; }
+  @media (max-width: 960px) {
+    .topbar { align-items: flex-start; height: auto; min-height: 52px; padding: 10px 12px; gap: 10px; flex-direction: column; }
+    .toolbar { flex-wrap: wrap; }
+    .side-nav { position: static; width: auto; max-height: 180px; margin: 12px; }
+    .shared-catalog { width: 900px; margin: 28px 32px 0; }
+    .canvas { gap: 56px; padding: 28px 32px 52px; }
+    .page { width: 900px; min-width: 900px; }
+  }
+</style>
+</head>
+<body>
+<div class="shell">
+  <header class="topbar">
+    <div class="title">问账户页面显示（815上线版）｜新版 / 旧版对照</div>
+    <nav class="toolbar">
+      <button class="tool" type="button" data-scroll-page="new">新版</button>
+      <button class="tool" type="button" data-scroll-page="old">旧版</button>
+      <button class="tool" type="button" id="topButton">顶部</button>
+      <a href="new/index.html" target="_blank">单独打开新版</a>
+      <a href="old/index.html" target="_blank">单独打开旧版</a>
+    </nav>
+  </header>
+  <div class="layout">
+    <aside class="side-nav" aria-label="对照目录">
+      <div class="nav-title">统一目录</div>
+      <a href="#catalog" data-target="catalog">目录 · 卡片取值方式</a>
+      <a href="#acc01" data-target="acc01">ACC-01 账户总资产卡<span class="update-badge">有更新</span></a>
+      <a href="#acc02" data-target="acc02">ACC-02 基金账户详情卡</a>
+      <a href="#acc03" data-target="acc03">ACC-03 基金持有详情卡</a>
+      <a href="#acc04" data-target="acc04">ACC-04 投顾账户详情卡</a>
+      <a href="#acc05" data-target="acc05">ACC-05 投顾组合详情卡</a>
+      <a href="#acc06" data-target="acc06">ACC-06 投顾调仓记录卡</a>
+      <a href="#acc07" data-target="acc07">ACC-07 货币账户详情卡</a>
+      <a href="#acc08" data-target="acc08">ACC-08 货币持有详情卡</a>
+      <a href="#acc09" data-target="acc09">ACC-09 专户账户详情卡</a>
+      <a href="#acc10" data-target="acc10">ACC-10 专户持有详情卡</a>
+      <a href="#acc11" data-target="acc11">ACC-11 持仓明细卡</a>
+      <a href="#acc12" data-target="acc12">ACC-12 资产结构卡<span class="update-badge">有更新</span></a>
+      <a href="#acc13" data-target="acc13">ACC-13 账户收益总览卡<span class="update-badge">有更新</span></a>
+      <a href="#acc14" data-target="acc14">ACC-14 收益明细日历卡<span class="update-badge">有更新</span></a>
+      <a href="#acc15" data-target="acc15">ACC-15 收益归因卡<span class="update-badge">有更新</span></a>
+      <a href="#acc16" data-target="acc16">ACC-16 收益构成卡</a>
+      <a href="#acc17" data-target="acc17">ACC-17 区间收益归因卡</a>
+      <a href="#acc18" data-target="acc18">ACC-18 自选基金估值卡</a>
+    </aside>
+    <main class="stage" id="stage">
+      <section class="shared-catalog" id="catalogArea">
+        <div class="shared-catalog-label">目录 · 卡片取值方式 <span>公共内容</span></div>
+        <iframe id="catalogFrame" src="new/catalog.html" title="目录 · 卡片取值方式" scrolling="no"></iframe>
+      </section>
+      <div class="canvas">
+        <section class="page" id="newPage">
+          <div class="page-label">新版 <span>new/index.html</span></div>
+          <iframe id="newFrame" src="new/compare.html" title="新版" scrolling="no"></iframe>
+        </section>
+        <section class="page" id="oldPage">
+          <div class="page-label">旧版 <span>old/index.html</span></div>
+          <iframe id="oldFrame" src="old/compare.html" title="旧版" scrolling="no"></iframe>
+        </section>
+      </div>
+    </main>
+  </div>
+</div>
+<script>
+  (function () {
+    var links = Array.prototype.slice.call(document.querySelectorAll('.side-nav a'));
+    var frames = [
+      document.getElementById('newFrame'),
+      document.getElementById('oldFrame')
+    ];
+    var catalogFrame = document.getElementById('catalogFrame');
+    var stage = document.getElementById('stage');
+    var catalogArea = document.getElementById('catalogArea');
+    var topButton = document.getElementById('topButton');
+    var newPage = document.getElementById('newPage');
+    var oldPage = document.getElementById('oldPage');
+    var layoutByFrame = {};
+
+    function resizeFrameByMessage(frameId, height) {
+      var frame = frameId.indexOf('catalog') >= 0 ? catalogFrame : (frameId === 'old' ? frames[1] : frames[0]);
+      if (height) frame.style.height = height + 'px';
+    }
+
+    function jumpTo(id) {
+      links.forEach(function (link) {
+        link.classList.toggle('active', link.getAttribute('data-target') === id);
+      });
+      if (id === 'catalog') {
+        frames.forEach(function (frame) {
+          frame.src = frame.src.split('#')[0];
+        });
+        var areaTop = catalogArea.getBoundingClientRect().top + window.scrollY;
+        window.scrollTo({ top: areaTop - 62, behavior: 'smooth' });
+        stage.scrollTo({ left: 0, behavior: 'smooth' });
+        return;
+      }
+      frames.forEach(function (frame) {
+        frame.src = frame.src.split('#')[0] + '#' + id;
+      });
+      var offset = layoutByFrame.new && layoutByFrame.new.offsets ? layoutByFrame.new.offsets[id] : null;
+      if (typeof offset === 'number') {
+        var iframeTop = frames[0].getBoundingClientRect().top + window.scrollY;
+        window.scrollTo({ top: iframeTop + offset - 56, behavior: 'smooth' });
+      }
+    }
+
+    function scrollToPage(page) {
+      var target = page === 'old' ? oldPage : newPage;
+      stage.scrollTo({ left: target.offsetLeft - 48, behavior: 'smooth' });
+    }
+
+    window.addEventListener('message', function (event) {
+      var data = event.data || {};
+      if (data.type !== 'account-diagnosis-layout') return;
+      layoutByFrame[data.frameId] = data;
+      resizeFrameByMessage(data.frameId, data.height);
+    });
+
+    links.forEach(function (link) {
+      link.addEventListener('click', function (event) {
+        event.preventDefault();
+        jumpTo(link.getAttribute('data-target'));
+      });
+    });
+
+    Array.prototype.slice.call(document.querySelectorAll('[data-scroll-page]')).forEach(function (button) {
+      button.addEventListener('click', function () {
+        scrollToPage(button.getAttribute('data-scroll-page'));
+      });
+    });
+
+    topButton.addEventListener('click', function () {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  })();
+</script>
+</body>
+</html>
