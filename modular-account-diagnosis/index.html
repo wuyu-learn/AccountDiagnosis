@@ -143,10 +143,15 @@
       frames.forEach(function (frame) {
         frame.src = frame.src.split('#')[0] + '#' + id;
       });
+      stage.scrollTo({ left: newPage.offsetLeft - 48, behavior: 'smooth' });
       var offset = layoutByFrame.new && layoutByFrame.new.offsets ? layoutByFrame.new.offsets[id] : null;
       if (typeof offset === 'number') {
         var iframeTop = frames[0].getBoundingClientRect().top + window.scrollY;
         window.scrollTo({ top: iframeTop + offset - 56, behavior: 'smooth' });
+      }
+      var newFrame = frames[0];
+      if (newFrame && newFrame.contentWindow) {
+        newFrame.contentWindow.postMessage({ type: 'scroll-section', id: id }, '*');
       }
     }
 

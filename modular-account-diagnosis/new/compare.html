@@ -19,5 +19,24 @@
 </div>
 <script src="assets/js/section-manifest.js"></script>
 <script src="assets/js/section-loader.js"></script>
+<script>
+  window.addEventListener('message', function (event) {
+    var data = event.data || {};
+    if (data.type !== 'scroll-section') return;
+
+    function tryScroll(attempts) {
+      var target = document.getElementById(data.id);
+      if (target) {
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        return;
+      }
+      if (attempts > 0) {
+        setTimeout(function () { tryScroll(attempts - 1); }, 200);
+      }
+    }
+
+    tryScroll(25);
+  });
+</script>
 </body>
 </html>
