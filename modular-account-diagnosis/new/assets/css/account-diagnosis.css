@@ -148,6 +148,9 @@ body {
 .tag-new { background: var(--color-down-bg); color: var(--color-down); }
 .tag-cap { background: #F1ECFB; color: #7A4FD0; }
 
+/* ─── Sidebar data badge ─── */
+.data-badge { display: inline-flex; align-items: center; margin-left: 6px; padding: 1px 6px; border-radius: var(--radius-pill); background: #FCF6EC; color: #8A5A12; border: 1px solid #F0D9A8; font-size: 10px; font-weight: 700; line-height: 1.4; vertical-align: 1px; }
+
 /* ─── States grid ─── */
 .states-grid { display: flex; flex-wrap: wrap; gap: 20px; align-items: flex-start; }
 .state-box { flex: 0 0 auto; }
