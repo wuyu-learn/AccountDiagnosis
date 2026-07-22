@@ -24,6 +24,8 @@
   .p0-badge { display: inline-flex; align-items: center; margin-left: 6px; padding: 1px 5px; border-radius: 999px; background: #0066CC; color: #FFFFFF; font-size: 10px; font-weight: 700; line-height: 1.4; vertical-align: 1px; }
   .p1-badge { display: inline-flex; align-items: center; margin-left: 6px; padding: 1px 5px; border-radius: 999px; background: #E6F4FF; color: #0080FF; font-size: 10px; font-weight: 700; line-height: 1.4; vertical-align: 1px; }
   .data-badge { display: inline-flex; align-items: center; margin-left: 6px; padding: 1px 5px; border-radius: 999px; background: #FCF6EC; color: #8A5A12; border: 1px solid #F0D9A8; font-size: 10px; font-weight: 700; line-height: 1.4; vertical-align: 1px; }
+.mode-inline { display: inline-flex; align-items: center; margin-left: 6px; padding: 1px 5px; border-radius: 999px; background: #E6F6EC; color: #1A7A3C; border: 1px solid #BFE6CC; font-size: 10px; font-weight: 700; line-height: 1.4; vertical-align: 1px; }
+.mode-deferred { display: inline-flex; align-items: center; margin-left: 6px; padding: 1px 5px; border-radius: 999px; background: #FCF3E3; color: #9A5B00; border: 1px solid #F0D9A8; font-size: 10px; font-weight: 700; line-height: 1.4; vertical-align: 1px; }
   .stage { overflow-x: auto; overflow-y: visible; min-height: calc(100vh - 52px); }
   .shared-catalog { width: 980px; margin: 42px 80px 0 280px; background: transparent; }
   .shared-catalog-label { display: inline-flex; align-items: center; gap: 8px; margin: 0 0 12px 8px; padding: 6px 10px; border-radius: 999px; background: rgba(255,255,255,.88); border: 1px solid rgba(221,225,230,.9); box-shadow: 0 4px 16px rgba(31,41,55,.08); font-size: 13px; font-weight: 700; }
@@ -66,28 +68,28 @@
       <div class="nav-title">统一目录</div>
       <a href="#catalog" data-target="catalog">目录 · 卡片取值方式</a>
       <div class="nav-group-title">资产总览与账户树</div>
-      <a href="#acc01" data-target="acc01">ACC-01 账户总资产卡<span class="update-badge">有更新</span><span class="p0-badge">P0</span></a>
-      <a href="#acc02" data-target="acc02">ACC-02 基金账户详情卡<span class="p1-badge">P1</span></a>
-      <a href="#acc03" data-target="acc03">ACC-03 基金持有详情卡<span class="p1-badge">P1</span></a>
-      <a href="#acc04" data-target="acc04">ACC-04 投顾账户详情卡<span class="p1-badge">P1</span></a>
-      <a href="#acc05" data-target="acc05">ACC-05 投顾组合详情卡<span class="p1-badge">P1</span></a>
-      <a href="#acc06" data-target="acc06">ACC-06 投顾调仓记录卡<span class="p1-badge">P1</span></a>
-      <a href="#acc07" data-target="acc07">ACC-07 货币账户详情卡<span class="p1-badge">P1</span></a>
-      <a href="#acc08" data-target="acc08">ACC-08 货币持有详情卡<span class="p1-badge">P1</span></a>
-      <a href="#acc09" data-target="acc09">ACC-09 专户账户详情卡<span class="p1-badge">P1</span></a>
-      <a href="#acc10" data-target="acc10">ACC-10 专户持有详情卡<span class="p1-badge">P1</span></a>
+      <a href="#acc01" data-target="acc01">ACC-01 账户总资产卡<span class="update-badge">有更新</span><span class="p0-badge">P0</span><span class="mode-inline">inline</span></a>
+      <a href="#acc02" data-target="acc02">ACC-02 基金账户详情卡<span class="p1-badge">P1</span><span class="mode-inline">inline</span></a>
+      <a href="#acc03" data-target="acc03">ACC-03 基金持有详情卡<span class="p1-badge">P1</span><span class="mode-deferred">deferred</span></a>
+      <a href="#acc04" data-target="acc04">ACC-04 投顾账户详情卡<span class="p1-badge">P1</span><span class="mode-inline">inline</span></a>
+      <a href="#acc05" data-target="acc05">ACC-05 投顾组合详情卡<span class="p1-badge">P1</span><span class="mode-deferred">deferred</span></a>
+      <a href="#acc06" data-target="acc06">ACC-06 投顾调仓记录卡<span class="p1-badge">P1</span><span class="mode-inline">inline</span></a>
+      <a href="#acc07" data-target="acc07">ACC-07 货币账户详情卡<span class="p1-badge">P1</span><span class="mode-inline">inline</span></a>
+      <a href="#acc08" data-target="acc08">ACC-08 货币持有详情卡<span class="p1-badge">P1</span><span class="mode-inline">inline</span></a>
+      <a href="#acc09" data-target="acc09">ACC-09 专户账户详情卡<span class="p1-badge">P1</span><span class="mode-inline">inline</span></a>
+      <a href="#acc10" data-target="acc10">ACC-10 专户持有详情卡<span class="p1-badge">P1</span><span class="mode-inline">inline</span></a>
       <div class="nav-group-title">持仓与结构</div>
-      <a href="#acc11" data-target="acc11">ACC-11 持仓明细卡<span class="p0-badge">P0</span></a>
-      <a href="#acc12" data-target="acc12">ACC-12 资产结构卡<span class="update-badge">有更新</span><span class="p0-badge">P0</span></a>
+      <a href="#acc11" data-target="acc11">ACC-11 持仓明细卡<span class="p0-badge">P0</span><span class="mode-deferred">deferred</span></a>
+      <a href="#acc12" data-target="acc12">ACC-12 资产结构卡<span class="update-badge">有更新</span><span class="p0-badge">P0</span><span class="mode-deferred">deferred</span></a>
       <div class="nav-group-title">收益表现</div>
-      <a href="#acc13" data-target="acc13">ACC-13 账户收益总览卡<span class="update-badge">有更新</span><span class="p0-badge">P0</span></a>
-      <a href="#acc14" data-target="acc14">ACC-14 收益明细日历卡<span class="update-badge">有更新</span><span class="p1-badge">P1</span></a>
+      <a href="#acc13" data-target="acc13">ACC-13 账户收益总览卡<span class="update-badge">有更新</span><span class="p0-badge">P0</span><span class="mode-deferred">deferred</span></a>
+      <a href="#acc14" data-target="acc14">ACC-14 收益明细日历卡<span class="update-badge">有更新</span><span class="p1-badge">P1</span><span class="mode-deferred">deferred</span></a>
       <div class="nav-group-title">收益归因</div>
-      <a href="#acc15" data-target="acc15">ACC-15 收益归因卡<span class="update-badge">有更新</span><span class="p0-badge">P0</span></a>
-      <a href="#acc16" data-target="acc16">ACC-16 收益构成卡<span class="p1-badge">P1</span></a>
-      <a href="#acc17" data-target="acc17">ACC-17 区间收益归因卡<span class="p1-badge">P1</span></a>
+      <a href="#acc15" data-target="acc15">ACC-15 收益归因卡<span class="update-badge">有更新</span><span class="p0-badge">P0</span><span class="mode-deferred">deferred</span></a>
+      <a href="#acc16" data-target="acc16">ACC-16 收益构成卡<span class="p1-badge">P1</span><span class="mode-deferred">deferred</span></a>
+      <a href="#acc17" data-target="acc17">ACC-17 区间收益归因卡<span class="p1-badge">P1</span><span class="mode-deferred">deferred</span></a>
       <div class="nav-group-title">自选盯盘</div>
-      <a href="#acc18" data-target="acc18">ACC-18 自选基金估值卡<span class="p0-badge">P0</span><span class="data-badge">数据 唐霞</span></a>
+      <a href="#acc18" data-target="acc18">ACC-18 自选基金估值卡<span class="p0-badge">P0</span><span class="mode-inline">inline</span><span class="data-badge">数据 唐霞</span></a>
     </aside>
     <main class="stage" id="stage">
       <section class="shared-catalog" id="catalogArea">

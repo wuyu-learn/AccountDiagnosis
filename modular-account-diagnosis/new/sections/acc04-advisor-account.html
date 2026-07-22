@@ -67,26 +67,9 @@
     </div><!--pnid:kEehT1OslH0PwsYBZJ9Udx-->
   </div><!--pnid:n9KEETAob4bD6F9ysBLrXU-->
 
-  <div data-page-node-id="B3bj1V6IV7U61Mdw70E13j" class="annot"><!--pnid:mwDhBilVhxq9AvXFL1k2AB-->
-    <div data-page-node-id="8UvTzm6XpiTmFZnDYDQqJN" class="annot-title"><!--pnid:xKlGuCIDOfygjhgfDAdAdK-->字段与交互逻辑</div><!--pnid:rxGZiwtGSXzHJ6jroiJCbF-->
-    <ul data-page-node-id="ICO6GcsY6IrplGqz15qVIq"><!--pnid:PLO3ykP7crPd6uild8celW-->
-      <li data-page-node-id="FJloFMhNSBYdrWFucMDXx4"><strong data-page-node-id="LBPG6ggMEWk2aCBFtgdv9E"><!--pnid:lL1y5yf23A1CsP2EHO7Gae-->账户层 vs 组合层</strong><!--pnid:GRl3O660FPAuzV1roVtOuq-->：本卡是投顾账户整层汇总（账户收益+多组合列示）；点单个组合才进已有的"投顾组合详情页"（区别清晰、不重复）</li><!--pnid:OwEkLYU69yZTQxQmjpyssC-->
-      <li data-page-node-id="ESfUx7dD12EYACae6rvCqO"><strong data-page-node-id="uPrAmiLqNmzlpLkB4wolaQ"><!--pnid:iu2CGS9c30HA1bmLv0eATL-->组合列示</strong><!--pnid:2cBQcgW4Hp3mTi2WHRSDsF-->：各组合名/代码/基金数 + 市值 + 收益率，收益涨跌规范色</li><!--pnid:PiNyLoI37FlnK7ddXu7XMh-->
-      <li data-page-node-id="dW7tVfuh9REXYVasrqY1HN"><strong data-page-node-id="eJ8vjyA6JLFGKxziTJ0e9y"><!--pnid:aKHFysclpCQAoPAbMtGK1M-->组合层份额</strong><!--pnid:jV6QnKbTkCakNQdtfYC1YJ-->：延续口径，组合层不展示份额（份额对组合无意义）</li><!--pnid:N9JXJJ8IJPt0cqeRHgR5Oa-->
-      <li data-page-node-id="w51y5A0iGujbHTQmFFEgk0"><strong data-page-node-id="4PgtZF5iG6HZTe0MmnCUPc"><!--pnid:XiICfvvap9ZxLKeO0UwOSR-->同范式可复用</strong><!--pnid:rQAJepBxKKPRBh4X6Baixf-->：基金账户详情卡、组合账户详情卡按本卡范式套用（账户层汇总+下层列示）</li><!--pnid:V6PaKibERq0Vxt2qZlMbHH-->
-      <li data-page-node-id="maRQhwlCzZxEgIAi8GOoYs"><strong data-page-node-id="Bqte5hgfCa8vR94PxYgwoa"><!--pnid:gTTDtjQExuclyokRlIcRBL-->不开方</strong><!--pnid:Te63ShSlFGkefQtvYNWSP7-->：账户层只诊断，调整引导策略配置</li><!--pnid:pCblKIlfXGIZyUWv55rhve-->
-    </ul><!--pnid:IAdIor1azYmsdqk2GJJmLa-->
-    <div data-page-node-id="3DJnhnFqQgqNKux3HOzB9G" class="annot-title" style="margin-top:14px"><!--pnid:YO3ATiXozNEqVHXi3pDGCE-->字段 → MCP 数据契约（get_holdings + get_return_performance · scope=advisor）</div><!--pnid:vVnwU65sgv3k4AAKCZOWWt-->
-    <table data-page-node-id="oKHzIAt2YitBVObWR7lmRG" class="param-table"><!--pnid:jUVmCSCNjA9q29Zm7XHQDs-->
-      <thead data-page-node-id="ZFjphylZFoJ7FLFyuuqQJq"><tr data-page-node-id="OeCHOWNIfsXalBCJvDCDbp"><th data-page-node-id="voHsiEArtjSDtypbBwVYgp"><!--pnid:qpWgTvBXVcbOTIt7vDxCEa-->卡片元素</th><th data-page-node-id="YpOVjFDyUYHBSLk3TnSaC9"><!--pnid:wyuE8r8vGw1Eu6AZdOiIte-->MCP 字段</th><th data-page-node-id="Hobz2VakH0w8GJDeQs4tDE"><!--pnid:Ai3007zUFESzHdqvspUIiH-->类型</th><th data-page-node-id="19W3aBXPXI3KQ3Rbe6ClRk"><!--pnid:HmG8PDZZAyVg7HciuMsGLb-->说明</th></tr></thead><!--pnid:psbBcI6vsPcjMh1MXKPEij-->
-      <tbody data-page-node-id="vo9AtuJbeKmlfQyD7fMLEe"><!--pnid:ltJ9VmzG6CDyH1g0GcEu8R-->
-        <tr data-page-node-id="S2W9RTHxv5RWNFqI1MeRq5"><td data-page-node-id="RPpo6i8a0kZPI2vjiGZSgT"><!--pnid:PtdbpFFcswSjj4uEkDPCsi-->account_profit / rate</td><td data-page-node-id="hoKvrSA1g8brV4DSeiBfpC"><!--pnid:4qzw4gWYtV6JpBsxQWOt6d-->get_return_performance（scope=advisor）</td><td data-page-node-id="6nUbxVBP1YGLOQc1vv8Cv8"><!--pnid:RmfwwRaB7E7qIzb5ZT27Yp-->number</td><td data-page-node-id="rHJCEUUIEp1Scd4k0Fa21G"><!--pnid:sNXoufXNaKa4BpEjDEzZDc-->账户层收益</td></tr><!--pnid:CrsvTyN1CtGCgA6BlsNDwu-->
-        <tr data-page-node-id="vjaSsonFAfpbD3Ay5C1QNs"><td data-page-node-id="B1whSN2wh5YJLwSjMht3iy"><!--pnid:jMzqfYvCQxCEpf7SeNMmfx-->account_value</td><td data-page-node-id="Y2cYzd2W8gQoRJPGn3cvwc"><!--pnid:wB1DwXRZz4XAM0U0jrDDgE-->get_account_asset_summary（scope=advisor）</td><td data-page-node-id="ssjnghLtCEERvHfqWtVLiL"><!--pnid:Oy3ejw3wHWb48XTskRQEvH-->number</td><td data-page-node-id="O1r5rasKd7rQoht2ChCP6L"><!--pnid:ey7OL2zzzd9yriLEqIRO2D-->账户市值</td></tr><!--pnid:0GeEiXERbvi3v8AESHNgWx-->
-        <tr data-page-node-id="4feBWStBUBaFY4NyGy7UHP"><td data-page-node-id="uChfW2E9Ne1RjmG1xC6odJ"><!--pnid:fwL6ndeG7jriQDAGGKShoq-->combos[]</td><td data-page-node-id="Wh1mHWjWwqC3vmXEYIO2by"><!--pnid:j0gSmrt1WSvZmfgO0giHwG-->get_holdings（advisor tab）</td><td data-page-node-id="j6jGWYrP17BTED1MdbPUNa"><!--pnid:eEadTKBBLzGFL04Ak5rHHD-->array{name,code,fund_count,value,return_rate}</td><td data-page-node-id="8ExRSvjHr95qgzBcFiPJUO"><!--pnid:wsu2OKzGvSIt3FM0QJwrqZ-->组合列示</td></tr><!--pnid:Vcp1olDna9wQ9YCongsYws-->
-        <tr data-page-node-id="h0nMHsxZpKK8AolECRWeoc"><td data-page-node-id="7FCdDgFaUeRa42z4j694DB"><!--pnid:mfm8XIgaxzJ1iM6UqwYb45-->can_drill</td><td data-page-node-id="aopP6h8WXFindmxHGAMoXQ"><!--pnid:bFSj5xrsl8xMUDHgHlQFOY-->固定 true</td><td data-page-node-id="wJycv54IlZBrxuEdwc30Cd"><!--pnid:aynFQ4EBL9gbFEIYysRDTa-->boolean</td><td data-page-node-id="x0mmqETHBXq9dTUfzhPafG"><!--pnid:MZgPxSW018UDGojFwAZuGp-->组合可下钻 → ACC-05 组合诊断卡</td></tr><!--pnid:k6B0s1p94EiZSFO0R7cUKP-->
-      </tbody><!--pnid:N708JWe8hBrRRr5hf6SXFb-->
-    </table><!--pnid:08cnO1igOTq2QGTUjuicuf-->
-  </div><!--pnid:MgTD0i3aqnFn58LVgAD5yD-->
+            
+
+<!--pnid:MgTD0i3aqnFn58LVgAD5yD-->
 </section>
 </div>
 <script src="../assets/js/calendars.js"></script>

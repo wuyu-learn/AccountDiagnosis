@@ -8,10 +8,11 @@
 
   function buildFrames(container) {
     var sections = getSections(container);
+    var cacheBuster = '?t=' + Date.now();
     container.innerHTML = sections.map(function (section) {
       return [
         '<section class="section-frame-wrap" id="' + section.id + '" data-section-id="' + section.id + '">',
-        '  <iframe class="section-frame" src="sections/' + section.file + '" title="' + section.title + '" scrolling="no"></iframe>',
+        '  <iframe class="section-frame" src="sections/' + section.file + cacheBuster + '" title="' + section.title + '" scrolling="no"></iframe>',
         '</section>'
       ].join('\n');
     }).join('\n');

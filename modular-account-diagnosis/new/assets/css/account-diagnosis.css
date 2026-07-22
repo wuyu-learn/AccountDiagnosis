@@ -150,6 +150,8 @@ body {
 
 /* ─── Sidebar data badge ─── */
 .data-badge { display: inline-flex; align-items: center; margin-left: 6px; padding: 1px 6px; border-radius: var(--radius-pill); background: #FCF6EC; color: #8A5A12; border: 1px solid #F0D9A8; font-size: 10px; font-weight: 700; line-height: 1.4; vertical-align: 1px; }
+.data-badge.mode-inline  { background: #E6F6EC; color: #1A7A3C; border-color: #BFE6CC; }
+.data-badge.mode-deferred { background: #FCF3E3; color: #9A5B00; border-color: #F0D9A8; }
 
 /* ─── States grid ─── */
 .states-grid { display: flex; flex-wrap: wrap; gap: 20px; align-items: flex-start; }
@@ -178,6 +180,11 @@ body {
 .card-h-title { font-size: var(--fs-h3); font-weight: 600; color: var(--color-text-primary); }
 .sys-tag { font-size: 11px; color: var(--color-text-tertiary); display: flex; align-items: center; gap: 4px; }
 .est-tag { font-size: 10px; font-weight: 600; color: #B57A1A; background: #FCF3E2; border-radius: var(--radius-md); padding: 1px 6px; }
+.update-tag { font-size: 10px; font-weight: 600; color: #0080FF; background: #E8F4FF; border-radius: var(--radius-md); padding: 1px 6px; }
+/* 周期选择器（收益归因等卡片） */
+.period-tag { display: inline-flex; align-items: center; gap: 4px; background: #F0F6FF; border-radius: 6px; padding: 3px 9px; font-size: 11px; color: #0080FF; font-weight: 500; }
+.period-tag.today { background: #F0F6FF; color: #0080FF; }
+.period-tag.today::before { content: ""; width: 5px; height: 5px; border-radius: 50%; background: #0080FF; }
 .num { font-family: var(--font-family-number); font-variant-numeric: tabular-nums; }
 .up   { color: var(--color-up); }
 .down { color: var(--color-down); }
