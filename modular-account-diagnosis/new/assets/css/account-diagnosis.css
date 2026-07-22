@@ -183,8 +183,6 @@ body {
 .update-tag { font-size: 10px; font-weight: 600; color: #0080FF; background: #E8F4FF; border-radius: var(--radius-md); padding: 1px 6px; }
 /* 周期选择器（收益归因等卡片） */
 .period-tag { display: inline-flex; align-items: center; gap: 4px; background: #F0F6FF; border-radius: 6px; padding: 3px 9px; font-size: 11px; color: #0080FF; font-weight: 500; }
-.period-tag.today { background: #F0F6FF; color: #0080FF; }
-.period-tag.today::before { content: ""; width: 5px; height: 5px; border-radius: 50%; background: #0080FF; }
 .num { font-family: var(--font-family-number); font-variant-numeric: tabular-nums; }
 .up   { color: var(--color-up); }
 .down { color: var(--color-down); }

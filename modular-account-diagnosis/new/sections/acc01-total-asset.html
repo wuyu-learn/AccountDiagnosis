@@ -17,6 +17,49 @@
         max-width: none !important;
         margin: 0 !important;
       }
+      .asset-source-toggle {
+        padding: 4px 0 4px 12px;
+        color: #fb5c5f;
+        font-size: 12px;
+      }
+      .asset-source-panel {
+        max-height: 0;
+        overflow: hidden;
+        opacity: 0;
+        transform: translateY(-4px);
+        visibility: hidden;
+        transition: max-height 220ms ease, opacity 160ms ease, transform 160ms ease;
+      }
+      .asset-source-panel.is-open {
+        max-height: 240px;
+        opacity: 1;
+        transform: translateY(0);
+        visibility: visible;
+      }
+      .asset-source-list {
+        margin-top: 10px;
+        padding: 4px 12px;
+        border: 1px solid #eceff2;
+        border-radius: 8px;
+        background: #fafbfc;
+      }
+      .asset-source-row {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px;
+        min-height: 39px;
+        border-bottom: 1px solid #eceff2;
+        font-size: 12px;
+        color: #444;
+      }
+      .asset-source-row:last-of-type { border-bottom: 0; }
+      .asset-source-value {
+        flex: none;
+        color: #1a1d21;
+        font-variant-numeric: tabular-nums;
+        font-weight: 600;
+      }
     </style>
   </head>
   <body>
@@ -166,6 +209,7 @@
                             padding: 1px 4px;
                             line-height: 1;
                           "
+                          class="today-status-tag"
                           >预估</span
                         >
                       </div>
@@ -454,10 +498,11 @@
                           <span
                             data-page-node-id="pbP87CADycHAW2SJBjhs8Y"
                             style="color: #aab; font-size: 9.5px"
+                            class="fund-return-label"
                             ><!--pnid:VjZy1lG3hdkRtlrAqP4gsy-->今日预估 </span
                           ><span
                             data-page-node-id="vDTAwfL4ziK5WBGxPnuKYN"
-                            class="num down"
+                            class="num down fund-return-value"
                             style="font-size: 12px; font-weight: 600"
                             ><!--pnid:SaCtxglYXPibY2pdj1pbIA-->−7,444</span
                           >
@@ -723,11 +768,26 @@
                     ><!--pnid:78ScTNeYdddeMWMyEJGkNF-->
                     <span
                       data-page-node-id="o3EgBNlPMJzMuGZwDdJ7vv"
-                      style="font-size: 12px; color: #fb5c5f"
+                      class="asset-source-toggle"
                       ><!--pnid:Dv7cNArQyNEIA9PV5Z9TxP-->展开 ›</span
                     ><!--pnid:gD2Q0cH2faZEE3X7kRu5Fx-->
                   </div>
                   <!--pnid:liBxm3yBFQlZy5pxsO1l39-->
+                  <div
+                    class="asset-source-panel"
+                    aria-hidden="true"
+                  >
+                    <div class="asset-source-list">
+                      <div class="asset-source-row">
+                        <span>汇添富资产</span>
+                        <span class="asset-source-value num">1,252,420.58</span>
+                      </div>
+                      <div class="asset-source-row">
+                        <span>外部导入资产</span>
+                        <span class="asset-source-value num">180,000.00</span>
+                      </div>
+                    </div>
+                  </div>
                   <div
                     data-page-node-id="oFF4umvUjxoJ6cSY7omAHB"
                     class="disc"
@@ -745,7 +805,7 @@
           <!--pnid:CzmQWhD0XBultzZqz2mEYc-->
 
           <!--pnid:yd2mEQu3UTBCWMP2YG2CvK--><!-- 数据不可用态 --><!--pnid:3ZbVYu8LeIOSaMdH2YWhUc-->
-          <div data-page-node-id="ROMGtdTEYHkn4YT398xKil" class="state-box">
+          <div data-page-node-id="ROMGtdTEYHkn4YT398xKil" class="state-box" style="flex-basis: 100%">
             <!--pnid:lvGIfl8HQBRpbeoUv1j7YL-->
             <div data-page-node-id="sW9fAFRKxEhCD6FHKs1QE5" class="state-label">
               <!--pnid:9vA21RXj5wfTn7oLKR1hSq-->数据不可用
@@ -827,6 +887,56 @@
         <!--pnid:Mq4BF1Uq64ZirfhDvKdKpl-->
       </section>
     </div>
+    <script>
+      (function () {
+        var statesGrid = document.querySelector("#acc01 .states-grid");
+        var collapsedState = document.querySelector('[data-page-node-id="t0DcStINhNJmbJSQ0QTfDh"]');
+        var unavailableState = document.querySelector('[data-page-node-id="ROMGtdTEYHkn4YT398xKil"]');
+        if (!statesGrid || !collapsedState || !unavailableState) return;
+
+        function cloneState() {
+          var clonedState = collapsedState.cloneNode(true);
+          clonedState.removeAttribute("data-page-node-id");
+          clonedState.querySelectorAll("[data-page-node-id]").forEach(function (node) {
+            node.removeAttribute("data-page-node-id");
+          });
+          return clonedState;
+        }
+
+        var sourceExpandedState = cloneState();
+        sourceExpandedState.querySelector(".state-label").textContent = "盘中预估（资产来源展开）";
+        sourceExpandedState.querySelector(".state-desc").textContent = "资产来源展开态；展示汇添富资产与外部导入资产";
+        sourceExpandedState.querySelector(".asset-source-toggle").textContent = "收起 ⌃";
+        sourceExpandedState.querySelector(".asset-source-panel").classList.add("is-open");
+        sourceExpandedState.querySelector(".asset-source-panel").setAttribute("aria-hidden", "false");
+        statesGrid.insertBefore(sourceExpandedState, unavailableState);
+        collapsedState.querySelector(".state-desc").textContent = "全预估：仅基金支持盘中预估；当前基金今日收益全部为预估值";
+
+        var variants = [
+          {
+            phase: "更新中",
+            description: "仅基金支持盘中预估；部分基金已更新，其余基金继续使用预估值",
+            todayStatus: "更新中",
+            fundLabel: "今日收益（更新中）"
+          },
+          {
+            phase: "更新完成",
+            description: "基金今日收益已全部完成更新，不再展示预估口径",
+            todayStatus: "已更新",
+            fundLabel: "今日已更新"
+          }
+        ];
+
+        variants.forEach(function (variant) {
+          var statusState = cloneState();
+          statusState.querySelector(".state-label").textContent = "盘中预估";
+          statusState.querySelector(".state-desc").textContent = variant.phase + "：" + variant.description;
+          statusState.querySelector(".today-status-tag").textContent = variant.todayStatus;
+          statusState.querySelector(".fund-return-label").textContent = variant.fundLabel + " ";
+          statesGrid.insertBefore(statusState, unavailableState);
+        });
+      })();
+    </script>
     <script src="../assets/js/calendars.js"></script>
     <script src="../assets/js/section-frame.js"></script>
   </body>

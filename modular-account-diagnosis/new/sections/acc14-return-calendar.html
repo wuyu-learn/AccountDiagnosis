@@ -736,64 +736,6 @@
         </div>
         <!--pnid:3TENgRcJ3Bnf7O5gB38gnS-->
 
-                  <div id="logic-md" class="annot">
-<div class="annot-title">字段</div>
-<ul>
-<li><strong>时间区间</strong>：以账户收益起始日期为基准，根据日/月/年/历史维度汇总对应区间收益数据</li>
-<li><strong>配色三色无深浅</strong>：盈利红/亏损绿/无收益灰，不做盈亏幅度深浅分级（克制、不刺激）</li>
-<li><strong>非交易日</strong>：货币基金节假日计息，周末/节假日有收益则照常红/绿，仅真正无收益为灰</li>
-<li><strong>对账闭环（正确性红线，V1.1 修正）</strong>：日加总=当月累计、月加总=今年累计、今年累计=收益总览卡"今年区间收益额"（三级数字必须可对账，不允许各卡各算）；货币基金贡献<strong>不得为负</strong>（货基万份收益恒正，出现负值即取数/口径错误）</li>
-<li><strong>同管资产-收益日历</strong>：同管资产下的收益日历仅展示已确认的真实收益值，不展示预估值</li>
-</ul>
-<div class="annot-title">交互逻辑</div>
-<ul>
-<li><strong>三粒度联动</strong>：日（当月，日历周7列）/月（当年，每行3个）/年（历年，每行3个）；切粒度时展示范围、格子含义、贡献明细周期三者同步</li>
-<li><strong>贡献明细跟随周期</strong>：日看当日/月看当月/年看当年；统一按不穿透产品维度；盈利Top/亏损Top分列</li>
-<li><strong>回顾导向</strong>：默认当月、给月度小结（涨跌天数/累计）、亏损措辞稳定不渲染，引导长期视角</li>
-</ul>
-<div class="annot-title">字段 → MCP 数据契约（get_return_performance）</div>
-<table class="param-table">
-<thead>
-<tr>
-<th>卡片元素</th>
-<th>MCP 字段</th>
-<th>类型</th>
-<th>说明</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>return_series</td>
-<td>return_series（granularity=day/month/year）</td>
-<td>array</td>
-<td>网格数据</td>
-</tr>
-<tr>
-<td>profit_amount / rate</td>
-<td>profit_amount / profit_rate</td>
-<td>number</td>
-<td>格子值，金额/收益率可切</td>
-</tr>
-<tr>
-<td>period_total</td>
-<td>period_total</td>
-<td>number</td>
-<td>周期累计</td>
-</tr>
-<tr>
-<td>product_contribution[]</td>
-<td>product_contribution</td>
-<td>array{name,amount}</td>
-<td>跟随周期，不穿透</td>
-</tr>
-</tbody>
-</table>
-  </div>
-
-
-
-
-
         <!--pnid:B26yfeDcPBLDNiTyBKZHBb-->
       </section>
     </div>
