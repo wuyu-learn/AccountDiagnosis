@@ -923,13 +923,14 @@
             phase: "更新完成",
             description: "基金今日收益已全部完成更新，不再展示预估口径",
             todayStatus: "已更新",
-            fundLabel: "今日已更新"
+            fundLabel: "今日已更新",
+            label: "盘中预估（今日收益已更新）"
           }
         ];
 
         variants.forEach(function (variant) {
           var statusState = cloneState();
-          statusState.querySelector(".state-label").textContent = "盘中预估";
+          statusState.querySelector(".state-label").textContent = variant.label || "盘中预估";
           statusState.querySelector(".state-desc").textContent = variant.phase + "：" + variant.description;
           statusState.querySelector(".today-status-tag").textContent = variant.todayStatus;
           statusState.querySelector(".fund-return-label").textContent = variant.fundLabel + " ";

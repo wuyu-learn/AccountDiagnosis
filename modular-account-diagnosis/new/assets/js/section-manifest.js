@@ -2,6 +2,7 @@ window.ACCOUNT_DIAGNOSIS_SECTIONS = [
   { id: 'catalog', title: '目录 · 卡片取值方式', file: 'catalog.html' },
   { id: 'acc01', title: 'ACC-01 账户总资产卡', file: 'acc01-total-asset.html' },
   { id: 'acc02', title: 'ACC-02 基金账户详情卡', file: 'acc02-fund-account.html' },
+  { id: 'acc19', title: 'ACC-19 产品份额明细卡', file: 'acc19-fund-holding-summary.html' },
   { id: 'acc03', title: 'ACC-03 基金持有详情卡', file: 'acc03-fund-holding.html' },
   { id: 'acc04', title: 'ACC-04 投顾账户详情卡', file: 'acc04-advisor-account.html' },
   { id: 'acc05', title: 'ACC-05 投顾组合详情卡', file: 'acc05-advisor-combo.html' },
