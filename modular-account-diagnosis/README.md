@@ -13,7 +13,7 @@ Each version folder contains:
 - compare.html: no-sidebar page used by the shell
 - modular.html: partials/sections loader, requires a local static server
 - partials/: sidebar and page header
-- sections/: catalog and ACC-01 through ACC-18
+- sections/: catalog and the available ACC card sections
 - assets/: CSS and JS extracted from that version
 
 Sources:

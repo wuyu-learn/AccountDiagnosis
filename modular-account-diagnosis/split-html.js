@@ -21,8 +21,6 @@ const sectionFiles = [
   ['acc13', 'acc13-return-overview.html'],
   ['acc14', 'acc14-return-calendar.html'],
   ['acc15', 'acc15-return-attribution.html'],
-  ['acc16', 'acc16-return-composition.html'],
-  ['acc17', 'acc17-period-attribution.html'],
   ['acc18', 'acc18-watchlist-valuation.html'],
 ];
 
@@ -43,8 +41,6 @@ const navItems = [
   ['acc13', 'ACC-13 账户收益总览卡'],
   ['acc14', 'ACC-14 收益明细日历卡'],
   ['acc15', 'ACC-15 收益归因卡'],
-  ['acc16', 'ACC-16 收益构成卡'],
-  ['acc17', 'ACC-17 区间收益归因卡'],
   ['acc18', 'ACC-18 自选基金估值卡'],
 ];
 

@@ -5,12 +5,7 @@ window.ACCOUNT_DIAGNOSIS_SECTIONS = [
   { id: 'acc19', title: 'ACC-19 产品份额明细卡', file: 'acc19-fund-holding-summary.html' },
   { id: 'acc03', title: 'ACC-03 基金持有详情卡', file: 'acc03-fund-holding.html' },
   { id: 'acc04', title: 'ACC-04 投顾账户详情卡', file: 'acc04-advisor-account.html' },
-  { id: 'acc05a', title: 'ACC-05-A 投顾组合详情卡 · 组合诊断', file: 'acc05a-advisor-combo.html' },
-  { id: 'acc05b', title: 'ACC-05-B 投顾组合详情卡 · 收益走势', file: 'acc05b-advisor-combo.html' },
-  { id: 'acc05c', title: 'ACC-05-C 投顾组合详情卡 · 资产配置', file: 'acc05c-advisor-combo.html' },
-  { id: 'acc05d', title: 'ACC-05-D 投顾组合详情卡 · 偏离度', file: 'acc05d-advisor-combo.html' },
-  { id: 'acc05e', title: 'ACC-05-E 投顾组合详情卡 · 投顾报告', file: 'acc05e-advisor-combo.html' },
-  { id: 'acc05f', title: 'ACC-05-F 投顾组合详情卡 · 主理人观点', file: 'acc05f-advisor-combo.html' },
+  { id: 'acc05', title: 'ACC-05 投顾组合详情卡', file: 'acc05-advisor-combo.html' },
   { id: 'acc06', title: 'ACC-06 投顾调仓记录卡', file: 'acc06-advisor-rebalance.html' },
   { id: 'acc07', title: 'ACC-07 货币账户详情卡', file: 'acc07-money-account.html' },
   { id: 'acc08', title: 'ACC-08 货币持有详情卡', file: 'acc08-money-holding.html' },
@@ -22,7 +17,5 @@ window.ACCOUNT_DIAGNOSIS_SECTIONS = [
   { id: 'acc13b', title: 'ACC-13-B 账户收益总览卡 · 分年视角', file: 'acc13b-yearly-view.html' },
   { id: 'acc14', title: 'ACC-14 收益明细日历卡', file: 'acc14-return-calendar.html' },
   { id: 'acc15', title: 'ACC-15 收益归因卡', file: 'acc15-return-attribution.html' },
-  { id: 'acc16', title: 'ACC-16 收益构成卡', file: 'acc16-return-composition.html' },
-  { id: 'acc17', title: 'ACC-17 区间收益归因卡', file: 'acc17-period-attribution.html' },
   { id: 'acc18', title: 'ACC-18 自选基金估值卡', file: 'acc18-watchlist-valuation.html' }
 ];
